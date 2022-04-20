@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+h1 { 
+  font-size: 37.2px;
+  border-bottom: 3px solid black;
+}
+h2 { 
+  font-size: 29.2px;
+  border-bottom: 1px solid #e6e6e6;
+}
+h3 { font-size: 21.2px }
+h4, h5, h6, p { font-size: 16px }
+
+
+div.align-center {
+  max-width: 640px;
+  text-align: left;
+  margin: 30px auto;
+}
+body {
+  margin-top: 20px;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
+}
+input, select, textarea {
+  margin: 1px 1px 1px 1px;
+}
+button {
+  margin: 1px 1px 1px 1px;
+}
+/* hr { background-color: rgba(9,45,66,.13); border: 0; height: 1px; margin: 16px 0; padding: 0; width: 100%; box-sizing: content-box; } */
+.result {
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 3px;
+  border: rgba(0, 0, 0, 0.082) 1px solid;
+  display: block;
+  min-height: 40px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+.description {
+  margin-top: 10px;
+  background-color: rgba(9,45,66,.08);
+  border-radius: 3px;
+  display: block;
+  min-height: 40px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+/* [id^=result] {
+  color: red;
+  font-weight: bold;
+} */
+code {
+  font-family: Consolas,Monaco,"Lucida Console",monospace;
+  padding: 4px;
+  white-space: nowrap;
+  background-color: #EFEFEF;
+}
