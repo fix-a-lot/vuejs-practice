@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Toast UI Grid</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/libs/tui-grid.css" />
+    <script src="/libs/tui-grid.js"></script>
+    <script src="/libs/vue.global.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+      <div id="grid"></div>
+      <ul><li v-for="item in docs"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
+    </div>
+    <script>
+      const pageTitle = 'Scratch Pad';
+      Vue.createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            docs: [
+              {
+                title: "공식 가이드: 튜토리얼",
+                url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/README.md",
+              },
+              {
+                title: "공식 가이드: API 문서",
+                url: "https://nhn.github.io/tui.grid/latest/Grid",
+              },
+              {
+                title: "공식 가이드: Examples",
+                url: "https://nhn.github.io/tui.grid/latest/tutorial-example01-basic"
+              }
+            ],
+          };
+        },
+      }).mount("#app");
+  
+      const gridData = [
+        {
+          c1: "100013",
+          c2: "100013"
+        },
+        {
+          c1: "201212",
+          c2: "201212"
+        },
+        {
+          c1: "241221",
+          c2: "241221"
+        },
+        {
+          c1: "991232",
+          c2: "991232"
+        },
+      ];
+  
+      const grid = new tui.Grid({
+        el: document.getElementById("grid"),
+        data: gridData,
+        // width: 800,
+        // bodyHeight: 400,
+        scrollX: false,
+        scrollY: false,
+        rowHeaders: ["rowNum"],
+        columns: [
+          {
+            header: "직무/직급명",
+            name: "positionName",
+          },
+        ],
+        // showDummyRows: true,
+      });
+      // tui.Grid.applyTheme('striped');
+    </script>  
+  </body>
+</html>

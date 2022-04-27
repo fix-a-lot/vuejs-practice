@@ -1,24 +1,79 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <title>Vue.js Testbed</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Index</title>
-    <script src="https://unpkg.com/vue@3"></script>
+    <script src="/libs/vue.global.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
-      <h1>Index</h1>
+      <h1>{{ pageTitle }}</h1>
       <ul>
-        Vue 관련:
-        <li><a href="/basic/basic-test.html">기본</a></li>
+        <h2>Vue</h2>
+        <ul><li v-for="item in items1"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
       </ul>
       <ul>
-        Vue 안관련:
-        <li><a href="/module-test/module-test.html">모듈 테스트</a></li>
+        <h2>Toast UI Grid</h2>
+        <ul><li v-for="item in items2"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
+      </ul>
+      <ul>
+        <h2>기타등등</h2>
+        <ul><li v-for="item in items3"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
       </ul>
     </div>
+    <script>
+      const pageTitle = 'Index';
+      Vue.createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            items1: [
+              { title: "기본", url: "/vue/basic.html" },
+            ],
+            items2: [
+              { title: "0. Scratch Pad", url: "/grid/scratch-pad.html" },
+              { title: "1. Basic", url: "/grid/basic.html" },
+              { title: "2. Complex columns", url: "/grid/basic.html" },
+              { title: "3. Custom Editor", url: "/grid/basic.html" },
+              { title: "4. Custom Renderer", url: "/grid/basic.html" },
+              { title: "5. Relation between columns", url: "/grid/basic.html" },
+              { title: "6. Attributes", url: "/grid/basic.html" },
+              { title: "7. Themes", url: "/grid/basic.html" },
+              { title: "8. DatePicker", url: "/grid/basic.html" },
+              { title: "9. Summary", url: "/grid/basic.html" },
+              { title: "10. DataSource", url: "/grid/basic.html" },
+              { title: "11. Customizing Row headers", url: "/grid/basic.html" },
+              { title: "12. WhiteSpace", url: "/grid/basic.html" },
+              { title: "13. Internationalization (i18n)", url: "/grid/basic.html" },
+              { title: "14. Tree", url: "/grid/basic.html" },
+              { title: "15. Custom Event", url: "/grid/basic.html" },
+              { title: "16. Frozen Columns", url: "/grid/basic.html" },
+              { title: "17. Dummy Rows", url: "/grid/basic.html" },
+              { title: "18. Column resize", url: "/grid/basic.html" },
+              { title: "19. Sort", url: "/grid/basic.html" },
+              { title: "20. Validation", url: "/grid/basic.html" },
+              { title: "21. Header Align", url: "/grid/basic.html" },
+              { title: "22. Setting Width, Height", url: "/grid/basic.html" },
+              { title: "23. Client Pagination", url: "/grid/basic.html" },
+              { title: "24. Filter", url: "/grid/basic.html" },
+              { title: "25. Large Data Performance", url: "/grid/basic.html" },
+              { title: "26. Infinite scroll", url: "/grid/basic.html" },
+              { title: "27. Export", url: "/grid/basic.html" },
+              { title: "28. Drag and Drop", url: "/grid/basic.html" },
+              { title: "29. Dynamic rowSpan", url: "/grid/basic.html" },
+            ],
+            items3: [
+              { title: "모듈 테스트", url: "/module/module-test.html" },
+            ]
+          };
+        },
+      }).mount("#app");
+    </script>
   </body>
 </html>
