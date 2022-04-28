@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="/libs/tui-grid.css" />
-    <script src="/libs/tui-grid.js"></script>
-    <script src="/libs/vue.global.js"></script>
+    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
+    <script src="/lib/tui-grid.js"></script>
+    <script src="/lib/vue.global.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -27,10 +27,23 @@
       }).mount("#app");
 
       let gridData = [
-        { positionName: "일등" },
-        { positionName: "이등" },
-        { positionName: "삼등" },
-        { positionName: "사등" },
+        { positionName: "사원" },
+        { positionName: "오원" },
+        { positionName: "육원" },
+        { positionName: "칠원" },
+        { positionName: "대리" },
+        { positionName: "중리" },
+        { positionName: "소리" },
+        { positionName: "부장" },
+        { positionName: "부부장" },
+        { positionName: "부부젤라장" },
+        { positionName: "본부장" },
+        { positionName: "안본부장" },
+        { positionName: "이사" },
+        { positionName: "삼사" },
+        { positionName: "오사" },
+        { positionName: "사장" },
+        { positionName: "오장" },
       ];
 
       const grid = new tui.Grid({

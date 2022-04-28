@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/libs/tui-grid.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
     <style type="text/css">
       .red.tui-grid-cell {
         background-color: #f8e0e0;
@@ -15,12 +15,14 @@
         background-color: #cef6f5;
       }
     </style>
-    <script src="/libs/tui-grid.js"></script>
-    <script src="/libs/vue.global.js"></script>
+    <script src="/lib/tui-grid.js"></script>
+    <script src="/lib/vue.global.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <p><code>_attributes.rowSpan</code>은 버려졌고 대신 <code>rowSpan</code> 옵션을 쓰라고 합니다.</p>
+      <div class="description">The option <code>"_attribute.rowSpan"</code> is deprecated. Please use rowSpan option of column. Follow example: <a href="http://nhn.github.io/tui.grid/latest/tutorial-example29-dynamic-row-span">http://nhn.github.io/tui.grid/latest/tutorial-example29-dynamic-row-span</a></div><br>
       <div id="grid"></div>
     </div>
     <script>
