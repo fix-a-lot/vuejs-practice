@@ -16,37 +16,22 @@
       <div id="grid"></div>
     </div>
     <script>
-      const pageTitle = 'Scratch Pad';
+      const pageTitle = "Scratch Pad";
       Vue.createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },
         data() {
-          return {
-            pageTitle: pageTitle
-          };
+          return { pageTitle: pageTitle };
         },
       }).mount("#app");
-  
       const gridData = [
-        {
-          c1: "100013",
-          c2: "100013"
-        },
-        {
-          c1: "201212",
-          c2: "201212"
-        },
-        {
-          c1: "241221",
-          c2: "241221"
-        },
-        {
-          c1: "991232",
-          c2: "991232"
-        },
+        { c1: "100013", c2: "100013" },
+        { c1: "201212", c2: "201212" },
+        { c1: "241221", c2: "241221" },
+        { c1: "991232", c2: "991232" },
       ];
-  
+
       const grid = new tui.Grid({
         el: document.getElementById("grid"),
         data: gridData,
@@ -64,6 +49,6 @@
         // showDummyRows: true,
       });
       // tui.Grid.applyTheme('striped');
-    </script>  
+    </script>
   </body>
 </html>
