@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="/libs/tui-grid.css" />
+    <link rel="stylesheet" type="text/css" href="/libs/tui-grid.css" />
     <script src="/libs/tui-grid.js"></script>
     <script src="/libs/vue.global.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
-      <div id="grid"></div>
+      <!-- <div id="grid"></div> -->
+      <p>공사중</p>
     </div>
     <script>
-      const pageTitle = 'Scratch Pad';
+      const pageTitle = "공사중";
       Vue.createApp({
         created() {
           document.title += `: ${pageTitle}`;
@@ -27,43 +28,37 @@
           };
         },
       }).mount("#app");
-  
-      const gridData = [
-        {
-          c1: "100013",
-          c2: "100013"
-        },
-        {
-          c1: "201212",
-          c2: "201212"
-        },
-        {
-          c1: "241221",
-          c2: "241221"
-        },
-        {
-          c1: "991232",
-          c2: "991232"
-        },
-      ];
-  
+
+      const gridData = null;
+
       const grid = new tui.Grid({
         el: document.getElementById("grid"),
         data: gridData,
-        // width: 800,
-        // bodyHeight: 400,
         scrollX: false,
         scrollY: false,
-        rowHeaders: ["rowNum"],
         columns: [
           {
-            header: "직무/직급명",
-            name: "positionName",
+            header: "Name",
+            name: "name",
+          },
+          {
+            header: "Artist",
+            name: "artist",
+          },
+          {
+            header: "Type",
+            name: "type",
+          },
+          {
+            header: "Release",
+            name: "release",
+          },
+          {
+            header: "Genre",
+            name: "genre",
           },
         ],
-        // showDummyRows: true,
       });
-      // tui.Grid.applyTheme('striped');
-    </script>  
+    </script>
   </body>
 </html>

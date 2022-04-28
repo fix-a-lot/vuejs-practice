@@ -13,19 +13,31 @@
       <h1>{{ pageTitle }}</h1>
       <ul>
         <h2>Vue</h2>
-        <ul><li v-for="item in items1"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
+        <ul>
+          <li v-for="item in items1">
+            <a v-bind:href="item.url" v-bind:target="item.target ? item.target : '_self'">{{ item.title }}</a>
+          </li>
+        </ul>
       </ul>
       <ul>
         <h2>Toast UI Grid</h2>
-        <ul><li v-for="item in items2"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
+        <ul>
+          <li v-for="item in items2">
+            <a v-bind:href="item.url" v-bind:target="item.target ? item.target : '_self'">{{ item.title }}</a>
+          </li>
+        </ul>
       </ul>
       <ul>
         <h2>기타등등</h2>
-        <ul><li v-for="item in items3"><a v-bind:href="item.url">{{ item.title }}</a></li></ul>
+        <ul>
+          <li v-for="item in items3">
+            <a v-bind:href="item.url" v-bind:target="item.target ? item.target : '_self'">{{ item.title }}</a>
+          </li>
+        </ul>
       </ul>
     </div>
     <script>
-      const pageTitle = 'Index';
+      const pageTitle = "Index";
       Vue.createApp({
         created() {
           document.title += `: ${pageTitle}`;
@@ -34,43 +46,60 @@
           return {
             pageTitle: pageTitle,
             items1: [
+              { title: "Vue.js: Guide", url: "https://vuejs.org/guide/introduction.html", target: "_blank" },
+              { title: "Vue.js: Tutorial", url: "https://vuejs.org/tutorial/#step-1", target: "_blank" },
+              { title: "Vue.js: Examples", url: "https://vuejs.org/examples/#hello-world", target: "_blank" },
+              { title: "Vue.js: API Reference", url: "https://vuejs.org/api/", target: "_blank" },
               { title: "기본", url: "/vue/basic.html" },
             ],
             items2: [
-              { title: "0. Scratch Pad", url: "/grid/scratch-pad.html" },
+              {
+                title: "Toast Grid: 튜토리얼",
+                url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/README.md",
+                target: "_blank",
+              },
+              {
+                title: "Toast Grid: API",
+                url: "https://nhn.github.io/tui.grid/latest/Grid",
+                target: "_blank",
+              },
+              {
+                title: "Toast Grid: Examples",
+                url: "https://nhn.github.io/tui.grid/latest/tutorial-example01-basic",
+                target: "_blank",
+              },
+              { title: "Scratch Pad", url: "/grid/scratch-pad.html" },
               { title: "1. Basic", url: "/grid/basic.html" },
-              { title: "2. Complex columns", url: "/grid/basic.html" },
-              { title: "3. Custom Editor", url: "/grid/basic.html" },
-              { title: "4. Custom Renderer", url: "/grid/basic.html" },
-              { title: "5. Relation between columns", url: "/grid/basic.html" },
-              { title: "6. Attributes", url: "/grid/basic.html" },
-              { title: "7. Themes", url: "/grid/basic.html" },
-              { title: "8. DatePicker", url: "/grid/basic.html" },
-              { title: "9. Summary", url: "/grid/basic.html" },
-              { title: "10. DataSource", url: "/grid/basic.html" },
-              { title: "11. Customizing Row headers", url: "/grid/basic.html" },
-              { title: "12. WhiteSpace", url: "/grid/basic.html" },
-              { title: "13. Internationalization (i18n)", url: "/grid/basic.html" },
-              { title: "14. Tree", url: "/grid/basic.html" },
-              { title: "15. Custom Event", url: "/grid/basic.html" },
-              { title: "16. Frozen Columns", url: "/grid/basic.html" },
-              { title: "17. Dummy Rows", url: "/grid/basic.html" },
-              { title: "18. Column resize", url: "/grid/basic.html" },
-              { title: "19. Sort", url: "/grid/basic.html" },
-              { title: "20. Validation", url: "/grid/basic.html" },
-              { title: "21. Header Align", url: "/grid/basic.html" },
-              { title: "22. Setting Width, Height", url: "/grid/basic.html" },
-              { title: "23. Client Pagination", url: "/grid/basic.html" },
-              { title: "24. Filter", url: "/grid/basic.html" },
-              { title: "25. Large Data Performance", url: "/grid/basic.html" },
-              { title: "26. Infinite scroll", url: "/grid/basic.html" },
-              { title: "27. Export", url: "/grid/basic.html" },
-              { title: "28. Drag and Drop", url: "/grid/basic.html" },
-              { title: "29. Dynamic rowSpan", url: "/grid/basic.html" },
+              // { title: "2. Complex columns", url: "/grid/complex-columns.html" },
+              // { title: "3. Custom Editor", url: "/grid/custom-editor.html" },
+              // { title: "4. Custom Renderer", url: "/grid/custom-renderer.html" },
+              // { title: "5. Relation between columns", url: "/grid/relation-between-columns.html" },
+              // { title: "6. Attributes", url: "/grid/attributes.html" },
+              // { title: "7. Themes", url: "/grid/themes.html" },
+              // { title: "8. DatePicker", url: "/grid/datepicker.html" },
+              // { title: "9. Summary", url: "/grid/summary.html" },
+              // { title: "10. DataSource", url: "/grid/datasource.html" },
+              // { title: "11. Customizing Row headers", url: "/grid/customizing-row-headers.html" },
+              // { title: "12. WhiteSpace", url: "/grid/whitespace.html" },
+              // { title: "13. Internationalization (i18n)", url: "/grid/internationalization-i18n.html" },
+              // { title: "14. Tree", url: "/grid/tree.html" },
+              // { title: "15. Custom Event", url: "/grid/custom-event.html" },
+              // { title: "16. Frozen Columns", url: "/grid/frozen-columns.html" },
+              // { title: "17. Dummy Rows", url: "/grid/dummy-rows.html" },
+              // { title: "18. Column resize", url: "/grid/column-resize.html" },
+              // { title: "19. Sort", url: "/grid/sort.html" },
+              // { title: "20. Validation", url: "/grid/validation.html" },
+              // { title: "21. Header Align", url: "/grid/header-align.html" },
+              // { title: "22. Setting Width, Height", url: "/grid/setting-width,-height.html" },
+              // { title: "23. Client Pagination", url: "/grid/client-pagination.html" },
+              // { title: "24. Filter", url: "/grid/filter.html" },
+              // { title: "25. Large Data Performance", url: "/grid/large-data-performance.html" },
+              // { title: "26. Infinite scroll", url: "/grid/infinite-scroll.html" },
+              // { title: "27. Export", url: "/grid/export.html" },
+              // { title: "28. Drag and Drop", url: "/grid/drag-and-drop.html" },
+              // { title: "29. Dynamic rowSpan", url: "/grid/dynamic-rowspan.html" },
             ],
-            items3: [
-              { title: "모듈 테스트", url: "/module/module-test.html" },
-            ]
+            items3: [{ title: "JavaScript modules", url: "/module/module-test.html" }],
           };
         },
       }).mount("#app");
