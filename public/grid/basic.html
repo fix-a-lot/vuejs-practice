@@ -29,7 +29,7 @@
       }).mount("#app");
 
       // 데이터
-      const gridData = [
+      let gridData = [
         { name: "Beautiful Lies", artist: "Birdy", type: "Deluxe", release: "2016.03.26", genre: "Pop" },
         { name: "X", artist: "Ed Sheeran", type: "Deluxe", release: "2014.06.24", genre: "Pop" },
         { name: "Moves Like Jagger", artist: "Maroon5", type: "Single", release: "2011.08.08", genre: "Pop,Rock" },
@@ -67,7 +67,7 @@
           { header: "Genre", name: "genre" },
         ],
       });
-      tui.Grid.applyTheme("striped"); // 테마 지정: default, striped, clean 셋 중 하나 (혹은 커스텀 가능할지도?)
+      tui.Grid.applyTheme("striped"); // 테마 지정: default, striped, clean 셋 중 하나 (커스텀 가능할지도?)
       // tui.Grid.applyTheme("clean");
     </script>
   </body>

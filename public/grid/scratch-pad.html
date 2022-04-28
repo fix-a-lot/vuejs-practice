@@ -25,11 +25,12 @@
           return { pageTitle: pageTitle };
         },
       }).mount("#app");
-      const gridData = [
-        { c1: "100013", c2: "100013" },
-        { c1: "201212", c2: "201212" },
-        { c1: "241221", c2: "241221" },
-        { c1: "991232", c2: "991232" },
+
+      let gridData = [
+        { positionName: "일등" },
+        { positionName: "이등" },
+        { positionName: "삼등" },
+        { positionName: "사등" },
       ];
 
       const grid = new tui.Grid({

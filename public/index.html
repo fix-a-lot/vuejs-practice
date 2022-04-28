@@ -11,29 +11,44 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <h2>Vue</h2>
+      <h4>공식 도움말</h4>
       <ul>
-        <h2>Vue</h2>
-        <ul>
-          <li v-for="item in items1">
-            <a v-bind:href="item.url" v-bind:target="item.target ? item.target : '_self'">{{ item.title }}</a>
-          </li>
-        </ul>
+        <li v-for="item in docs1">
+          <a v-bind:href="item.url" v-bind:target="'_blank'">{{ item.title }}</a>
+        </li>
       </ul>
+      <h4>작성 예시</h4>
       <ul>
-        <h2>Toast UI Grid</h2>
-        <ul>
-          <li v-for="item in items2">
-            <a v-bind:href="item.url" v-bind:target="item.target ? item.target : '_self'">{{ item.title }}</a>
-          </li>
-        </ul>
+        <li v-for="item in examples1">
+          <a v-bind:href="item.url">{{ item.title }}</a>
+        </li>
       </ul>
+      <h2>Toast UI Grid</h2>
+      <h4>공식 도움말</h4>
       <ul>
-        <h2>기타등등</h2>
-        <ul>
-          <li v-for="item in items3">
-            <a v-bind:href="item.url" v-bind:target="item.target ? item.target : '_self'">{{ item.title }}</a>
-          </li>
-        </ul>
+        <li v-for="item in docs2">
+          <a v-bind:href="item.url" v-bind:target="'_blank'">{{ item.title }}</a>
+        </li>
+      </ul>
+      <h4>작성 예시</h4>
+      <ul>
+        <li v-for="item in examples2">
+          <a v-bind:href="item.url">{{ item.title }}</a>
+        </li>
+      </ul>
+      <h2>기타등등</h2>
+      <h4>JavaScript</h4>
+      <ul>
+        <li v-for="item in examples3">
+          <a v-bind:href="item.url">{{ item.title }}</a>
+        </li>
+      </ul>
+      <h4>Web APIs</h4>
+      <ul>
+        <li v-for="item in examples4">
+          <a v-bind:href="item.url">{{ item.title }}</a>
+        </li>
       </ul>
     </div>
     <script>
@@ -45,36 +60,28 @@
         data() {
           return {
             pageTitle: pageTitle,
-            items1: [
-              { title: "Vue.js: Guide", url: "https://vuejs.org/guide/introduction.html", target: "_blank" },
-              { title: "Vue.js: Tutorial", url: "https://vuejs.org/tutorial/#step-1", target: "_blank" },
-              { title: "Vue.js: Examples", url: "https://vuejs.org/examples/#hello-world", target: "_blank" },
-              { title: "Vue.js: API Reference", url: "https://vuejs.org/api/", target: "_blank" },
-              { title: "기본", url: "/vue/basic.html" },
+            docs1: [
+              { title: "Vue.js: Guide", url: "https://vuejs.org/guide/introduction.html" },
+              { title: "Vue.js: Tutorial", url: "https://vuejs.org/tutorial/#step-1" },
+              { title: "Vue.js: Examples", url: "https://vuejs.org/examples/#hello-world" },
+              { title: "Vue.js: API Reference", url: "https://vuejs.org/api/" },
             ],
-            items2: [
-              {
-                title: "Toast Grid: 튜토리얼",
-                url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/README.md",
-                target: "_blank",
-              },
-              {
-                title: "Toast Grid: API",
-                url: "https://nhn.github.io/tui.grid/latest/Grid",
-                target: "_blank",
-              },
-              {
-                title: "Toast Grid: Examples",
-                url: "https://nhn.github.io/tui.grid/latest/tutorial-example01-basic",
-                target: "_blank",
-              },
+            examples1: [
+              { title: "기본", url: "/vue/basic.html" }
+            ],
+            docs2: [
+              { title: "Toast Grid: 튜토리얼", url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/README.md" },
+              { title: "Toast Grid: API", url: "https://nhn.github.io/tui.grid/latest/Grid" },
+              { title: "Toast Grid: Examples", url: "https://nhn.github.io/tui.grid/latest/tutorial-example01-basic" },
+            ],
+            examples2: [
               { title: "Scratch Pad", url: "/grid/scratch-pad.html" },
               { title: "1. Basic", url: "/grid/basic.html" },
-              // { title: "2. Complex columns", url: "/grid/complex-columns.html" },
-              // { title: "3. Custom Editor", url: "/grid/custom-editor.html" },
+              { title: "2. Complex columns", url: "/grid/complex-columns.html" },
+              { title: "3. Custom Editor", url: "/grid/custom-editor.html" },
               // { title: "4. Custom Renderer", url: "/grid/custom-renderer.html" },
               // { title: "5. Relation between columns", url: "/grid/relation-between-columns.html" },
-              // { title: "6. Attributes", url: "/grid/attributes.html" },
+              { title: "6. Attributes", url: "/grid/attributes.html" },
               // { title: "7. Themes", url: "/grid/themes.html" },
               // { title: "8. DatePicker", url: "/grid/datepicker.html" },
               // { title: "9. Summary", url: "/grid/summary.html" },
@@ -99,7 +106,12 @@
               // { title: "28. Drag and Drop", url: "/grid/drag-and-drop.html" },
               // { title: "29. Dynamic rowSpan", url: "/grid/dynamic-rowspan.html" },
             ],
-            items3: [{ title: "JavaScript modules", url: "/module/module-test.html" }],
+            examples3: [
+              { title: "Modules", url: "/module/module-test.html" }
+            ],
+            examples4: [
+              { title: "TODO", url: "" }
+            ],
           };
         },
       }).mount("#app");
