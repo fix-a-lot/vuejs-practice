@@ -68,7 +68,7 @@
         data: gridData,
         scrollX: false,
         scrollY: false,
-        rowHeaders: ["rowNum"],
+        rowHeaders: ["checkbox", "rowNum"],
         columns: [
           {
             header: "Name",
@@ -92,6 +92,8 @@
           },
         ],
       });
+      tui.Grid.applyTheme('striped');
+      // tui.Grid.applyTheme("clean");
     </script>
   </body>
 </html>
