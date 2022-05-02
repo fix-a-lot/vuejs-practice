@@ -38,6 +38,12 @@
         </li>
       </ul>
       <h2>기타등등</h2>
+      <h4>Axois</h4>
+      <ul>
+        <li v-for="item in examples5">
+          <a v-bind:href="item.url">{{ item.title }}</a>
+        </li>
+      </ul>
       <h4>JavaScript</h4>
       <ul>
         <li v-for="item in examples3">
@@ -111,6 +117,9 @@
             ],
             examples4: [
               { title: "TODO", url: "" }
+            ],
+            examples5: [
+              { title: "기본 사용법", url: "/examples/axios/basic.html" }
             ],
           };
         },

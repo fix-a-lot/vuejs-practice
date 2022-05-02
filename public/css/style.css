@@ -32,20 +32,22 @@ button {
 /* hr { background-color: rgba(9,45,66,.13); border: 0; height: 1px; margin: 16px 0; padding: 0; width: 100%; box-sizing: content-box; } */
 .result {
   margin-top: 10px;
+  margin-bottom: 10px;
   background-color: rgba(0, 0, 0, 0.02);
   border-radius: 3px;
   border: rgba(0, 0, 0, 0.082) 1px solid;
   display: block;
-  min-height: 40px;
+  min-height: 20px;
   padding: 8px 12px;
   text-decoration: none;
 }
 .description {
   margin-top: 10px;
+  margin-bottom: 10px;
   background-color: rgba(9,45,66,.08);
   border-radius: 3px;
   display: block;
-  min-height: 40px;
+  min-height: 20px;
   padding: 8px 12px;
   text-decoration: none;
 }

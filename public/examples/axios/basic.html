@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Axios</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+      <p><a href="https://axios-http.com/docs/example">공식 도움말 페이지</a></p>
+      <button type="button" onclick="fn1">1번: Promise</button>
+      <div class="result" id="result1">
+      </div>
+      <button type="button" onclick="fn2">2번: await</button>
+      <div class="result" id="result1">
+      </div>
+      <button type="button" onclick="fn3">3번: post 메서드</button>
+      <div class="result" id="result1">
+      </div>
+    </div>
+    <script>
+      const pageTitle = "기본 사용법";
+      Vue.createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle
+          };
+        },
+      }).mount("#app");
+
+      // Axios 기본 사용법 예시 코드
+      // https://jsonplaceholder.typicode.com
+      function fn1() {
+        
+      }
+      function fn2() {
+
+      }
+      function fn3() {
+
+      }
+
+    </script>
+  </body>
+</html>

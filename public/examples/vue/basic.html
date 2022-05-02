@@ -5,20 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Vue 기본</title>
+    <title>Vue.js</title>
     <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div class="align-center" id="app">
-      <h1>{{ message }}</h1>
-      {{ message2 }}
+      <h1>{{ pageTitle }}</h1>
+      <h2>Template Syntax</h2>
+      <h3>Text Interpolation</h3>
+      <div class="description" v-pre>
+        {{ message }}<br />
+      </div>
+      <div class="result">
+        <p>{{ message }}</p>
+      </div>
+      <h3>Raw HTML</h3>
+      <div class="description" v-pre>
+        Using text interpolation: {{ rawHtml }}<br />
+        Using v-html directive: &lt;span v-html="rawHtml"&gt;&lt;/span&gt;
+      </div>
+      <div class="result">
+        <p>Using text interpolation: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+      </div>
     </div>
     <script>
+      const pageTitle = "기본";
       Vue.createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
         data() {
           return {
+            pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
-            message2: "뿅뿅뿅"
+            rawHtml: '<span style="color: red">This should be red.</span>',
           };
         },
       }).mount("#app");
