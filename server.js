@@ -53,7 +53,11 @@ app.post('/success.data', (req, res) => {
   res.set('Content-Type', 'text/html').end('Everything is okay'); 
 });
 
-app.post('/successJson.data', (req, res) => {
+app.get('/success-json.data', (req, res) => {
+  res.set('Content-Type', 'application/json').json({ message: 'Everything is okay' }); 
+});
+
+app.post('/success-json.data', (req, res) => {
   res.set('Content-Type', 'application/json').json({ message: 'Everything is okay' }); 
 });
 
@@ -63,4 +67,8 @@ app.get('/uncategorized/*.data', (req, res) => {
 
 app.post('/uncategorized/*.data', (req, res) => {
   res.json(req.query);
+});
+
+app.post('/get-my-request-body.data', (req, res) => {
+  res.json(req.body);
 });
