@@ -12,7 +12,7 @@ npm install
 npm start
 ```
 
-시작 후 브라우저로 [http://localhost:8888](http://localhost:8888) 열기
+시작 후 브라우저로 [http://localhost:9999](http://localhost:9999) 열기
 
 ## Node.js 명령어
 
@@ -47,4 +47,4 @@ npx nodemon server.js
 
 웹 루트는 `public`으로 지정되어 있으며 그 아래의 파일을 URL에 그대로 입력합니다.
 
-예를 들어 `public/module-test/module-test.html` 파일을 보고 싶으면 `public/`을 생략하고 `http://localhost:8888/module-test/module-test.html`로 접속합니다.
+예를 들어 `public/module-test/module-test.html` 파일을 보고 싶으면 `public/`을 생략하고 `http://localhost:9999/module-test/module-test.html`로 접속합니다.

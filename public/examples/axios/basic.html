@@ -14,7 +14,7 @@
       <h1>{{ pageTitle }}</h1>
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
       <button type="button" onclick="fn1()">1번: Promise</button>
-      <div class="description"><pre>axios.get("/success-json.data")
+      <div class="description"><pre>axios.get('/success-json.data')
   .then(function (response) {
     document.querySelector('#result1').innerText = JSON.stringify(response.data);
   })
@@ -27,7 +27,7 @@
       <div class="result" id="result1"></div>
       <button type="button" onclick="fn2()">2번: await</button>
       <div class="description"><pre>async function fn2() {
-  let response = await axios.get("/success-json.data");
+  let response = await axios.get('/success-json.data');
   document.querySelector('#result2').innerText = JSON.stringify(response.data);
 }</pre></div>
       <div class="result" id="result2"></div>
@@ -58,7 +58,7 @@
 
       // Axios 기본 사용법 예시
       function fn1() {
-        axios.get("/success-json.data")
+        axios.get('/success-json.data')
           .then(function (response) {
             document.querySelector('#result1').innerText = JSON.stringify(response.data);
           })
@@ -70,7 +70,7 @@
           });
       }
       async function fn2() {
-        let response = await axios.get("/success-json.data");
+        let response = await axios.get('/success-json.data');
         document.querySelector('#result2').innerText = JSON.stringify(response.data);
       }
       async function fn3() {
