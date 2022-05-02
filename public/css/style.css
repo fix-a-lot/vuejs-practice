@@ -61,3 +61,6 @@ code {
   white-space: nowrap;
   background-color: #EFEFEF;
 }
+pre {
+  font-family: Consolas,Monaco,"Lucida Console",monospace; 
+}
