@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <script src="/lib/prism.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+      
+      <h3>양방향 바인딩(자동 동기화)</h3>
+      <p>아래 입력란의 값을 바꿔보세요.</p>
+      <pre><code class="language-markup" v-pre>
+        &lt;input v-model="text" placeholder="Type here"&gt;
+        &lt;p&gt;{{ text }}&lt;/p&gt;
+      </code></pre>
+      <pre><code class="language-js">
+        let vm = Vue.createApp({
+          data() {
+            return {
+              text: 'edit me!'
+            }
+          }
+        }).mount("#app");
+      </code></pre>
+      <div class="result">
+        <input v-model="text" placeholder="Type here">
+        <p>{{ text }}</p>
+      </div>
+      
+      <h3>변수 재할당</h3>
+      <button type="button" onclick="fn2()">누르면 헬로월드</button>
+      <pre><code class="language-js">
+        vm.text = 'Hello world!';
+      </code></pre>
+      
+      <h3>프록시는 뭘까</h3>
+      <button type="button" onclick="fn3()">fn3()</button>
+      <pre><code class="language-js" v-pre>
+        obj.a: {{ obj.a }}
+      </code></pre>
+      <pre><code class="language-js">
+        let vm = Vue.createApp({
+          data() {
+            return {
+              obj: {
+                a: 1,
+                b: 2
+              }
+            }
+          }
+        }).mount("#app");
+
+        ...
+
+        function fn3() {
+          console.log(vm.obj); // Proxy {a: 37, b: 2}
+          vm.obj.a = vm.obj.a + 1;
+        }
+      </code></pre>
+      <div class="result">
+        <p>obj.a: {{ obj.a }}</p>
+      </div>
+    </div>
+    <script>
+      const pageTitle = "폼 바인딩";
+      let vm = Vue.createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            text: 'edit me!',
+            obj: {
+              a: 1,
+              b: 2
+            }
+          }
+        }
+      }).mount("#app");
+
+      function fn2() {
+        vm.text = 'Hello world!';
+      }
+      function fn3() {
+        console.log(vm.obj); // Proxy {a: 37, b: 2}
+        vm.obj.a = vm.obj.a + 1;
+      }
+    </script>
+  </body>
+</html>
