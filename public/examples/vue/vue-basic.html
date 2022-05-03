@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
     <title>Vue.js</title>
+    <script src="/lib/prism.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
@@ -13,17 +15,17 @@
       <h1>{{ pageTitle }}</h1>
       <h2>Template Syntax</h2>
       <h3>Text Interpolation</h3>
-      <div class="description" v-pre>
+      <pre><code class="language-markup" v-pre>
         {{ message }}<br />
-      </div>
+      </code></pre>
       <div class="result">
         <p>{{ message }}</p>
       </div>
       <h3>Raw HTML</h3>
-      <div class="description" v-pre>
+      <pre><code class="language-markup" v-pre>
         Using text interpolation: {{ rawHtml }}<br />
         Using v-html directive: &lt;span v-html="rawHtml"&gt;&lt;/span&gt;
-      </div>
+      </code></pre>
       <div class="result">
         <p>Using text interpolation: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>

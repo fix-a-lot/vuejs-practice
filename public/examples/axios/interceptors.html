@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Axios</title>
+    <script src="/lib/prism.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+      <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
+      <button type="button" onclick="fn3()">1번: 전역 인터셉터 추가</button>
+      <pre><code class="language-js">
+        let reqItcpts = [];
+        let resItcpts = [];
+        function fn3() {
+          // 요청 인터셉터 추가하기
+          let itcp = axios.interceptors.request.use(function (config) {
+              // 요청이 전달되기 전에 작업 수행
+              console.log('Hello this is request-success interceptor');
+              return config;
+            }, function (error) {
+              // 요청 오류가 있는 작업 수행
+              console.log('Hello this is request-error interceptor')
+              return Promise.reject(error);
+            });
+          reqItcpts.push(itcp);
+
+          // 응답 인터셉터 추가하기
+          let itcp2 = axios.interceptors.response.use(function (response) {
+              // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+              // 응답 데이터가 있는 작업 수행
+              console.log('Hello this is response-success interceptor');
+              return response;
+            },
+            function (error) {
+              // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+              // 응답 오류가 있는 작업 수행
+              console.log('Hello this is response-error interceptor')
+              return Promise.reject(error);
+            });
+          
+          resItcpts.push(itcp2);
+        }
+      </code></pre>
+      <button type="button" onclick="fn4()">2번: 전역 인터셉터 모두 제거</button>
+      <pre><code class="language-js">
+        function fn4() {
+          for (let i = 0; i < reqItcpts.length; ++i) {
+            axios.interceptors.request.eject(reqItcpts[i]);
+          }
+          for (let i = 0; i < resItcpts.length; ++i) {
+            axios.interceptors.response.eject(resItcpts[i]);
+          }
+        }
+      </code></pre>
+      <button type="button" onclick="fn1()">3번: 통신하기</button>
+      <pre><code class="language-js">
+        let response = await axios.get("/success-json.data");
+        document.querySelector("#result1").innerText = JSON.stringify(response.data);  
+      </code></pre>
+      <div class="result">
+        <h4>result1:</h4>
+        <p id="result1"></p>
+      </div>
+      
+      <hr>
+      <div class="description">이런 식으로: <pre><code class="language-js">
+        const instance = axios.create();
+        // 추가
+        let itcept = instance.interceptors.request.use(function () {/*...*/});
+        // 제거
+        instance.interceptors.request.eject(itcept);
+        </code></pre>
+        인스턴스별 인터셉터도 추가/제거 가능함.
+      </div>
+    </div>
+    <script>
+      const pageTitle = "인터셉터";
+      // Vue는 안봐도 됨
+      Vue.createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+          };
+        },
+      }).mount("#app");
+
+      // 전역 인터셉터 추가
+      let reqItcpts = [];
+      let resItcpts = [];
+      function fn3() {
+        // 요청 인터셉터 추가하기
+        let itcp = axios.interceptors.request.use(function (config) {
+            // 요청이 전달되기 전에 작업 수행
+            console.log('Hello this is request-success interceptor');
+            return config;
+          }, function (error) {
+            // 요청 오류가 있는 작업 수행
+            console.log('Hello this is request-error interceptor')
+            return Promise.reject(error);
+          });
+        reqItcpts.push(itcp);
+
+        // 응답 인터셉터 추가하기
+        let itcp2 = axios.interceptors.response.use(function (response) {
+            // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+            // 응답 데이터가 있는 작업 수행
+            console.log('Hello this is response-success interceptor');
+            return response;
+          },
+          function (error) {
+            // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+            // 응답 오류가 있는 작업 수행
+            console.log('Hello this is response-error interceptor')
+            return Promise.reject(error);
+          });
+        
+        resItcpts.push(itcp2);
+      }
+
+      // 전역 인터셉터 제거
+      function fn4() {
+        for (let i = 0; i < reqItcpts.length; ++i) {
+          axios.interceptors.request.eject(reqItcpts[i]);
+        }
+        for (let i = 0; i < resItcpts.length; ++i) {
+          axios.interceptors.response.eject(resItcpts[i]);
+        }
+      }
+
+      async function fn1() {
+        let response = await axios.get("/success-json.data");
+        document.querySelector("#result1").innerText = JSON.stringify(response.data);
+      }
+    </script>
+  </body>
+</html>

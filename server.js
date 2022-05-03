@@ -40,6 +40,10 @@ app.all('*', (req, res, next) => {
 
 // 여기까지 앱 기본 설정
 
+app.all('/return-headers.data', (req, res) => {
+  res.json(req.headers);
+});
+
 app.get('/error500.data', (req, res) => {
   res.status(500).send('Something broke!');
 });
