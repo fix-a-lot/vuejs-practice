@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/lib/prism.css" />
     <title>Vue.js</title>
     <script src="/lib/prism.js"></script>
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -31,9 +30,11 @@
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
       </div>
     </div>
-    <script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
       const pageTitle = "기본";
-      Vue.createApp({
+      
+      createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },

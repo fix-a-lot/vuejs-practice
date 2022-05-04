@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/lib/prism.css" />
     <title>Vue.js</title>
     <script src="/lib/prism.js"></script>
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -21,7 +20,7 @@
         &lt;p&gt;{{ text }}&lt;/p&gt;
       </code></pre>
       <pre><code class="language-js">
-        let vm = Vue.createApp({
+        let vm = createApp({
           data() {
             return {
               text: 'edit me!'
@@ -35,18 +34,18 @@
       </div>
       
       <h3>변수 재할당</h3>
-      <button type="button" onclick="fn2()">누르면 헬로월드</button>
+      <button type="button" @click="fn2">누르면 헬로월드</button>
       <pre><code class="language-js">
         vm.text = 'Hello world!';
       </code></pre>
       
       <h3>프록시는 뭘까</h3>
-      <button type="button" onclick="fn3()">fn3()</button>
+      <button type="button" @click="fn3">fn3()</button>
       <pre><code class="language-js" v-pre>
         obj.a: {{ obj.a }}
       </code></pre>
       <pre><code class="language-js">
-        let vm = Vue.createApp({
+        let vm = createApp({
           data() {
             return {
               obj: {
@@ -68,9 +67,11 @@
         <p>obj.a: {{ obj.a }}</p>
       </div>
     </div>
-    <script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
       const pageTitle = "폼 바인딩";
-      let vm = Vue.createApp({
+      
+      let vm = createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },
@@ -83,16 +84,17 @@
               b: 2
             }
           }
+        },
+        methods: {
+          fn2() {
+            vm.text = 'Hello world!';
+          },
+          fn3() {
+            console.log(vm.obj); // Proxy {a: 37, b: 2}
+            vm.obj.a = vm.obj.a + 1;
+          }
         }
       }).mount("#app");
-
-      function fn2() {
-        vm.text = 'Hello world!';
-      }
-      function fn3() {
-        console.log(vm.obj); // Proxy {a: 37, b: 2}
-        vm.obj.a = vm.obj.a + 1;
-      }
     </script>
   </body>
 </html>

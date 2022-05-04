@@ -18,7 +18,6 @@
     </style>
     <script src="/lib/prism.js"></script>
     <script src="/lib/tui-grid.js"></script>
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -27,9 +26,10 @@
       <div class="description">The option <code>"_attribute.rowSpan"</code> is deprecated. Please use rowSpan option of column. Follow example: <a href="http://nhn.github.io/tui.grid/latest/tutorial-example29-dynamic-row-span">http://nhn.github.io/tui.grid/latest/tutorial-example29-dynamic-row-span</a></div><br>
       <div id="grid"></div>
     </div>
-    <script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
       const pageTitle = "6. Attributes";
-      Vue.createApp({
+      createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },

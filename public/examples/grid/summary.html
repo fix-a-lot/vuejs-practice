@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
     <script src="/lib/tui-grid.js"></script>
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -18,7 +17,7 @@
     </div>
     <script>
       const pageTitle = "공사중";
-      Vue.createApp({
+      createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },

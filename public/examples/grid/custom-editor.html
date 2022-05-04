@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
     <script src="/lib/tui-grid.js"></script>
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
       <div id="grid"></div>
     </div>
-    <script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
       const pageTitle = "3. Custom editor";
-      Vue.createApp({
+      createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },

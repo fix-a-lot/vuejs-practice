@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/lib/prism.css" />
     <title>Axios</title>
     <script src="/lib/prism.js"></script>
-    <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -16,7 +15,7 @@
       <h1>{{ pageTitle }}</h1>
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
 
-      <button type="button" onclick="fn1()">1번: Promise</button>
+      <button type="button" @click="fn1">1번: Promise</button>
       <pre><code class="language-js">
         axios.get('/success-json.data')
           .then(function (response) {
@@ -32,7 +31,7 @@
       <div class="result"><h4>result1:</h4><p id="result1"></p></div>
       
       <hr>
-      <button type="button" onclick="fn2()">2번: await</button>
+      <button type="button" @click="fn2">2번: await</button>
       <pre><code class="language-js">
         let response = await axios.get('/success-json.data');
         document.querySelector('#result2').innerText = JSON.stringify(response.data);
@@ -40,7 +39,7 @@
       <div class="result"><h4>result2:</h4><p id="result2"></p></div>
       
       <hr>
-      <button type="button" onclick="fn3()">3번: post 메서드</button>
+      <button type="button" @click="fn3">3번: post 메서드</button>
       <pre><code class="language-js">
         let params = {
           firstName: 'Fred',
@@ -52,7 +51,7 @@
       <div class="result"><h4>result3:</h4><p id="result3"></p></div>
       
       <hr>
-      <button type="button" onclick="fn4()">4번: Axios 인스턴스 생성 방식</button>
+      <button type="button" @click="fn4">4번: Axios 인스턴스 생성 방식</button>
       <pre><code class="language-js">
         const instance = axios.create({
           baseURL: '/success-json.data',
@@ -65,10 +64,12 @@
       <div class="result"><h4>result4:</h4><p id="result4"></p></div>
       
     </div>
-    <script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
       const pageTitle = "기본 사용법";
+      
       // Vue는 안봐도 됨
-      Vue.createApp({
+      createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },
@@ -77,45 +78,43 @@
             pageTitle: pageTitle,
           };
         },
+        methods: {
+          // Axios 기본 사용법 예시
+          fn1() {
+            axios.get('/success-json.data')
+              .then(function (response) {
+                document.querySelector('#result1').innerText = JSON.stringify(response.data);
+              })
+              .catch(function (error) {
+                console.error(error);
+              })
+              .then(function () {
+                console.log('AJAX done')
+              });
+          },
+          async fn2() {
+            let response = await axios.get('/success-json.data');
+            document.querySelector('#result2').innerText = JSON.stringify(response.data);
+          },
+          async fn3() {
+            let params = {
+              firstName: 'Fred',
+              lastName: 'Flintstone'
+            };
+            let response = await axios.post('/get-my-request-body.data', params);
+            document.querySelector('#result3').innerText = JSON.stringify(response.data);
+          },
+          async fn4() {
+            const instance = axios.create({
+              baseURL: '/success-json.data',
+              method: 'GET',
+              timeout: 1000
+            });
+            let response = await instance.get();
+            document.querySelector('#result4').innerText = JSON.stringify(response.data);
+          }
+        }
       }).mount("#app");
-
-      // Axios 기본 사용법 예시
-      function fn1() {
-        axios.get('/success-json.data')
-          .then(function (response) {
-            document.querySelector('#result1').innerText = JSON.stringify(response.data);
-          })
-          .catch(function (error) {
-            console.error(error);
-          })
-          .then(function () {
-            console.log('AJAX done')
-          });
-      }
-
-      async function fn2() {
-        let response = await axios.get('/success-json.data');
-        document.querySelector('#result2').innerText = JSON.stringify(response.data);
-      }
-
-      async function fn3() {
-        let params = {
-          firstName: 'Fred',
-          lastName: 'Flintstone'
-        };
-        let response = await axios.post('/get-my-request-body.data', params);
-        document.querySelector('#result3').innerText = JSON.stringify(response.data);
-      }
-
-      let fn4 = async () => {
-        const instance = axios.create({
-          baseURL: '/success-json.data',
-          method: 'GET',
-          timeout: 1000
-        });
-        let response = await instance.get();
-        document.querySelector('#result4').innerText = JSON.stringify(response.data);
-      }
     </script>
   </body>
 </html>
