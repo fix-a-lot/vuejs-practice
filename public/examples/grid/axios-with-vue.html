@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Toast UI Grid</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
+    <script src="/lib/tui-grid.js"></script>
+    <script src="/lib/toastui-vue-grid.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+      <grid-component></grid-component>
+    </div>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+      import { GridComponent } from './GridComponent.js'
+
+      const pageTitle = "Axios-Vue 테스트";
+      createApp({
+        components: {
+          GridComponent: GridComponent
+        },
+        created() {
+          document.title += `: ${pageTitle}`
+        },
+        data() {
+          return { 
+            pageTitle: pageTitle
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

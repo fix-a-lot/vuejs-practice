@@ -1,7 +1,7 @@
 /*!
  * TOAST UI Grid
- * @version 4.21.0 | Thu Mar 24 2022
- * @author NHN. FE Development Lab
+ * @version 4.21.1 | Fri May 06 2022
+ * @author NHN Cloud. FE Development Lab
  * @license MIT
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1997,7 +1997,7 @@ exports.asyncInvokeObserver = asyncInvokeObserver;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeRawDataToOriginDataForTree = exports.getOmittedInternalProp = exports.createChangeInfo = exports.getFormattedValue = exports.getRowKeyByIndexWithPageRange = exports.getRowIndexPerPage = exports.isClientPagination = exports.isScrollPagination = exports.getMaxRowKey = exports.isFiltered = exports.isSorted = exports.getCreatedRowInfo = exports.getRemovedClassName = exports.getAddedClassName = exports.getLoadingState = exports.getRowHeight = exports.isInitialSortState = exports.isSortable = exports.getUniqColumnData = exports.findRowByRowKey = exports.findIndexByRowKey = exports.getConditionalRows = exports.getCheckedRowInfoList = exports.isEditableCell = exports.getCellAddressByIndex = void 0;
+exports.changeRawDataToOriginDataForTree = exports.getOmittedInternalProp = exports.createChangeInfo = exports.getFormattedValue = exports.getRowKeyByIndexWithPageRange = exports.getRowIndexPerPage = exports.isClientPagination = exports.isScrollPagination = exports.getMaxRowKey = exports.isFiltered = exports.isSorted = exports.getCreatedRowInfo = exports.getRemovedClassName = exports.getAddedClassName = exports.getLoadingState = exports.getRowHeight = exports.isInitialSortState = exports.isSortable = exports.getUniqColumnData = exports.findRowByRowKey = exports.findIndexByRowKey = exports.getConditionalRows = exports.getRemoveRowInfoList = exports.getCheckedRowInfoList = exports.isEditableCell = exports.getCellAddressByIndex = void 0;
 var tslib_1 = __webpack_require__(1);
 var common_1 = __webpack_require__(0);
 var instance_1 = __webpack_require__(8);
@@ -2031,13 +2031,13 @@ exports.isEditableCell = isEditableCell;
 function getCheckedRowInfoList(_a) {
     var data = _a.data;
     var targetRows = {
-        rowIndexes: [],
+        rowIndices: [],
         rows: [],
         nextRows: [],
     };
     data.rawData.reduce(function (acc, row, index) {
         if (row._attributes.checked) {
-            acc.rowIndexes.push(index);
+            acc.rowIndices.push(index);
             acc.rows.push(row);
             acc.nextRows.push(data.rawData[index + 1]);
         }
@@ -2046,6 +2046,26 @@ function getCheckedRowInfoList(_a) {
     return targetRows;
 }
 exports.getCheckedRowInfoList = getCheckedRowInfoList;
+function getRemoveRowInfoList(_a, rowKeys) {
+    var data = _a.data;
+    var targetRows = {
+        rowIndices: [],
+        rows: [],
+        nextRows: [],
+    };
+    data.rawData.reduce(function (acc, row, index) {
+        var rowKeyIndex = rowKeys.indexOf(row.rowKey);
+        if (rowKeyIndex !== -1) {
+            acc.rowIndices.push(index);
+            acc.rows.push(row);
+            acc.nextRows.push(data.rawData[index + 1]);
+            rowKeys.splice(rowKeyIndex, 1);
+        }
+        return acc;
+    }, targetRows);
+    return targetRows;
+}
+exports.getRemoveRowInfoList = getRemoveRowInfoList;
 function getConditionalRows(_a, conditions) {
     var data = _a.data;
     var rawData = data.rawData;
@@ -3459,6 +3479,7 @@ function appendRows(store, inputData) {
     sort_1.resetSortKey(data, startIndex);
     sort_1.sortByCurrentState(store);
     updateHeights(store);
+    rawData.forEach(function (rawRow) { return instance_1.getDataManager(id).push('CREATE', rawRow); });
     postUpdateAfterManipulation(store, startIndex, 'DONE', rawData);
     rowSpan_2.updateRowSpan(store);
 }
@@ -3466,7 +3487,7 @@ exports.appendRows = appendRows;
 function removeRows(store, targetRows) {
     var data = store.data, id = store.id, focus = store.focus, column = store.column;
     var sortState = data.sortState, viewData = data.viewData, rawData = data.rawData;
-    var rowIndexes = targetRows.rowIndexes, rows = targetRows.rows, nextRows = targetRows.nextRows;
+    var rowIndexes = targetRows.rowIndices, rows = targetRows.rows, nextRows = targetRows.nextRows;
     var deletedCount = rowIndexes.length;
     pagination_1.updatePageWhenRemovingRow(store, deletedCount);
     rowIndexes.forEach(function (rowIndex, i) {
@@ -5059,8 +5080,11 @@ function updateSubRowSpan(data, mainRow, columnName, startOffset, spanCount) {
     }
 }
 function resetRowSpan(_a, slient) {
-    var data = _a.data;
+    var data = _a.data, column = _a.column;
     if (slient === void 0) { slient = false; }
+    if (column.visibleRowSpanEnabledColumns.length <= 0) {
+        return;
+    }
     data.rawData.forEach(function (_a) {
         var rowSpanMap = _a.rowSpanMap;
         Object.keys(rowSpanMap).forEach(function (columnName) {
@@ -10683,6 +10707,17 @@ var Grid = /** @class */ (function () {
         }
         else {
             this.dispatch('removeRow', rowKey, options);
+        }
+    };
+    /**
+     * Remove the rows identified by the specified rowKeys.
+     * @param {Array<RowKey>} rowKeys - The array of unique keys of the row
+     */
+    Grid.prototype.removeRows = function (rowKeys) {
+        var removeRowInfoList = data_1.getRemoveRowInfoList(this.store, rowKeys);
+        var removeRowsCount = removeRowInfoList.rows.length;
+        if (removeRowsCount > 0) {
+            this.dispatch('removeRows', removeRowInfoList);
         }
     };
     /**

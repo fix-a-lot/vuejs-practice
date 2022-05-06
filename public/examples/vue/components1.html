@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <script src="/lib/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+
+      스크립트 파일에 템플릿 내용을 직접 작성하는 방식
+      <pre><code class="language-js" v-pre><!--
+        // TemplateLiteral.js
+        export const TemplateLiteral = {
+          template: `
+            <p>응애 나 아기 컴포넌트</p>
+            <p>{{ message }}</p>
+          `,
+          data() {
+            return {
+              message: 'This is template literal message'
+            }
+          }
+        };
+      --></code></pre>
+      <pre class="language-markup" v-pre><code><!--
+        <template-literal></template-literal>
+        <script>
+        import { TemplateLiteral } from './TemplateLiteral.js'
+
+        createApp({
+          components: {
+            TemplateLiteral
+          }
+        }).mount("#app");
+        </script>
+      --></code></pre>
+      <div class="result">
+        <template-literal></template-literal>
+      </div>
+
+    </div>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+      import { TemplateLiteral } from './TemplateLiteral.js'
+
+      const pageTitle = "컴포넌트: 템플릿 리터럴";
+      
+      createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        components: {
+          TemplateLiteral
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            message: "This is parent message ✌️"
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="/lib/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+
+      <h4>참고한 문서</h4>
+      <ul>
+        <li><a href="https://v3-migration.vuejs.org/breaking-changes/inline-template-attribute.html#_3-x-syntax">https://v3-migration.vuejs.org/breaking-changes/inline-template-attribute.html#_3-x-syntax</a></li>
+      </ul>
+
+      스크립트에 마크업을 포함시키지 않고, 별도로 작성한 뒤 아이디로 지정하는 방식
+      <pre><code class="language-markup" v-pre><!--
+        <script type="text/html" id="ref-me">
+          <div>parent: {{ message }}</div>
+        </script>
+      --></code></pre>
+      <pre><code class="language-js" v-pre><!--
+        // InlineTemplate.js
+        export const InlineTemplate = {
+          template: '#ref-me',
+          data() {
+            return {
+              message: 'This is inline template message'
+            }
+          }
+        };
+      --></code></pre>
+      <pre><code class="language-markup" v-pre><!--
+        <inline-template></inline-template>
+        <script>
+        import { InlineTemplate } from './InlineTemplate.js'
+
+        createApp({
+          components: {
+            InlineTemplate
+          }
+        }).mount("#app");
+        </script>
+      --></code></pre>
+      <div class="result">
+        <inline-template></inline-template>
+      </div>
+      마크업은 아래 둘 중에 하나로 감싸면 됨:
+      <pre>
+        <code class="language-markup"><!--
+          <script type="text/html">
+            ...
+          </script>
+          <script type="vue-template">
+            ...
+          </script>
+        --></code>
+      </pre>
+      어느 쪽이던 기능 차이는 없지만 text/html 쪽이 VSCODE에서 코드 하이라이트가 잘 됨.
+    </div>
+    <!-- <script type="vue-template" id="ref-me"></script> -->
+    <script type="text/html" id="ref-me">
+      <div>parent: {{ message }}</div>
+    </script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+      import { InlineTemplate } from './InlineTemplate.js'
+
+      const pageTitle = "컴포넌트: 인라인 템플릿";
+      
+      createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        components: {
+          InlineTemplate
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            message: "This is parent message ✌️"
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

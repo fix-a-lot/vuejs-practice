@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script> -->
+    <script src="/lib/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+
+      <pre><code class="language-markup" v-pre>
+        &lt;p&gt;이 밑에 안보이쥬?&lt;/p&gt;
+        &lt;template&gt;
+          &lt;p&gt;뭔지는 나도 모르겠고 화면엔 안보임&lt;/p&gt;
+        &lt;/template&gt;
+      </code></pre>
+      <div class="result">
+        <p>이 밑에 안보이쥬?</p>
+        <template>
+          <p>뭔지는 나도 모르겠고 화면엔 안보임</p>
+        </template>
+      </div>
+      원래는 Node.js 빌드 환경일 때 요딴식으로:
+      <pre><code class="language-markup" v-pre>
+        &lt;script&gt;
+        export default {
+          data() {
+            return {
+              count: 0
+            }
+          }
+        }
+        &lt;/script&gt;
+        
+        &lt;template&gt;
+          &lt;button @click="count++"&gt;
+            You clicked me {{ count }} times.
+          &lt;/button&gt;
+        &lt;/template&gt;
+      </code></pre>
+      Vue 파일에서 컴포넌트를 정의할 때 씀.<br>
+      <a href="https://vuejs.org/api/options-rendering.html#template">도움말</a>을 보면 템플릿 컴파일러가 포함된 Vue 빌드에서만 사용 가능하다고 함.
+      <br><br>
+      그래도 쓰고 싶으면 <a href="https://github.com/FranckFreiburger/vue3-sfc-loader">vue3-sfc-loader</a> 필요.
+    </div>
+    <script type="vue-template" id="ref-me">
+      <button>Click Me!{{text}}</button>
+    </script>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+
+      const pageTitle = "컴포넌트: <template>이란 무엇인가";
+      
+      createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            message: "This is parent message ✌️"
+          };
+        },
+      }).mount("#app");
+
+    </script>
+  </body>
+</html>

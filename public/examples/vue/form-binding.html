@@ -13,17 +13,22 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
       
-      <h3>양방향 바인딩(자동 동기화)</h3>
+      <h2>양방향 바인딩(자동 동기화)</h2>
       <p>아래 입력란의 값을 바꿔보세요.</p>
       <pre><code class="language-markup" v-pre>
         &lt;input v-model="text" placeholder="Type here"&gt;
         &lt;p&gt;{{ text }}&lt;/p&gt;
       </code></pre>
       <pre><code class="language-js">
-        let vm = createApp({
+        createApp({
           data() {
             return {
               text: 'edit me!'
+            }
+          },
+          methods: {
+            fn1() {
+              this.text = 'Hello world!';
             }
           }
         }).mount("#app");
@@ -33,19 +38,19 @@
         <p>{{ text }}</p>
       </div>
       
-      <h3>변수 재할당</h3>
-      <button type="button" @click="fn2">누르면 헬로월드</button>
+      <h3>변수 재할당도 동기화됨</h3>
+      <button type="button" @click="fn1">fn1(): 누르면 헬로월드</button>
       <pre><code class="language-js">
         vm.text = 'Hello world!';
       </code></pre>
       
-      <h3>프록시는 뭘까</h3>
-      <button type="button" @click="fn3">fn3()</button>
+      <h2>프록시는 뭘까</h2>
+      <button type="button" @click="fn2">fn2(): 나도 몰라</button>
       <pre><code class="language-js" v-pre>
         obj.a: {{ obj.a }}
       </code></pre>
       <pre><code class="language-js">
-        let vm = createApp({
+        createApp({
           data() {
             return {
               obj: {
@@ -53,15 +58,14 @@
                 b: 2
               }
             }
+          },
+          methods: {
+            fn2() {
+              console.log(this.obj); // Proxy {a: 37, b: 2}
+              this.obj.a = this.obj.a + 1;
+            }
           }
         }).mount("#app");
-
-        ...
-
-        function fn3() {
-          console.log(vm.obj); // Proxy {a: 37, b: 2}
-          vm.obj.a = vm.obj.a + 1;
-        }
       </code></pre>
       <div class="result">
         <p>obj.a: {{ obj.a }}</p>
@@ -71,7 +75,7 @@
       import { createApp } from '/lib/vue.esm-browser.js';
       const pageTitle = "폼 바인딩";
       
-      let vm = createApp({
+      createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },
@@ -86,12 +90,12 @@
           }
         },
         methods: {
-          fn2() {
-            vm.text = 'Hello world!';
+          fn1() {
+            this.text = 'Hello world!';
           },
-          fn3() {
-            console.log(vm.obj); // Proxy {a: 37, b: 2}
-            vm.obj.a = vm.obj.a + 1;
+          fn2() {
+            console.log(this.obj); // Proxy {a: 37, b: 2}
+            this.obj.a = this.obj.a + 1;
           }
         }
       }).mount("#app");
