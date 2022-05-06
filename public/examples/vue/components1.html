@@ -43,7 +43,15 @@
       <div class="result">
         <template-literal></template-literal>
       </div>
-
+      <div class="description">
+        <h4>⚠️주의: 컴포넌트로 교체되어야 할 커스텀 태그는 뷰 앱 안에 정의되어야 함</h4>
+        <p>요래요래:</p>
+        <pre><code class="language-markup"><!--
+          <div id="vueApp">
+            <template-literal></template-literal>
+          </div>
+        --></code></pre>
+      </div>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
