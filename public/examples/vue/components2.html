@@ -20,12 +20,12 @@
       </ul>
 
       스크립트에 마크업을 포함시키지 않고, 별도로 작성한 뒤 아이디로 지정하는 방식
-      <pre><code class="language-markup" v-pre><!--
+      <pre><code class="language-markup"><!--
         <script type="text/html" id="ref-me">
           <div>parent: {{ message }}</div>
         </script>
       --></code></pre>
-      <pre><code class="language-js" v-pre><!--
+      <pre><code class="language-js"><!--
         // InlineTemplate.js
         export const InlineTemplate = {
           template: '#ref-me',
@@ -36,7 +36,7 @@
           }
         };
       --></code></pre>
-      <pre><code class="language-markup" v-pre><!--
+      <pre><code class="language-markup"><!--
         <inline-template></inline-template>
         <script>
         import { InlineTemplate } from './InlineTemplate.js'

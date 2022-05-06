@@ -14,11 +14,11 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
 
-      <pre><code class="language-markup" v-pre>
-        &lt;p&gt;이 밑에 안보이쥬?&lt;/p&gt;
-        &lt;template&gt;
-          &lt;p&gt;뭔지는 나도 모르겠고 화면엔 안보임&lt;/p&gt;
-        &lt;/template&gt;
+      <pre><code class="language-markup">
+        <p>이 밑에 안보이쥬?</p>
+        <template>
+          <p>뭔지는 나도 모르겠고 화면엔 안보임</p>
+        </template>
       </code></pre>
       <div class="result">
         <p>이 밑에 안보이쥬?</p>
@@ -27,8 +27,8 @@
         </template>
       </div>
       원래는 Node.js 빌드 환경일 때 요딴식으로:
-      <pre><code class="language-markup" v-pre>
-        &lt;script&gt;
+      <pre><code class="language-markup"><!--
+        <script>
         export default {
           data() {
             return {
@@ -36,14 +36,14 @@
             }
           }
         }
-        &lt;/script&gt;
+        </script>
         
-        &lt;template&gt;
-          &lt;button @click="count++"&gt;
+        <template>
+          <button @click="count++">
             You clicked me {{ count }} times.
-          &lt;/button&gt;
-        &lt;/template&gt;
-      </code></pre>
+          </button>
+        </template>
+      --></code></pre>
       Vue 파일에서 컴포넌트를 정의할 때 씀.<br>
       <a href="https://vuejs.org/api/options-rendering.html#template">도움말</a>을 보면 템플릿 컴파일러가 포함된 Vue 빌드에서만 사용 가능하다고 함.
       <br><br>

@@ -14,17 +14,17 @@
       <h1>{{ pageTitle }}</h1>
       <h2>Template Syntax</h2>
       <h3>Text Interpolation</h3>
-      <pre><code class="language-markup" v-pre>
-        {{ message }}<br />
-      </code></pre>
+      <pre><code class="language-markup"><!--
+        {{ message }}
+      --></code></pre>
       <div class="result">
         <p>{{ message }}</p>
       </div>
       <h3>Raw HTML</h3>
-      <pre><code class="language-markup" v-pre>
-        Using text interpolation: {{ rawHtml }}<br />
-        Using v-html directive: &lt;span v-html="rawHtml"&gt;&lt;/span&gt;
-      </code></pre>
+      <pre><code class="language-markup"><!--
+        Using text interpolation: {{ rawHtml }}
+        Using v-html directive: <span v-html="rawHtml"></span>
+      --></code></pre>
       <div class="result">
         <p>Using text interpolation: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
