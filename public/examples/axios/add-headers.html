@@ -14,8 +14,10 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
-      <button type="button" @click="fn1">1번: Axios 인스턴스 생성</button>
-      <pre><code class="language-js">
+
+      <h2>인스턴스를 생성하며 기본값으로 헤더 설정</h2>
+      <button type="button" @click="fn1">1번: 뿡</button>
+      <pre><code class="language-js"><!--
         const instance = axios.create({
           baseURL: '/return-headers.data',
           timeout: 1000,
@@ -23,12 +25,12 @@
         });
         let response = await instance.get();
         document.querySelector('#result1').innerText = JSON.stringify(response.data);
-      </code></pre>
+      --></code></pre>
       <div class="result"><h4>result1:</h4><p id="result1"></p></div>
 
-      <hr>
-      <button type="button" @click="fn2">2번: config 객체 전달</button>
-      <pre><code class="language-js">
+      <h2>메서드 호출할 때 config 객체 전달</h2>
+      <button type="button" @click="fn2">2번: 빵</button>
+      <pre><code class="language-js"><!--
         let config = {
           headers: {
             'X-Custom-Header': 'foo',
@@ -37,7 +39,7 @@
         }
         let response = await axios.get('/return-headers.data', config);
         document.querySelector('#result2').innerText = JSON.stringify(response.data);
-      </code></pre>
+      --></code></pre>
       <div class="result"><h4>result2:</h4><p id="result2"></p></div>
 
     </div>

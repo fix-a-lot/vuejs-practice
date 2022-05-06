@@ -12,18 +12,37 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+
       <h2>Template Syntax</h2>
       <h3>Text Interpolation</h3>
+      <pre><code class="language-js"><!--
+        createApp({
+          data() {
+            return {
+              message: "Hello Vue! ✌️"
+            };
+          },
+        }).mount("#app");
+      --></code></pre>
       <pre><code class="language-markup"><!--
-        {{ message }}
+        <p>{{ message }}</p>
       --></code></pre>
       <div class="result">
         <p>{{ message }}</p>
       </div>
       <h3>Raw HTML</h3>
+      <pre><code class="language-js"><!--
+        createApp({
+          data() {
+            return {
+              rawHtml: '<span style="color: red">This should be red.</span>'
+            };
+          },
+        }).mount("#app");
+      --></code></pre>
       <pre><code class="language-markup"><!--
-        Using text interpolation: {{ rawHtml }}
-        Using v-html directive: <span v-html="rawHtml"></span>
+        <p>Using text interpolation: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
       --></code></pre>
       <div class="result">
         <p>Using text interpolation: {{ rawHtml }}</p>

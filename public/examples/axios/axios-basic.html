@@ -15,8 +15,9 @@
       <h1>{{ pageTitle }}</h1>
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
 
-      <button type="button" @click="fn1">1번: Promise</button>
-      <pre><code class="language-js">
+      <h2>Promise</h2>
+      <button type="button" @click="fn1">fn1(): 눌러요</button>
+      <pre><code class="language-js"><!--
         axios.get('/success-json.data')
           .then(function (response) {
             document.querySelector('#result1').innerText = JSON.stringify(response.data);
@@ -27,32 +28,32 @@
           .then(function () {
             console.log('AJAX done')
           });
-      </code></pre>
+      --></code></pre>
       <div class="result"><h4>result1:</h4><p id="result1"></p></div>
       
-      <hr>
-      <button type="button" @click="fn2">2번: await</button>
-      <pre><code class="language-js">
+      <h2>await</h2>
+      <button type="button" @click="fn2">fn2(): 눌러요</button>
+      <pre><code class="language-js"><!--
         let response = await axios.get('/success-json.data');
         document.querySelector('#result2').innerText = JSON.stringify(response.data);
-      </code></pre>
+      --></code></pre>
       <div class="result"><h4>result2:</h4><p id="result2"></p></div>
       
-      <hr>
-      <button type="button" @click="fn3">3번: post 메서드</button>
-      <pre><code class="language-js">
+      <h2>POST 메서드</h2>
+      <button type="button" @click="fn3">fn3(): 누름</button>
+      <pre><code class="language-js"><!--
         let params = {
           firstName: 'Fred',
           lastName: 'Flintstone'
         };
         let response = await axios.post('/get-my-request-body.data', params);
         document.querySelector('#result3').innerText = JSON.stringify(response.data);
-      </code></pre>
+      --></code></pre>
       <div class="result"><h4>result3:</h4><p id="result3"></p></div>
       
-      <hr>
-      <button type="button" @click="fn4">4번: Axios 인스턴스 생성 방식</button>
-      <pre><code class="language-js">
+      <h2>인스턴스 생성 방식</h2>
+      <button type="button" @click="fn4">fn4(): push me!</button>
+      <pre><code class="language-js"><!--
         const instance = axios.create({
           baseURL: '/success-json.data',
           method: 'GET',
@@ -60,7 +61,7 @@
         });
         let response = await instance.get();
         document.querySelector('#result4').innerText = JSON.stringify(response.data);
-      </code></pre>
+      --></code></pre>
       <div class="result"><h4>result4:</h4><p id="result4"></p></div>
       
     </div>
