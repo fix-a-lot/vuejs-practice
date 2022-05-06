@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <script src="/lib/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+
+      <h2>Modifiers</h2>
+      <p><a href="https://vuejs.org/guide/essentials/template-syntax.html#directives">참고</a></p>
+      <p>몇몇 디렉티브는 정해진 특수 접미사가 존재합니다. 가령 아래의 코드는 <code class="language-js">onSubmit()</code> 후 <code class="language-js">event.preventDefault()</code>를 실행하게 합니다:</p>
+      <pre><code class="language-markup"><!--
+        <form @submit.prevent="onSubmit">...</form>
+      --></code></pre>
+
+      <h2>소제목1</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <p>{{message}}</p>
+      </div>
+
+      <h2>소제목2</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <p>{{message}}</p>
+      </div>
+
+    </div>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+      const pageTitle = "글 제목";
+      
+      createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            message: "Hello Vue! ✌️"
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

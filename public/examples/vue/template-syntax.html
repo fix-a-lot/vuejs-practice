@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <script src="/lib/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+
+      <h2>Text Interpolation</h2>
+      <p>텍스트를 단순 렌더링하는 표현식. 공식 도움말에선 이 표현식을 '수염'(Mustaches)이라고 부릅니다. 😏</p>
+      <pre><code class="language-markup"><!--
+        <div id="app">
+          <p>{{ message }}</p>
+        </div>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        createApp({
+          data() {
+            return {
+              message: "Hello Vue! ✌️"
+            };
+          },
+        }).mount("#app");
+      --></code></pre>
+      <div class="result">
+        <p>{{ message }}</p>
+      </div>
+
+      <h2>Raw HTML</h2>
+      <p>HTML을 escape하지 않고 그대로 출력</p>
+      <pre><code class="language-markup"><!--
+        <p>Using text interpolation: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            rawHtml: '<span style="color: red">This should be red.</span>'
+          };
+        }
+      --></code></pre>
+      <div class="result">
+        <p>Using text interpolation: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+      </div>
+      <div class="description">
+        <p>⚠️주의: 신뢰할 수 있는 데이터에만 <code class="language-js">v-html</code>을 적용할 것. 예를 들어 사용자가 입력하는 데이터를 Raw HTML로 출력하면 XSS 취약점이 발생함.</p>
+      </div>
+
+      <h2>속성 바인딩</h2>
+      <p>'수염'은 속성 바인딩으로 쓸 수 없습니다. 대신 <code class="language-js">v-bind</code> 디렉티브를 사용합니다</p>
+      <pre><code class="language-markup"><!--
+        <div v-bind:id="dynamicId">날 요소 검사 해보라굿</div>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            dynamicId: '우쭈쭈쭈'            
+          };
+        }
+      --></code></pre>
+      <div class="result">
+        <div v-bind:id="dynamicId">날 요소 검사 해보라굿</div>
+      </div>
+
+      <h3>단축 표현</h3>
+      <p>워낙 많이 쓰는 기능이라 단축 표현이 있습니다. 그냥 <code class="language-js">:속성명</code>만 쓰면 끝:</p>
+      <pre><code class="language-markup"><!--
+        <div :id="dynamicId">날 요소 검사 해보라굿</div>
+      --></code></pre>
+      <div class="result">
+        <div :id="dynamicId">날 요소 검사 해보라굿</div>
+      </div>
+
+      <h3>불리언 속성</h3>
+      <p>이 속성은 약간 특이한게 바인딩만 하는게 아니라 데이터가 false인 경우 속성 자체가 사라집니다.</p>
+      <p>false로 평가되는 값은 null-string과 blank이며 다른 것들, 가령 null, undefined, 0은 true로 간주합니다.</p>
+      <pre><code class="language-markup"><!--
+        <button :disabled="true">이건 disable</button>
+        <button :disabled="' '">이것도 disable</button>
+        <button :disabled="0">이건 enable</button>
+        <button :disabled="null">얘는 왜 또 enable</button>
+      --></code></pre>
+      <div class="result">
+        <button :disabled="true">이건 disable</button>
+        <button :disabled="' '">이것도 disable</button>
+        <button :disabled="0">이건 enable</button>
+        <button :disabled="null">얘는 왜 또 enable</button>
+      </div>
+      <p>도움말에는 없지만 아마 checked나 selected 같은 속성들도 disabled처럼 작동할 것 같네요.</p>
+
+      <h3>여러 속성을 한 번에 바인딩</h3>
+      <p>속성 여러개 적는게 귀찮을 때 쓰는 방법</p>
+      <pre><code class="language-markup"><!--
+        <div v-bind="objectOfAttrs"></div>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            objectOfAttrs: {
+              id: 'container',
+              class: 'wrapper'
+            }
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <div v-bind="objectOfAttrs">요소-검사.me</div>
+      </div>
+      
+      <h3>동적으로 속성명 정의하기</h3>
+      <p>데이터의 텍스트를 커스텀 속성으로 사용할 수 있습니다. 단, 소문자 혹은 케밥 케이스만 가능.</p>
+      <pre><code class="language-markup"><!--
+        <p :[attributename]="attributeValue"> ... </p>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            attributename: 'clazz',
+            attributeValue: 'im-a-clazz'
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <p :[attributename]="attributeValue">I요소검사you</p>
+      </div>
+
+      <h2>자바스크립트 표현식 사용하기</h2>
+      <pre><code class="language-markup"><!--
+        {{ number + 1 }}
+        {{ ok ? 'YES' : 'NO' }}
+        {{ reverseMessage() }}
+        <div :id="`list-${id}`">내 아이디는 list-qwer</div>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            number: 65536,
+            ok: 'YES',
+            id: 'qwer'
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        {{ number + 1 }}<br>
+        {{ ok ? 'YES' : 'NO' }}<br>
+        {{ reverseMessage() }}<br>
+        <div :id="`list-${id}`">내 아이디는 list-qwer</div>
+      </div>
+      <div class="description">
+        <p>⚠️주의: 자바스크립트 표현식은 single expression으로만 사용할 수 있습니다. 뭔 소리냐면 아래 코드는 안돌아갑니다:
+        <pre><code class="language-js"><!--
+          {{ if (ok) { return message } }}
+        --></code></pre>
+        </p>
+      </div>
+      <div class="description">
+        <p>⚠️주의: 자바스크립트 표현식에서 접근 가능한 전역 참조는 정해져있습니다. (샌드박스 처리되기 때문이라 함) <a href="https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3" target="_blank">이 링크</a>를 보세요.</p>
+        <p>예를 들어 window와 사용자 정의 전역 변수는 참조할 수 없습니다. <a href="https://vuejs.org/api/application.html#app-config-globalproperties" target="_blank">app.config.globalProperties</a> 항목에 추가하면 된다는데... 굳이? 🤔</p>
+      </div>
+
+    </div>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+      const pageTitle = "기본: Template Syntax";
+
+      const asdf = 'hi';
+      const oobbjj = {
+        a: 'hi'
+      };
+      window.ooobbbjjj = {
+        a: 'hi'
+      }
+      
+      createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            pageTitle: pageTitle,
+            message: "Hello Vue! ✌️",
+            rawHtml: '<span style="color: red">This should be red.</span>',
+            dynamicId: '우쭈쭈쭈',
+            objectOfAttrs: {
+              id: 'container',
+              class: 'wrapper'
+            },
+            number: 65536,
+            ok: 'YES',
+            id: 'qwer',
+            attributename: 'clazz',
+            attributeValue: 'im-a-clazz'
+          };
+        },
+        methods: {
+          reverseMessage() {
+            return this.message.split('').reverse().join('');
+          }
+        }
+      }).mount("#app");
+    </script>
+  </body>
+</html>

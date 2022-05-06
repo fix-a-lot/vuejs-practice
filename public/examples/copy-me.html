@@ -13,45 +13,32 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
 
-      <h2>Template Syntax</h2>
-      <h3>Text Interpolation</h3>
-      <pre><code class="language-js"><!--
-        createApp({
-          data() {
-            return {
-              message: "Hello Vue! ✌️"
-            };
-          },
-        }).mount("#app");
-      --></code></pre>
+      <h2>소제목1</h2>
       <pre><code class="language-markup"><!--
-        <p>{{ message }}</p>
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
       --></code></pre>
       <div class="result">
-        <p>{{ message }}</p>
+        <p>{{message}}</p>
       </div>
-      <h3>Raw HTML</h3>
-      <pre><code class="language-js"><!--
-        createApp({
-          data() {
-            return {
-              rawHtml: '<span style="color: red">This should be red.</span>'
-            };
-          },
-        }).mount("#app");
-      --></code></pre>
+
+      <h2>소제목2</h2>
       <pre><code class="language-markup"><!--
-        <p>Using text interpolation: {{ rawHtml }}</p>
-        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
       --></code></pre>
       <div class="result">
-        <p>Using text interpolation: {{ rawHtml }}</p>
-        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <p>{{message}}</p>
       </div>
+
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      const pageTitle = "기본";
+      const pageTitle = "글 제목";
       
       createApp({
         created() {
@@ -60,8 +47,7 @@
         data() {
           return {
             pageTitle: pageTitle,
-            message: "Hello Vue! ✌️",
-            rawHtml: '<span style="color: red">This should be red.</span>',
+            message: "Hello Vue! ✌️"
           };
         },
       }).mount("#app");

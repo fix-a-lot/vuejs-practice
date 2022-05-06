@@ -13,11 +13,14 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
       
-      <h2>양방향 바인딩(자동 동기화)</h2>
+      <h2>데이터 바인딩</h2>
+      <p><code class="language-js">v-model</code> 디렉티브를 사용하면 사용자가 입력한 값과 화면에 보이는 값, 그리고 앱의 데이터가 동기화됩니다.</p>
       <p>아래 입력란의 값을 바꿔보세요.</p>
       <pre><code class="language-markup"><!--
-        <input v-model="text" placeholder="Type here">
-        <p>{{ text }}</p>
+        <div id="app">
+          <input v-model="text" placeholder="Type here">
+          <p>{{ text }}</p>
+        </div>
       --></code></pre>
       <pre><code class="language-js">
         createApp({
@@ -46,9 +49,11 @@
       
       <h2>프록시는 뭘까</h2>
       <button type="button" @click="fn2">fn2(): 나도 몰라</button>
-      <pre><code class="language-js" v-pre>
-        obj.a: {{ obj.a }}
-      </code></pre>
+      <pre><code class="language-markup"><!--
+        <div id="app">
+          obj.a: {{ obj.a }}
+        </div>
+      --></code></pre>
       <pre><code class="language-js">
         createApp({
           data() {
