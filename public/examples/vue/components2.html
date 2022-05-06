@@ -37,7 +37,9 @@
         };
       --></code></pre>
       <pre><code class="language-markup"><!--
-        <inline-template></inline-template>
+        <div id="vueApp">
+          <inline-template></inline-template>
+        </div>
         <script>
         import { InlineTemplate } from './InlineTemplate.js'
 
@@ -45,7 +47,7 @@
           components: {
             InlineTemplate
           }
-        }).mount("#app");
+        }).mount("#vueApp");
         </script>
       --></code></pre>
       <div class="result">
