@@ -27,40 +27,41 @@
       }).mount("#app");
 
       let gridData = [
-        { positionName: "사원" },
-        { positionName: "오원" },
-        { positionName: "육원" },
-        { positionName: "칠원" },
-        { positionName: "대리" },
-        { positionName: "중리" },
-        { positionName: "소리" },
-        { positionName: "부장" },
-        { positionName: "부부장" },
-        { positionName: "부부젤라장" },
-        { positionName: "본부장" },
-        { positionName: "안본부장" },
-        { positionName: "이사" },
-        { positionName: "삼사" },
-        { positionName: "오사" },
-        { positionName: "사장" },
-        { positionName: "오장" },
+        { posNm: "사원" },
+        { posNm: "오원" },
+        { posNm: "육원" },
+        { posNm: "칠원" },
+        { posNm: "대리" },
+        { posNm: "중리" },
+        { posNm: "소리" },
+        { posNm: "부장" },
+        { posNm: "부부장" },
+        { posNm: "부부젤라장" },
+        { posNm: "본부장" },
+        { posNm: "안본부장" },
+        { posNm: "이사" },
+        { posNm: "삼사" },
+        { posNm: "오사" },
+        { posNm: "사장" },
+        { posNm: "오장" },
       ];
 
       const grid = new tui.Grid({
         el: document.getElementById("grid"),
         data: gridData,
-        // width: 800,
-        // bodyHeight: 400,
         scrollX: false,
-        scrollY: false,
+        scrollY: true,
+        // width: '100%',
+        bodyHeight: 400,
         rowHeaders: ["rowNum"],
+        // data: gridData,
         columns: [
           {
             header: "직무/직급명",
-            name: "positionName",
-            align: 'center'
-          },
-        ],
+            name: "posNm",
+            align: "center"
+          }
+        ]
         // showDummyRows: true,
       });
       // tui.Grid.applyTheme('striped');

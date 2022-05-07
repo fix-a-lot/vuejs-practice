@@ -6,36 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui-pagination.css" />
     <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
+    <script src="/lib/tui-pagination.js"></script>
     <script src="/lib/tui-grid.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
-      <!-- <div id="grid"></div> -->
-      <p>공사중</p>
+      <div class="description">
+        <p>🤔 totalCount를 분명 100으로 했는데 왜 1페이지만 나오는지는 몲.</p>
+      </div>
+      <div>
+        <button type="button" @click="readData">조회버튼</button>
+      </div>
+      <div id="grid"></div>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
-      const pageTitle = "공사중";
+      import { createApp } from "/lib/vue.esm-browser.js";
+      const pageTitle = "10. DataSource";
       createApp({
         created() {
           document.title += `: ${pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle
+            pageTitle: pageTitle,
           };
         },
+        methods: {
+          readData() {
+            grid.readData(1);
+          }
+        }
       }).mount("#app");
 
       const gridData = null;
 
-      const grid = new tui.Grid({
+      let grid = new tui.Grid({
         el: document.getElementById("grid"),
-        data: gridData,
         scrollX: false,
         scrollY: false,
+        minBodyHeight: 30,
+        rowHeaders: ["rowNum"],
+        data: {
+          api: {
+            readData: { url: "/read-grid.data", method: "GET" },
+          },
+        },
+        pageOptions: {
+          perPage: 20,
+        },
         columns: [
           {
             header: "Name",
