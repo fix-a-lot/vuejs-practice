@@ -24,11 +24,10 @@
           headers: {'X-Custom-Header': 'foobar'}
         });
         let response = await instance.get();
-        document.querySelector('#result1').innerText = JSON.stringify(response.data);
       --></code></pre>
-      <div class="result"><h4>result1:</h4><p id="result1"></p></div>
+      <div class="result"><p id="result1"></p></div>
 
-      <h2>메서드 호출할 때 config 객체 전달</h2>
+      <h2>메서드 호출할 때 config 객체 전달: GET</h2>
       <button type="button" @click="fn2">2번: 빵</button>
       <pre><code class="language-js"><!--
         let config = {
@@ -37,10 +36,27 @@
             'X-Custom-Header2': 'bar'
           }
         }
-        let response = await axios.get('/return-headers.data', config);
-        document.querySelector('#result2').innerText = JSON.stringify(response.data);
+        let response = await axios.get('/return-headers.data?a=1', config);
       --></code></pre>
-      <div class="result"><h4>result2:</h4><p id="result2"></p></div>
+      <div class="result"><p id="result2"></p></div>
+      
+      <h2>메서드 호출할 때 config 객체 전달: POST</h2>
+      <button type="button" @click="fn3">3번: 삥</button>
+      <pre><code class="language-js"><!--
+        let config = {
+          headers: {
+            'X-Custom-Header': 'foo'
+          }
+        }
+        let params = {
+          something: this.something
+        };
+        let response = await axios.post('/get-my-request-body.data', params, config);
+      --></code></pre>
+      <form name="submitMe">
+        <input type="text" readonly v-model="something" />
+      </form>
+      <div class="result"><p id="result3"></p></div>
 
     </div>
     <script type="module">
@@ -55,6 +71,7 @@
         data() {
           return {
             pageTitle: pageTitle,
+            something: '썸띵'
           };
         },
         methods: {
@@ -74,8 +91,20 @@
                 'X-Custom-Header2': 'bar'
               }
             }
-            let response = await axios.get('/return-headers.data', config);
+            let response = await axios.get('/return-headers.data?a=1', config);
             document.querySelector('#result2').innerText = JSON.stringify(response.data);
+          },
+          async fn3() {
+            let config = {
+              headers: {
+                'X-Custom-Header': 'foo'
+              }
+            }
+            let params = {
+              something: this.something
+            };
+            let response = await axios.post('/get-my-request-body.data', params, config);
+            document.querySelector('#result3').innerText = JSON.stringify(response.data);
           }
         }
       }).mount("#app");
