@@ -34,11 +34,38 @@
       <div class="result">
         <p>{{message}}</p>
       </div>
+      
+      <h2>&lt;template&gt; 태그와 같이 쓰는 v-if</h2>
+      <p>종종 더미 태그가 필요한 경우가 있습니다. 가령 분기 제어를 해야하지만 화면 상에는 안보이는 태그가 필요할 때죠. 이 때 <code class="language-markup"><!--<template>--></code> 태그를 사용합니다:</p>
+      <pre><code class="language-markup"><!--
+        <template v-if="ok">
+          <h3>Header 3</h1>
+          <p>Paragraph 1</p>
+          <p>Paragraph 2</p>
+          <p>ok가 true여도 <template>은 안보입니다(원래 안보이는 녀섴이지만).</p>
+        </template>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            ok: true
+          };
+        }
+      --></code></pre>
+      <p>이렇게 하면 Vue는 <code class="language-markup"><!--<template>--></code>을 랜더링하지 않습니다. 아래 코드를 요소검사 해보세요:</p>
+      <div class="result">
+        <template v-if="ok">
+          <h3>Header 3</h1>
+          <p>Paragraph 1</p>
+          <p>Paragraph 2</p>
+          <p>ok가 true여도 &lt;template&gt;은 안보입니다(원래 안보이는 녀섴이지만).</p>
+        </template>
+      </div>
 
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      const pageTitle = "글제목";
+      const pageTitle = "3. 조건부 랜더링";
       
       createApp({
         created() {
@@ -47,7 +74,8 @@
         data() {
           return {
             pageTitle: pageTitle,
-            message: "Hello Vue! ✌️"
+            message: "Hello Vue! ✌️",
+            ok: true
           };
         },
       }).mount("#app");

@@ -13,6 +13,15 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
 
+      <template v-if="docs !== undefined">
+        <h4>도움말 페이지</h4>
+        <ul>
+          <li v-for="item in docs">
+            <a :href="item.url" :target="'_blank'">{{ item.title }}</a>
+          </li>
+        </ul>
+      </template>
+
       <h2>소제목1</h2>
       <pre><code class="language-markup"><!--
         <마크업/>
@@ -46,6 +55,11 @@
         },
         data() {
           return {
+            docs: [
+              { title: "어디어디", url: "어디어디" },
+              { title: "어디어디", url: "어디어디" },
+              { title: "어디어디", url: "어디어디" },
+            ],
             pageTitle: pageTitle,
             message: "Hello Vue! ✌️"
           };
