@@ -26,13 +26,13 @@
       <div id="grid"></div> 
 
       <h2>data 초기화 하기</h2>
-      <p><code class="language-js">data</code> 프로퍼티를 초기화해야 할 때가 있습니다. 항목이 한 두개면 그냥 하겠지만 뭐 한 20개 정도 되면... 😱</p>
+      <p><code class="language-js">data</code>의 모든 프로퍼티를 한 방에 초기화하는 방법입니다. 항목이 한 두개면 그냥 하겠지만 뭐 한 20개 정도 되면... 😱</p>
       <p>기존에는 아래처럼 작성했습니다:</p>
       <pre><code class="language-js"><!--
         data() {
           return {
             obj: {
-              prop1: '이걸먼저바꿔봐요'
+              prop1: '원래값으로돌아갔지롱'
             }
           };
         }
@@ -42,7 +42,7 @@
         function initialState() {
           return {
             obj: {
-              prop1: '이걸먼저바꿔봐요'
+              prop1: '원래값으로돌아갔지롱'
             }
           };
         }
@@ -61,20 +61,18 @@
           }
         }
       --></code></pre>
-      <p><code class="language-js">resetState()</code>가 잘 작동하는지 눌러보죠.</p>
+      <p>잘 되는지 보죠.</p>
       <div>
-        <button type="button" @click="resetState">날 눌러줘요</button>
+        <button type="button" @click="resetState">resetState(): 날 눌러줘요</button>
       </div>
       <pre><code class="language-markup"><!--
         <input type="text" v-model="obj.prop1">
-        <p>Waldo from {{obj.prop1}}.</p>
       --></code></pre>
       <div class="result">
-        <input type="text" v-model="obj.prop1">
-        <p>obj.prop1: {{obj.prop1}}.</p>
+        이 값을 먼저 바꿔보세요: <input type="text" v-model="obj.prop1">
       </div>
       <div class="description">
-        <p>객체 재할당에 <code class="language-js">Object.assign()</code>을 사용하는 이유는 $data은 재할당 할 수 없기 때문입니다.</p>
+        <p><code class="language-js">Object.assign()</code>을 사용하는 이유는 $data를 할당 연산자로 재할당 할 수 없기 때문입니다.</p>
         <p>*$data: <code class="language-js">data</code> 옵션을 반환하는 컴포넌트 인스턴스</p>
       </div>
 
@@ -105,7 +103,7 @@
           pageTitle: pageTitle,
           message: "Hello Vue! ✌️",
           obj: {
-            prop1: '이걸먼저바꿔봐요'
+            prop1: '원래값으로돌아갔지롱'
           }
         }
       }
