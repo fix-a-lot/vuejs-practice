@@ -31,9 +31,8 @@
       <pre><code class="language-js"><!--
         data() {
           return {
-            obj: {
-              prop1: '원래값으로돌아갔지롱'
-            }
+            prop1: '원래값으로돌아갔지롱',
+            prop2: '붑밥붑밥붑밥바'
           };
         }
       --></code></pre>
@@ -41,9 +40,8 @@
       <pre><code class="language-js"><!--
         function initialState() {
           return {
-            obj: {
-              prop1: '원래값으로돌아갔지롱'
-            }
+            prop1: '원래값으로돌아갔지롱',
+            prop2: '붑밥붑밥붑밥바'
           };
         }
       --></code></pre>
@@ -56,6 +54,10 @@
       <p>특정 시점에 작동하는 초기화 메서드를 정의합니다:</p>
       <pre><code class="language-js"><!--
         methods: {
+          changeState() {
+            this.prop1 = '여긴어디';
+            this.prop2 = '나는누구';
+          },
           resetState() {
             Object.assign(this.$data, initialState());
           }
@@ -63,13 +65,16 @@
       --></code></pre>
       <p>잘 되는지 보죠.</p>
       <div>
-        <button type="button" @click="resetState">resetState(): 날 눌러줘요</button>
+        <button type="button" @click="changeState">날 먼저 눌러요</button>
+        <button type="button" @click="resetState">초기화</button>
       </div>
       <pre><code class="language-markup"><!--
-        <input type="text" v-model="obj.prop1">
+        <p>{{prop1}}</p>
+        <p>{{prop2}}</p>
       --></code></pre>
       <div class="result">
-        이 값을 먼저 바꿔보세요: <input type="text" v-model="obj.prop1">
+        <p>{{prop1}}</p>
+        <p>{{prop2}}</p>
       </div>
       <div class="description">
         <p><code class="language-js">Object.assign()</code>을 사용하는 이유는 $data를 할당 연산자로 재할당 할 수 없기 때문입니다.</p>
@@ -102,9 +107,8 @@
           // ],
           pageTitle: pageTitle,
           message: "Hello Vue! ✌️",
-          obj: {
-            prop1: '원래값으로돌아갔지롱'
-          }
+          prop1: '원래값으로돌아갔지롱',
+          prop2: '붑밥붑밥붑밥바'
         }
       }
 
@@ -119,6 +123,10 @@
           return initialState();
         },
         methods: {
+          changeState() {
+            this.prop1 = '여긴어디';
+            this.prop2 = '나는누구';
+          },
           resetState() {
             Object.assign(this.$data, initialState());
           }
