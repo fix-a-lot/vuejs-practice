@@ -25,16 +25,19 @@
       <h2>Props</h2>
       <p>Props는 간단히 말해서 읽기 전용 프로퍼티 집합입니다.</p>
       <p><code class="language-js">props</code> 속성으로 앱을 만들 때 직접 할당하거나 타입만 선언할 수 있습니다.</p>
-      <p>TODO 상속 되는지 확인</p>
+      <p>TODO 이렇게 쓰는거 아닌거가태</p>
       <pre><code class="language-js"><!--
         createApp({
           props: {
             msg: { type: String, required: true },
           }
-        }, {msg: 'Hello Props?'}).mount("#app");
+        }, { msg: 'Hello Props?' }).mount("#app");
       --></code></pre>
       <div class="result">
         <p>{{msg}}</p>
+      </div>
+      <div class="result">
+        <template-literal></template-literal>
       </div>
 
       <h2>props vs data</h2>
@@ -67,9 +70,13 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      const pageTitle = "기본: Vue 시작하기";
+      import { TemplateLiteral } from './TemplateLiteral.js'
+      const pageTitle = "10. Props";
       
       let vm = createApp({
+        components: {
+          TemplateLiteral
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },
@@ -99,7 +106,7 @@
             }
           }
         }
-      }, {msg: 'Hello Props?'}).mount("#app");
+      }, { msg: 'Hello Props?' }).mount("#app");
     </script>
   </body>
 </html>
