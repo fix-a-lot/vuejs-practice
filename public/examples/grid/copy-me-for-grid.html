@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <title>Toast UI Grid</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
     <link rel="stylesheet" href="/lib/prism.css" />
-    <title>Vue.js</title>
     <script defer src="/lib/prism.js"></script>
+    <script src="/lib/tui-grid.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -59,14 +61,49 @@
           return {
             docs: [
               { title: "어디어디", url: "어디어디" },
-              { title: "어디어디", url: "어디어디" },
-              { title: "어디어디", url: "어디어디" },
             ],
             pageTitle: pageTitle,
             message: "Hello Vue! ✌️"
           };
         },
       }).mount("#app");
+
+      const gridData = [
+        { name: "Beautiful Lies", artist: "Birdy", release: "2016.03.26", type: "Deluxe", genre: "Pop" },
+        { name: "X", artist: "Ed Sheeran", release: "2014.06.24", type: "Deluxe", genre: "Pop", },
+        { name: "Moves Like Jagger", release: "2011.08.08", artist: "Maroon5", type: "Single", genre: "Pop,Rock", },
+        { name: "A Head Full Of Dreams", artist: "Coldplay", release: "2015.12.04", type: "Deluxe", genre: "Rock", },
+        { name: "Nineteen", artist: "Adele", release: "2008.01.27", type: "EP", genre: "Pop,R&B", },
+      ];
+
+      const grid = new tui.Grid({
+        el: document.getElementById("grid"),
+        data: gridData,
+        scrollX: false,
+        scrollY: false,
+        columns: [
+          {
+            header: "Name",
+            name: "name",
+          },
+          {
+            header: "Artist",
+            name: "artist",
+          },
+          {
+            header: "Type",
+            name: "type",
+          },
+          {
+            header: "Release",
+            name: "release",
+          },
+          {
+            header: "Genre",
+            name: "genre",
+          },
+        ],
+      });
     </script>
   </body>
 </html>

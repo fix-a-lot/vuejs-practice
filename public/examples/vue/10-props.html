@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
+    <script defer src="/lib/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{ pageTitle }}</h1>
+
+      <template v-if="docs !== undefined">
+        <h4>도움말 페이지</h4>
+        <ul>
+          <li v-for="item in docs">
+            <a :href="item.url" :target="'_blank'">{{ item.title }}</a>
+          </li>
+        </ul>
+      </template>
+
+      <h2>Props</h2>
+      <p>Props는 간단히 말해서 읽기 전용 프로퍼티 집합입니다.</p>
+      <p><code class="language-js">props</code> 속성으로 앱을 만들 때 직접 할당하거나 타입만 선언할 수 있습니다.</p>
+      <p>TODO 상속 되는지 확인</p>
+      <pre><code class="language-js"><!--
+        createApp({
+          props: {
+            msg: { type: String, required: true },
+          }
+        }, {msg: 'Hello Props?'}).mount("#app");
+      --></code></pre>
+      <div class="result">
+        <p>{{msg}}</p>
+      </div>
+
+      <h2>props vs data</h2>
+      <p>data로 선언한 프로퍼티들은 (마치 리엑트의 state처럼) 자동으로 랜더링된다는 것은 이제 아시쥬?</p>
+      <p>props는 안됩니다. 애초에 읽기 전용 데이터라 값 변경도 안되거든요</p>
+      <p><button type="button" @click="fn1">fn1 버튼</button></p>
+      <pre><code class="language-markup"><!--
+        <section id="vueApp">
+          <p id="result2">{{msg}}</p>
+        </section>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        props: {
+          msg: { type: String, required: true },
+        },
+        methods: {
+          fn1() {
+            try {
+              this.msg = 'wasssssssup';   
+            } catch (error) {
+              document.querySelector('#result2').innerText = error;
+            }
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <p id="result2">{{msg}}</p>
+      </div>
+
+    </div>
+    <script type="module">
+      import { createApp } from '/lib/vue.esm-browser.js';
+      const pageTitle = "기본: Vue 시작하기";
+      
+      let vm = createApp({
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        data() {
+          return {
+            docs: [
+              { title: "https://vuejs.org/api/options-state.html#props", url: "https://vuejs.org/api/options-state.html#props" },
+              { title: "https://vuejs.org/guide/components/props.html#props-declaration", url: "https://vuejs.org/guide/components/props.html#props-declaration" },
+              { title: "https://vuejs.org/guide/typescript/options-api.html#typing-component-props", url: "https://vuejs.org/guide/typescript/options-api.html#typing-component-props" },
+            ],
+            pageTitle: pageTitle,
+            message: "Hello Vue! ✌️"
+          };
+        },
+        props: {
+          name: String,
+          id: [Number, String],
+          msg: { type: String, required: true },
+          metadata: null
+        },
+        methods: {
+          fn1() {
+            try {
+              this.msg = 'wasssssssup';   
+            } catch (error) {
+              document.querySelector('#result2').innerText = error;
+            }
+          }
+        }
+      }, {msg: 'Hello Props?'}).mount("#app");
+    </script>
+  </body>
+</html>
