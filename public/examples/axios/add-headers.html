@@ -13,6 +13,7 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <table-of-contents></table-of-contents>
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
 
       <h2>인스턴스를 생성하며 기본값으로 헤더 설정</h2>
@@ -59,13 +60,21 @@
       </form>
       <div class="result"><p id="result3"></p></div>
 
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
+
       const pageTitle = "헤더 추가하기";
       
       // Vue는 안봐도 됨
       createApp({
+        components: {
+          BackToHome,
+          TableOfContents
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

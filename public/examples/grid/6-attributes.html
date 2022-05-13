@@ -26,11 +26,18 @@
       <p><code class="language-js">_attributes.rowSpan</code>은 버려졌고 대신 <code class="language-js">rowSpan</code> 옵션을 쓰라고 합니다.</p>
       <div class="description">The option <code>"_attribute.rowSpan"</code> is deprecated. Please use rowSpan option of column. Follow example: <a href="http://nhn.github.io/tui.grid/latest/tutorial-example29-dynamic-row-span">http://nhn.github.io/tui.grid/latest/tutorial-example29-dynamic-row-span</a></div><br>
       <div id="grid"></div>
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      
       const pageTitle = "6. Attributes";
+
       createApp({
+        components: {
+          BackToHome
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

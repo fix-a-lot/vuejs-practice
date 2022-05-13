@@ -12,6 +12,7 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <table-of-contents></table-of-contents>
 
       <h2>소제목1</h2>
       <pre><code class="language-markup"><!--
@@ -62,12 +63,20 @@
         </template>
       </div>
 
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
+
       const pageTitle = "3. 조건부 랜더링";
       
       createApp({
+        components: {
+          BackToHome,
+          TableOfContents
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

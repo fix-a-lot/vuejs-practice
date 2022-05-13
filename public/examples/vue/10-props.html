@@ -67,14 +67,18 @@
         <p id="result2">{{msg}}</p>
       </div>
 
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { TemplateLiteral } from './TemplateLiteral.js'
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TemplateLiteral } from '/component/TemplateLiteral.js'
+      
       const pageTitle = "10. Props";
       
       let vm = createApp({
         components: {
+          BackToHome,
           TemplateLiteral
         },
         created() {

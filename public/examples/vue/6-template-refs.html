@@ -12,8 +12,10 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <table-of-contents></table-of-contents>
 
-      DOM 요소에 직접 접근해야 할 때 <code class="language-js">ref</code>를 사용합니다.
+      <h2>$refs</h2>
+      DOM 요소에 직접 접근해야 할 때 사용합니다.
 
       <pre><code class="language-markup"><!--
         <input ref="focusMe">
@@ -27,12 +29,20 @@
         <input ref="focusMe" v-model="vv">
       </div>
 
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
+
       const pageTitle = "기본: Template Refs";
       
       createApp({
+        components: {
+          BackToHome,
+          TableOfContents
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

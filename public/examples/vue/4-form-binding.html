@@ -12,6 +12,7 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <table-of-contents></table-of-contents>
       
       <h2>데이터 바인딩</h2>
       <p><code class="language-js">v-model</code> 디렉티브를 사용하면 사용자가 입력한 값과 화면에 보이는 값, 그리고 앱의 데이터가 동기화됩니다.</p>
@@ -75,12 +76,20 @@
       <div class="result">
         <p>obj.a: {{ obj.a }}</p>
       </div>
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
+      
       const pageTitle = "폼 바인딩";
       
       createApp({
+        components: {
+          BackToHome,
+          TableOfContents
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

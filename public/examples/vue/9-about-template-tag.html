@@ -49,16 +49,22 @@
       <a href="https://vuejs.org/api/options-rendering.html#template">도움말</a>을 보면 템플릿 컴파일러가 포함된 Vue 빌드에서만 사용 가능하다고 함.
       <br><br>
       <p>그래도 쓰고 싶으면 <a href="https://github.com/FranckFreiburger/vue3-sfc-loader">vue3-sfc-loader</a> 필요.</p>
+      
+      <back-to-home></back-to-home>
     </div>
     <script type="vue-template" id="ref-me">
       <button>Click Me!{{text}}</button>
     </script>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
 
       const pageTitle = "컴포넌트: <template>이란 무엇인가";
       
       createApp({
+        components: {
+          BackToHome
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

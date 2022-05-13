@@ -15,11 +15,18 @@
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
       <div id="grid"></div>
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+
       const pageTitle = "2. Complex columns";
+      
       createApp({
+        components: {
+          BackToHome
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

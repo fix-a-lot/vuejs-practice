@@ -41,7 +41,7 @@
           <inline-template></inline-template>
         </div>
         <script>
-        import { InlineTemplate } from './InlineTemplate.js'
+        import { InlineTemplate } from '/component/InlineTemplate.js'
 
         createApp({
           components: {
@@ -83,14 +83,17 @@
         --></code></pre>
         <p>요딴 경고가 뜨며 작동 안함.</p>
       </div>
+      <back-to-home></back-to-home>
     </div>
     <!-- <script type="vue-template" id="ref-me"></script> -->
     <script type="text/html" id="ref-me">
       <div>parent: {{ message }}</div>
     </script>
+
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { InlineTemplate } from './InlineTemplate.js'
+      import { BackToHome } from '/component/BackToHome.js';
+      import { InlineTemplate } from '/component/InlineTemplate.js'
 
       const pageTitle = "컴포넌트: 인라인 템플릿";
       
@@ -99,6 +102,7 @@
           document.title += `: ${pageTitle}`;
         },
         components: {
+          BackToHome,
           InlineTemplate
         },
         data() {

@@ -31,7 +31,7 @@
       <pre class="language-markup"><code><!--
         <template-literal></template-literal>
         <script>
-        import { TemplateLiteral } from './TemplateLiteral.js'
+        import { TemplateLiteral } from '/component/TemplateLiteral.js'
 
         createApp({
           components: {
@@ -52,10 +52,12 @@
           </div>
         --></code></pre>
       </div>
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { TemplateLiteral } from './TemplateLiteral.js'
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TemplateLiteral } from '/component/TemplateLiteral.js'
 
       const pageTitle = "컴포넌트: 템플릿 리터럴";
       
@@ -64,6 +66,7 @@
           document.title += `: ${pageTitle}`;
         },
         components: {
+          BackToHome,
           TemplateLiteral
         },
         data() {

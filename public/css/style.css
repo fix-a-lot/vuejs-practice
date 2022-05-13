@@ -51,16 +51,22 @@ button {
   padding: 8px 12px;
   text-decoration: none;
 }
-/* [id^=result] {
-  color: red;
-  font-weight: bold;
-} */
-/* code {
-  font-family: Consolas,Monaco,"Lucida Console",monospace;
-  padding: 4px;
-  white-space: nowrap;
-  background-color: #EFEFEF;
-} */
-/* pre {
-  font-family: Consolas,Monaco,"Lucida Console",monospace; 
-} */
+.button-wrapper {
+  text-align: left;
+  margin: 60px 1px 1px 1px;
+}
+a.button {
+	/* Font & Text */
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	text-decoration: none solid rgb(255, 255, 255);
+
+  background: #2F3545;
+	color: rgb(255, 255, 255);
+
+	border: 1px solid grey;
+	padding: 6px 10px;
+}

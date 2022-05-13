@@ -12,7 +12,6 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
-
       <table-of-contents></table-of-contents>
 
       <h2>Text Interpolation</h2>
@@ -173,10 +172,13 @@
         <p>예를 들어 window와 사용자 정의 전역 변수는 참조할 수 없습니다. <a href="https://vuejs.org/api/application.html#app-config-globalproperties" target="_blank">app.config.globalProperties</a> 항목에 추가하면 된다는데... 굳이? 🤔</p>
       </div>
 
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { TableOfContents } from './TableOfContents.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
+      
       const pageTitle = "기본: Template Syntax";
 
       const asdf = 'hi';
@@ -190,6 +192,7 @@
       createApp({
         components: {
           TableOfContents,
+          BackToHome
         },
         created() {
           document.title += `: ${pageTitle}`;

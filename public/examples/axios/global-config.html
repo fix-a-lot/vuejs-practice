@@ -13,6 +13,8 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{ pageTitle }}</h1>
+      <table-of-contents></table-of-contents>
+      
       <div class="description">
         <h4>📢Config의 우선순위</h4>
         <p>Config는 우선 순위에 따라 병합됩니다. <code class="language-js">lib/defaults.js</code> 라이브러리에서의 기본값, 인스턴스의 <code class="language-js">defaults</code> 속성, 요청의 <code class="language-js">config</code> 인자를 순서대로 찾습니다. 후자가 전자보다 우선순위가 높습니다.</p>
@@ -62,14 +64,21 @@
         <p id="result3"></p>
       </div>
 
-      <hr />
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
+
       const pageTitle = "Config 기본값 설정하기";
       
       // Vue는 안봐도 됨
       createApp({
+        components: {
+          BackToHome,
+          TableOfContents
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

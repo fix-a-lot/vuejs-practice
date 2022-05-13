@@ -58,7 +58,7 @@
               {
                 name: "Chaos And The Calm",
                 artist: "James Bay",
-                type: "EP",
+                type: "EP", 
                 release: "2015.03.23",
                 genre: "Pop,Rock",
                 _children: []
@@ -66,12 +66,20 @@
 
               ...
       --></code></pre>
+      <p>아 그리고 몇몇 API 작동도 약간 달라진다 합니다. <a href="https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/tree.md#%EB%8B%A4%EB%A5%B4%EA%B2%8C-%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94-api">여기를</a> 보세요.</p>
+      
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from "/lib/vue.esm-browser.js";
+      import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+
       const pageTitle = "14. Tree";
 
       createApp({
+        components: {
+          BackToHome
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },

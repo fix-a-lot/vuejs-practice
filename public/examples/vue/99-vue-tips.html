@@ -92,10 +92,13 @@
         <p>{{message}}</p>
       </div>
 
+      <div class="button-wrapper">
+        <a class="button" href="http://localhost:9999">⬅ 홈으로 돌아가기</a>
+      </div>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { TableOfContents } from './TableOfContents.js';
+      import { TableOfContents } from '/component/TableOfContents.js';
       const pageTitle = "99. 팁 모음";
       
       function initialState() {

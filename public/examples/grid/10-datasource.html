@@ -55,11 +55,18 @@
       <div class="description">
         <p>🤔 totalCount를 분명 100으로 했는데 왜 1페이지만 나오는지는 몲.</p>
       </div>
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from "/lib/vue.esm-browser.js";
+      import { createApp } from '/lib/vue.esm-browser.js';
+      import { BackToHome } from '/component/BackToHome.js';
+
       const pageTitle = "10. DataSource";
+      
       createApp({
+        components: {
+          BackToHome
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },
