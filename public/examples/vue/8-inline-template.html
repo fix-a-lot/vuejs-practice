@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="align-center" id="app">
-      <h1>{{ pageTitle }}</h1>
+      <h1>{{pageTitle}}</h1>
 
       <h4>참고한 문서</h4>
       <ul>
@@ -22,7 +22,7 @@
       <p>스크립트에 마크업을 포함시키지 않고, 별도로 작성한 뒤 아이디로 지정하는 방식</p>
       <pre><code class="language-markup"><!--
         <script type="text/html" id="ref-me">
-          <div>parent: {{ message }}</div>
+          <div>parent: {{message}}</div>
         </script>
       --></code></pre>
       <pre><code class="language-js"><!--
@@ -72,7 +72,7 @@
         <pre><code class="language-markup"><!--
           <div id="vueApp">
             <script type="text/html" id="ref-me">
-              <div>parent: {{ message }}</div>
+              <div>parent: {{message}}</div>
             </script>
           </div>
         --></code></pre>
@@ -87,7 +87,7 @@
     </div>
     <!-- <script type="vue-template" id="ref-me"></script> -->
     <script type="text/html" id="ref-me">
-      <div>parent: {{ message }}</div>
+      <div>parent: {{message}}</div>
     </script>
 
     <script type="module">

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <title>Toast UI Grid</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
     <link rel="stylesheet" href="/lib/prism.css" />
+    <title>Vue.js</title>
     <script defer src="/lib/prism.js"></script>
-    <script src="/lib/tui-grid.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -25,9 +23,34 @@
         </ul>
       </template>
 
-      <div id="grid"></div> 
+      <h2>단순 배열 반복</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <ul>
+          <li v-for="item in simpleArray">{{item}}</li>
+        </ul>
+      </div>
 
-      <h2>소제목1</h2>
+      <p>배열의 인덱스가 필요하면 이렇게 합니다.</p>
+
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <ul>
+          <li v-for="item in simpleArray">{{index}}: {{item}}</li>
+        </ul>
+      </div>
+
+      <h2>소제목2</h2>
       <div>
         <button type="button" @click="null">날 눌러줘요</button>
         <button type="button" @click="null">나도</button>
@@ -41,7 +64,37 @@
       <div class="result">
         <p>{{message}}</p>
       </div>
-
+      
+      <h2>소제목2</h2>
+      <div>
+        <button type="button" @click="null">날 눌러줘요</button>
+        <button type="button" @click="null">나도</button>
+      </div>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <p>{{message}}</p>
+      </div>
+      
+      <h2>소제목2</h2>
+      <div>
+        <button type="button" @click="null">날 눌러줘요</button>
+        <button type="button" @click="null">나도</button>
+      </div>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <p>{{message}}</p>
+      </div>
+      
       <h2>소제목2</h2>
       <div>
         <button type="button" @click="null">날 눌러줘요</button>
@@ -64,7 +117,7 @@
       import { BackToHome } from '/component/BackToHome.js';
       import { TableOfContents } from '/component/TableOfContents.js';
 
-      const pageTitle = "글제목";
+      const pageTitle = "11. 리스트 랜더링";
       
       createApp({
         components: {
@@ -78,49 +131,15 @@
           return {
             docs: [
               { title: "어디어디", url: "어디어디" },
+              { title: "어디어디", url: "어디어디" },
+              { title: "어디어디", url: "어디어디" },
             ],
             pageTitle: pageTitle,
-            message: "Hello Vue! ✌️"
+            message: "Hello Vue! ✌️",
+            simpleArray: ['가', '나', '다', '라']
           };
         },
       }).mount("#app");
-
-      const gridData = [
-        { name: "Beautiful Lies", artist: "Birdy", release: "2016.03.26", type: "Deluxe", genre: "Pop" },
-        { name: "X", artist: "Ed Sheeran", release: "2014.06.24", type: "Deluxe", genre: "Pop", },
-        { name: "Moves Like Jagger", release: "2011.08.08", artist: "Maroon5", type: "Single", genre: "Pop,Rock", },
-        { name: "A Head Full Of Dreams", artist: "Coldplay", release: "2015.12.04", type: "Deluxe", genre: "Rock", },
-        { name: "Nineteen", artist: "Adele", release: "2008.01.27", type: "EP", genre: "Pop,R&B", },
-      ];
-
-      const grid = new tui.Grid({
-        el: document.getElementById("grid"),
-        data: gridData,
-        scrollX: false,
-        scrollY: false,
-        columns: [
-          {
-            header: "Name",
-            name: "name",
-          },
-          {
-            header: "Artist",
-            name: "artist",
-          },
-          {
-            header: "Type",
-            name: "type",
-          },
-          {
-            header: "Release",
-            name: "release",
-          },
-          {
-            header: "Genre",
-            name: "genre",
-          },
-        ],
-      });
     </script>
   </body>
 </html>

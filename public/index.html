@@ -9,50 +9,50 @@
   </head>
   <body>
     <div class="align-center" id="app">
-      <h1>{{ pageTitle }}</h1>
+      <h1>{{pageTitle}}</h1>
       <h2>Vue</h2>
       <h4>공식 도움말</h4>
       <ul>
         <li v-for="item in docs1">
-          <a v-bind:href="item.url" v-bind:target="'_blank'">{{ item.title }}</a>
+          <a v-bind:href="item.url" v-bind:target="'_blank'">{{item.title}}</a>
         </li>
       </ul>
       <h4>작성 예시</h4>
       <ul>
         <li v-for="item in examples1">
-          <a v-bind:href="item.url">{{ item.title }}</a>
+          <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h2>Toast UI Grid</h2>
       <h4>공식 도움말</h4>
       <ul>
         <li v-for="item in docs2">
-          <a v-bind:href="item.url" v-bind:target="'_blank'">{{ item.title }}</a>
+          <a v-bind:href="item.url" v-bind:target="'_blank'">{{item.title}}</a>
         </li>
       </ul>
       <h4>작성 예시</h4>
       <ul>
         <li v-for="item in examples2">
-          <a v-bind:href="item.url">{{ item.title }}</a>
+          <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h2>기타등등</h2>
       <h4>Axois</h4>
       <ul>
         <li v-for="item in examples5">
-          <a v-bind:href="item.url">{{ item.title }}</a>
+          <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h4>JavaScript</h4>
       <ul>
         <li v-for="item in examples3">
-          <a v-bind:href="item.url">{{ item.title }}</a>
+          <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h4>Web APIs</h4>
       <ul>
         <li v-for="item in examples4">
-          <a v-bind:href="item.url">{{ item.title }}</a>
+          <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
     </div>
@@ -83,7 +83,8 @@
               { title: "7. 컴포넌트: 템플릿 리터럴", url: "/examples/vue/7-template-literal.html" },
               { title: "8. 컴포넌트: 인라인 템플릿", url: "/examples/vue/8-inline-template.html" },
               { title: "9. <template>이란 무엇인가", url: "/examples/vue/9-about-template-tag.html" },
-              // { title: "10. Props", url: "/examples/vue/10-props.html"}
+              // { title: "10. Props", url: "/examples/vue/10-props.html"},
+              { title: "11. 리스트 랜더링", url: "/examples/vue/11-list-rendering.html"},
               { title: "99. 팁 모음", url: "/examples/vue/99-vue-tips.html"},
             ],
             docs2: [

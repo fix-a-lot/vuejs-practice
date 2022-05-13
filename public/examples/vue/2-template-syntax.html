@@ -11,14 +11,14 @@
   </head>
   <body>
     <div class="align-center" id="app">
-      <h1>{{ pageTitle }}</h1>
+      <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
 
       <h2>Text Interpolation</h2>
       <p>텍스트를 단순 렌더링하는 표현식. 공식 도움말에선 이 표현식을 '수염'(Mustaches)이라고 부릅니다. 😏</p>
       <pre><code class="language-markup"><!--
         <div id="app">
-          <p>{{ message }}</p>
+          <p>{{message}}</p>
         </div>
       --></code></pre>
       <pre><code class="language-js"><!--
@@ -31,7 +31,7 @@
         }).mount("#app");
       --></code></pre>
       <div class="result">
-        <p>{{ message }}</p>
+        <p>{{message}}</p>
       </div>
 
       <h2>Raw HTML</h2>

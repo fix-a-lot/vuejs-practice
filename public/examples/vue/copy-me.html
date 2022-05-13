@@ -11,19 +11,17 @@
   </head>
   <body>
     <div class="align-center" id="app">
-      <h1>{{ pageTitle }}</h1>
+      <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
 
       <template v-if="docs !== undefined">
         <h4>도움말 페이지</h4>
         <ul>
           <li v-for="item in docs">
-            <a :href="item.url" :target="'_blank'">{{ item.title }}</a>
+            <a :href="item.url" :target="'_blank'">{{item.title}}</a>
           </li>
         </ul>
       </template>
-
-      <div id="grid"></div> 
 
       <h2>소제목1</h2>
       <div>
