@@ -37,7 +37,7 @@
         <p>{{msg}}</p>
       </div>
       <div class="result">
-        <template-literal></template-literal>
+        <literal-template></literal-template>
       </div>
 
       <h2>props vs data</h2>
@@ -71,15 +71,15 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { BackToHome } from '/component/BackToHome.js';
-      import { TemplateLiteral } from '/component/TemplateLiteral.js'
+      import { BackToHome } from '/examples/vue/component/BackToHome.js';
+      import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
       
       const pageTitle = "10. Props";
       
       let vm = createApp({
         components: {
           BackToHome,
-          TemplateLiteral
+          LiteralTemplate
         },
         created() {
           document.title += `: ${pageTitle}`;

@@ -1,4 +1,4 @@
-export const TemplateLiteral = {
+export const LiteralTemplate = {
   template: `
     <p>응애 나 아기 컴포넌트</p>
     <div><button type="button" @click="probe">probe</button></div>
@@ -6,7 +6,7 @@ export const TemplateLiteral = {
   `,
   data() {
     return {
-      message: 'This is template literal message'
+      message: 'This is literal template message'
     }
   },
   methods: {

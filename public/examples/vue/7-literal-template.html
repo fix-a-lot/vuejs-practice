@@ -15,8 +15,8 @@
 
       <p>스크립트 파일에 템플릿 내용을 직접 작성하는 방식</p>
       <pre><code class="language-js"><!--
-        // TemplateLiteral.js
-        export const TemplateLiteral = {
+        // LiteralTemplate.js
+        export const LiteralTemplate = {
           template: `
             <p>응애 나 아기 컴포넌트</p>
             <p>{{message}}</p>
@@ -29,26 +29,26 @@
         };
       --></code></pre>
       <pre class="language-markup"><code><!--
-        <template-literal></template-literal>
+        <literal-template></literal-template>
         <script>
-        import { TemplateLiteral } from '/component/TemplateLiteral.js'
+        import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
 
         createApp({
           components: {
-            TemplateLiteral
+            LiteralTemplate
           }
         }).mount("#app");
         </script>
       --></code></pre>
       <div class="result">
-        <template-literal></template-literal>
+        <literal-template></literal-template>
       </div>
       <div class="description">
         <h4>⚠️주의: 컴포넌트로 교체되어야 할 커스텀 태그는 뷰 앱 안에 정의되어야 함</h4>
         <p>요래요래:</p>
         <pre><code class="language-markup"><!--
           <div id="vueApp">
-            <template-literal></template-literal>
+            <literal-template></literal-template>
           </div>
         --></code></pre>
       </div>
@@ -56,10 +56,10 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue.esm-browser.js';
-      import { BackToHome } from '/component/BackToHome.js';
-      import { TemplateLiteral } from '/component/TemplateLiteral.js'
+      import { BackToHome } from '/examples/vue/component/BackToHome.js';
+      import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
 
-      const pageTitle = "컴포넌트: 템플릿 리터럴";
+      const pageTitle = "컴포넌트: 리터럴(임베드) 템플릿";
       
       createApp({
         created() {
@@ -67,7 +67,7 @@
         },
         components: {
           BackToHome,
-          TemplateLiteral
+          LiteralTemplate
         },
         data() {
           return {
