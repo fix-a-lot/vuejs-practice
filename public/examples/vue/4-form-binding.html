@@ -20,7 +20,7 @@
       <pre><code class="language-markup"><!--
         <div id="app">
           <input v-model="text" placeholder="Type here">
-          <p>{{ text }}</p>
+          <p>{{text}}</p>
         </div>
       --></code></pre>
       <pre><code class="language-js">
@@ -39,7 +39,7 @@
       </code></pre>
       <div class="result">
         <input v-model="text" placeholder="Type here">
-        <p>{{ text }}</p>
+        <p>{{text}}</p>
       </div>
       
       <h3>변수 재할당도 동기화됨</h3>
@@ -48,11 +48,191 @@
         vm.text = 'Hello world!';
       </code></pre>
       
+      <h2>라디오 버튼</h2>
+      <p><code class="language-js"><!--<input type="radio">--></code>에 적용할 땐 <code class="language-js">value</code>는 따로 명시해야 하며, <code class="language-js">name</code>은 생략해도 됩니다.</p>
+      <pre><code class="language-markup"><!--
+        <p>Picked: {{picked}}</p>
+        <input type="radio" id="one" value="One" v-model="picked" /> <label for="one">One</label>
+        <input type="radio" id="two" value="Two" v-model="picked" /> <label for="two">Two</label>
+        <p>already picked: {{alreadyPicked}}</p>
+        <input type="radio" id="three" value="Three" v-model="alreadyPicked" /> <label for="three">Three</label>
+        <input type="radio" id="four" value="Four" v-model="alreadyPicked" /> <label for="four">Four</label>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            picked: null,
+            alreadyPicked: 'Four'
+          }
+        },
+      --></code></pre>
+      <div class="result">
+        <p>Picked: {{picked}}</p>
+        <div>
+          <input type="radio" id="one" value="One" v-model="picked" /> <label for="one">One</label>&nbsp;&nbsp;
+          <input type="radio" id="two" value="Two" v-model="picked" /> <label for="two">Two</label>
+        </div>
+        <p>already picked: {{alreadyPicked}}</p>
+        <div>
+          <input type="radio" id="three" value="Three" v-model="alreadyPicked" /> <label for="three">Three</label>&nbsp;&nbsp;
+          <input type="radio" id="four" value="Four" v-model="alreadyPicked" /> <label for="four">Four</label>
+        </div>
+      </div>
+
+      <h2>체크 박스</h2>
+      <p>체크 박스는 사용법이 두 가지입니다. 체크 박스별 각각의 모델을 할당하는 방법과, 여러 체크 박스를 하나의 모델로 묶는 방법이 있습니다.</p>
+      <p><code class="language-js">value</code>는 따로 명시하지 않으면 <code class="language-js">true</code> 혹은 <code class="language-js">false</code> 입니다.</p>
+
+      <h3>개별 모델 할당</h3>
+      <pre><code class="language-markup"><!--
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            checked: false
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <input type="checkbox" id="checkbox" v-model="checked" />&nbsp;
+        <label for="checkbox">{{ checked }}</label>
+      </div>
+
+      <h3>하나의 모델로 묶기</h3>
+      <pre><code class="language-markup"><!--
+        <p>checkedNames: {{ checkedNames }}</p>
+        <div>
+          <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">&nbsp;
+          <label for="jack">Jack</label>
+        </div>
+        <div>
+          <input type="checkbox" id="john" value="John" v-model="checkedNames">&nbsp;
+          <label for="john">John</label>
+        </div>
+        <div>
+          <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">&nbsp;
+          <label for="mike">Mike</label>
+        </div>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            checkedNames: []
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <p>checkedNames: {{ checkedNames }}</p>
+        <div>
+          <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">&nbsp;
+          <label for="jack">Jack</label>
+        </div>
+        <div>
+          <input type="checkbox" id="john" value="John" v-model="checkedNames">&nbsp;
+          <label for="john">John</label>
+        </div>
+        <div>
+          <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">&nbsp;
+          <label for="mike">Mike</label>
+        </div>
+      </div>
+
+      <h2>셀렉트 박스</h2>
+      <p>셀렉트 박스는 <code class="language-js">multiple</code> 속성을 명시해 다중 선택이 가능하므로 체크 박스처럼 사용방법이 둘로 나뉩니다.</p>
+      
+      <h3>단일 선택</h3>
+      <p><code class="language-js">value</code>는 레이블과 동일하면 생략, 다르면 명시합니다.</p>
+      <pre><code class="language-markup"><!--
+        <p>selected: {{ selected }}</p>
+        <select v-model="selected">
+          <option disabled value="null">Please select one</option>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            selected: null
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <p>selected: {{ selected }}</p>
+        <select v-model="selected">
+          <option disabled value="null">Please select one</option>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+      </div>
+
+      <h3>다중 선택</h3>
+      <pre><code class="language-markup"><!--
+        <p>multipleSelected: {{ multipleSelected }}</p>
+        <select v-model="multipleSelected" multiple>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            multipleSelected: []
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <p>multipleSelected: {{ multipleSelected }}</p>
+        <select v-model="multipleSelected" multiple style="width: 100px;">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+      </div>
+
+      <h3>v-for로 옵션 그리기</h3>
+      <p>옵션을 동적으로 그려야 할 수도 있죠. <code class="language-js">v-for</code>를 써서 반복합니다:</p>
+      <pre><code class="language-markup"><!--
+        <p>selectV4: {{ selectV4.selected }}</p>
+        <select v-model="selectV4.selected" style="width: 100px;">
+          <option v-for="option in selectV4.options" :value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            selectV4: {
+              selected: 'A',
+              options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+              ]
+            }
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <p>selectV4: {{ selectV4.selected }}</p>
+        <select v-model="selectV4.selected" style="width: 100px;">
+          <option v-for="option in selectV4.options" :value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </div>
+
       <h2>프록시는 뭘까</h2>
       <button type="button" @click="fn2">fn2(): 나도 몰라</button>
       <pre><code class="language-markup"><!--
         <div id="app">
-          obj.a: {{ obj.a }}
+          obj.a: {{obj.a}}
         </div>
       --></code></pre>
       <pre><code class="language-js">
@@ -74,8 +254,22 @@
         }).mount("#app");
       </code></pre>
       <div class="result">
-        <p>obj.a: {{ obj.a }}</p>
+        <p>obj.a: {{obj.a}}</p>
       </div>
+
+      <h2>TODO Modifiers: .lazy</h2>
+      <h2>TODO Modifiers: .number</h2>
+      <h2>TODO Modifiers: .trim</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <p>{{message}}</p>
+      </div>
+
       <back-to-home></back-to-home>
     </div>
     <script type="module">
@@ -100,6 +294,20 @@
             obj: {
               a: 1,
               b: 2
+            },
+            picked: null,
+            alreadyPicked: 'Four',
+            checked: false,
+            checkedNames: [],
+            selected: null,
+            multipleSelected: [],
+            selectV4: {
+              selected: 'A',
+              options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+              ]
             }
           }
         },
