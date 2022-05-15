@@ -2,6 +2,11 @@
 
 Vuejs 샘플 코드 저장소 겸 실험실
 
+#### environments
+
+- Vue 3
+- Node.js
+
 ## 서버 실행
 
 Node.js [express](https://expressjs.com) 패키지 사용함.
