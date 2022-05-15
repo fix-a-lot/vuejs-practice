@@ -90,21 +90,38 @@
       </div>
 
       <h3>불리언 속성</h3>
-      <p>이 속성은 약간 특이한게 바인딩만 하는게 아니라 데이터가 false인 경우 속성 자체가 사라집니다.</p>
-      <p>false로 평가되는 값은 null-string과 blank이며 다른 것들, 가령 null, undefined, 0은 true로 간주합니다.</p>
+      <p><code class="language-js">checked</code>, <code class="language-js">disabled</code>같은 불리언 속성들은 단순 바인딩이 아니라 데이터가 false인 경우 선언하지 않은 것처럼 됩니다.</p>
+      <p><code class="language-js">false</code>인지 아닌지는 <code class="language-js">Boolean()</code> 함수에 인자로 넣어보세요.</p>
       <pre><code class="language-markup"><!--
-        <button :disabled="true">이건 disable</button>
-        <button :disabled="' '">이것도 disable</button>
-        <button :disabled="0">이건 enable</button>
-        <button :disabled="null">얘는 왜 또 enable</button>
+        <button :disabled="true">true -> disabled</button>
+        <button :disabled="'str'">'str' -> disabled</button>
+        <button :disabled="1">1 -> disabled</button>
+        <button :disabled="' '">' ' -> disabled</button><br>
+        <button :disabled="false">false -> 라서 enabled</button>
+        <button :disabled="0">0 -> 라서 enabled</button>
+        <button :disabled="null">null -> 라서 enabled</button>
+        <button :disabled="undefined">undefined -> 라서 enabled</button>
+        <button :disabled="NaN">NaN -> 라서 enabled</button>
       --></code></pre>
       <div class="result">
-        <button :disabled="true">이건 disable</button>
-        <button :disabled="' '">이것도 disable</button>
-        <button :disabled="0">이건 enable</button>
-        <button :disabled="null">얘는 왜 또 enable</button>
+        <button :disabled="true">true -> disabled</button>
+        <button :disabled="'str'">'str' -> disabled</button>
+        <button :disabled="1">1 -> disabled</button>
+        <button :disabled="' '">' ' -> disabled</button><br>
+        <button :disabled="false">false -> enabled</button>
+        <button :disabled="0">0 -> enabled</button>
+        <button :disabled="null">null -> enabled</button>
+        <button :disabled="undefined">undefined -> enabled</button>
+        <button :disabled="NaN">NaN -> enabled</button>
       </div>
-      <p>도움말에는 없지만 아마 checked나 selected 같은 속성들도 disabled처럼 작동할 것 같네요.</p>
+      <p class="bold">특이한 점이 있는데 null-string(<code class="language-js">''</code>)은 분명 <code class="language-js">false</code>로 평가되는 값이지만 Vue 표현식에선 <code class="language-js">true</code>로 간주한다는 것:</p>
+      <pre><code class="language-markup"><!--
+        <button :disabled="''">''는 false 인데 외 disabled?</button><br>
+      --></code></pre>
+      <div class="result">
+        <button :disabled="''">''는 false 인데 외 disabled?</button><br>
+      </div>
+      <p>따라서 어떤 state를 부정한 값으로 초기화하고 싶을 땐 <code class="language-js">''</code>가 아니라 <code class="language-js">undefined</code> 혹은 <code class="language-js">null</code>로 해야 합니다.</p>
 
       <h3>여러 속성을 한 번에 바인딩</h3>
       <p>속성 여러개 적는게 귀찮을 때 쓰는 방법</p>
