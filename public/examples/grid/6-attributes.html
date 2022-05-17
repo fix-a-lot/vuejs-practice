@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
-    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
-    <script defer src="/lib/prism.js"></script>
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui/tui-grid.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
+    <script defer src="/lib/prism/prism.js"></script>
     <style type="text/css">
       .red.tui-grid-cell {
         background-color: #f8e0e0;
@@ -18,7 +18,7 @@
         background-color: #cef6f5;
       }
     </style>
-    <script src="/lib/tui-grid.js"></script>
+    <script src="/lib/tui/tui-grid.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -29,7 +29,7 @@
       <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       
       const pageTitle = "6. Attributes";

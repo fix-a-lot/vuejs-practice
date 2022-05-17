@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
-    <script src="/lib/tui-grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="/lib/tui/tui-grid.css" />
+    <script src="/lib/tui/tui-grid.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -15,7 +15,7 @@
       <div id="grid"></div>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       const pageTitle = "Scratch Pad";
       createApp({
         created() {

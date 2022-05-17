@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/lib/tui-pagination.css" />
-    <link rel="stylesheet" type="text/css" href="/lib/tui-grid.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
-    <script defer src="/lib/prism.js"></script>
-    <script src="/lib/tui-pagination.js"></script>
-    <script src="/lib/tui-grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="/lib/tui/tui-pagination.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui/tui-grid.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
+    <script defer src="/lib/prism/prism.js"></script>
+    <script src="/lib/tui/tui-pagination.js"></script>
+    <script src="/lib/tui/tui-grid.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -48,9 +48,7 @@
       <div class="description">
         <p>⚠️ 데이터소스 API를 설정한 후에는 <code class="language-js">grid.resetData()</code>를 사용할 수 없습니다. 대신 <code class="language-js">grid.readData(1)</code>를 호출하세요</p>
       </div>
-      <div>
-        <button type="button" @click="readData">조회버튼</button>
-      </div>
+      <div><button type="button" @click="readData">조회버튼</button></div>
       <div id="grid"></div>
       <div class="description">
         <p>🤔 totalCount를 분명 100으로 했는데 왜 1페이지만 나오는지는 몲.</p>
@@ -58,7 +56,7 @@
       <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
 
       const pageTitle = "10. DataSource";

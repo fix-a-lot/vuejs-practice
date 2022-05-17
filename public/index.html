@@ -55,9 +55,15 @@
           <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
+      <h4>Thirdpaty Libraries</h4>
+      <ul>
+        <li v-for="item in thirdparties">
+          <a v-bind:href="item.url">{{item.title}}</a>
+        </li>
+      </ul>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       const pageTitle = "Index";
       createApp({
         created() {
@@ -126,18 +132,21 @@
               // { title: "28. Drag and Drop", url: "/examples/grid/28-drag-and-drop.html" },
               // { title: "29. Dynamic rowSpan", url: "/examples/grid/29-dynamic-rowspan.html" },
             ],
-            examples3: [
-              { title: "Modules", url: "/examples/javascript/module/module-test.html" }
-            ],
-            examples4: [
-              { title: "TODO", url: "" }
-            ],
             examples5: [
               { title: "기본 사용법", url: "/examples/axios/axios-basic.html" },
               { title: "헤더 추가하기", url: "/examples/axios/add-headers.html" },
               { title: "Config 기본값 설정하기", url: "/examples/axios/global-config.html" },
               { title: "인터셉터", url: "/examples/axios/interceptors.html" },
             ],
+            examples3: [
+              { title: "Modules", url: "/examples/javascript/module/module-test.html" }
+            ],
+            examples4: [
+              { title: "TODO", url: "" }
+            ],
+            thirdparties: [
+              { title: "Tom Select", url: "/examples/thirdparty/tom-select.html" }
+            ]
           };
         },
       }).mount("#app");

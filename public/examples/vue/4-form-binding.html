@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
     <title>Vue.js</title>
-    <script defer src="/lib/prism.js"></script>
+    <script defer src="/lib/prism/prism.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -19,7 +19,8 @@
       <p>아래 입력란의 값을 바꿔보세요.</p>
       <pre><code class="language-markup"><!--
         <div id="app">
-          <input v-model="text" placeholder="Type here">
+          <div><button type="button" @click="fn1">fn1(): 누르면 헬로월드</button></div>
+          <p><input v-model="text" placeholder="Type here"></p>
           <p>{{text}}</p>
         </div>
       --></code></pre>
@@ -38,15 +39,10 @@
         }).mount("#app");
       </code></pre>
       <div class="result">
-        <input v-model="text" placeholder="Type here">
+        <div><button type="button" @click="fn1">fn1(): 누르면 헬로월드</button></div>
+        <p><input v-model="text" placeholder="Type here"></p>
         <p>{{text}}</p>
       </div>
-      
-      <h3>변수 재할당도 동기화됨</h3>
-      <button type="button" @click="fn1">fn1(): 누르면 헬로월드</button>
-      <pre><code class="language-js">
-        vm.text = 'Hello world!';
-      </code></pre>
       
       <h2>라디오 버튼</h2>
       <p><code class="language-js"><!--<input type="radio">--></code>에 적용할 땐 <code class="language-js">value</code>는 따로 명시해야 하며, <code class="language-js">name</code>은 생략해도 됩니다.</p>
@@ -164,9 +160,12 @@
         <p>selected: {{ selected }}</p>
         <select v-model="selected">
           <option disabled value="null">Please select one</option>
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
+          <option>A조직</option>
+          <option>B조직</option>
+          <option>C조직</option>
+          <option>이상한팀</option>
+          <option>만년뽀로로팀</option>
+          <option>월급루팡팀</option>
         </select>
       </div>
 
@@ -229,9 +228,9 @@
       </div>
 
       <h2>프록시는 뭘까</h2>
-      <button type="button" @click="fn2">fn2(): 나도 몰라</button>
       <pre><code class="language-markup"><!--
         <div id="app">
+          <div><button type="button" @click="fn2">fn2(): 나도 몰라</button></div>
           obj.a: {{obj.a}}
         </div>
       --></code></pre>
@@ -254,6 +253,7 @@
         }).mount("#app");
       </code></pre>
       <div class="result">
+        <div><button type="button" @click="fn2">fn2(): 나도 몰라</button></div>
         <p>obj.a: {{obj.a}}</p>
       </div>
 
@@ -267,13 +267,13 @@
         코드
       --></code></pre>
       <div class="result">
-        <p>{{message}}</p>
+        <!-- <p>{{message}}</p> -->
       </div>
 
       <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
       

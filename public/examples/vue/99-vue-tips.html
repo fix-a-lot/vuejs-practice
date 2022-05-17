@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
     <title>Vue.js</title>
-    <script defer src="/lib/prism.js"></script>
+    <script defer src="/lib/prism/prism.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -64,15 +64,15 @@
         }
       --></code></pre>
       <p>잘 되는지 보죠.</p>
-      <div>
-        <button type="button" @click="changeState">날 먼저 눌러요</button>
-        <button type="button" @click="resetState">초기화</button>
-      </div>
       <pre><code class="language-markup"><!--
         <p>{{prop1}}</p>
         <p>{{prop2}}</p>
       --></code></pre>
       <div class="result">
+        <div>
+          <button type="button" @click="changeState">날 먼저 눌러요</button>
+          <button type="button" @click="resetState">초기화</button>
+        </div>
         <p>{{prop1}}</p>
         <p>{{prop2}}</p>
       </div>
@@ -92,12 +92,11 @@
         <p>{{message}}</p>
       </div>
 
-      <div class="button-wrapper">
-        <a class="button" href="http://localhost:9999">⬅ 홈으로 돌아가기</a>
-      </div>
+      <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
+      import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
       const pageTitle = "99. 팁 모음";
       
@@ -117,7 +116,8 @@
 
       window.vm = createApp({
         components: {
-          TableOfContents,
+          BackToHome,
+          TableOfContents
         },
         created() {
           document.title += `: ${pageTitle}`;

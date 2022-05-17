@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
     <title>Axios</title>
-    <script defer src="/lib/prism.js"></script>
+    <script defer src="/lib/prism/prism.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -22,7 +22,6 @@
 
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
       <h2>Axios 전역 기본값</h2>
-      <button type="button" @click="fn1">1번: 눌러요</button>
       <pre><code class="language-js"><!--
         axios.defaults.baseURL = '/return-headers.data'; // URL을 생략했을 때 적용할 주소
         axios.defaults.headers.common['Authorization'] = "Hello! I'm a token"; // 모든 AJAX 전역 설정
@@ -36,6 +35,7 @@
         document.querySelector('#result2').innerText = JSON.stringify(response2.data);
       --></code></pre>
       <div class="result">
+        <div><button type="button" @click="fn1">1번: 눌러요</button></div>
         <h4>result1:</h4>
         <p id="result1"></p>
         <h4>result2:</h4>
@@ -43,7 +43,6 @@
       </div>
 
       <h2>인스턴스별 기본값</h2>
-      <button type="button" @click="fn2">2번: 눌러봐요</button>
       <pre><code class="language-js"><!--
         // 인스턴스를 생성할때 config 기본값 설정하기
         const instance = axios.create({
@@ -60,6 +59,7 @@
         document.querySelector("#result3").innerText = JSON.stringify(response.data);
       --></code></pre>
       <div class="result">
+        <div><button type="button" @click="fn2">2번: 눌러봐요</button></div>
         <h4>result3:</h4>
         <p id="result3"></p>
       </div>
@@ -67,7 +67,7 @@
       <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
 

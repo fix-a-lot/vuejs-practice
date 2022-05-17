@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/lib/prism.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
     <title>Vue.js</title>
-    <script defer src="/lib/prism.js"></script>
+    <script defer src="/lib/prism/prism.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -24,10 +24,6 @@
       </template>
 
       <h2>소제목1</h2>
-      <div>
-        <button type="button" @click="null">날 눌러줘요</button>
-        <button type="button" @click="null">나도</button>
-      </div>
       <pre><code class="language-markup"><!--
         <마크업/>
       --></code></pre>
@@ -35,14 +31,14 @@
         코드
       --></code></pre>
       <div class="result">
+        <div>
+          <button type="button" @click="null">날 눌러줘요</button>
+          <button type="button" @click="null">나도</button>
+        </div>
         <p>{{message}}</p>
       </div>
 
       <h2>소제목2</h2>
-      <div>
-        <button type="button" @click="null">날 눌러줘요</button>
-        <button type="button" @click="null">나도</button>
-      </div>
       <pre><code class="language-markup"><!--
         <마크업/>
       --></code></pre>
@@ -50,13 +46,17 @@
         코드
       --></code></pre>
       <div class="result">
+        <div>
+          <button type="button" @click="null">날 눌러줘요</button>
+          <button type="button" @click="null">나도</button>
+        </div>
         <p>{{message}}</p>
       </div>
 
       <back-to-home></back-to-home>
     </div>
     <script type="module">
-      import { createApp } from '/lib/vue.esm-browser.js';
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
 
