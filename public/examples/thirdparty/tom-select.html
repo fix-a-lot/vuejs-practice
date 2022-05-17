@@ -188,11 +188,35 @@
       </div>
 
       <h2>컴포넌트: 상위조직 다중 선택</h2>
+      <pre><code class="language-markup"><!--
+        <single-upper-org-picker></single-upper-org-picker>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        import { MultiPlacePicker } from '/examples/vue/component/MultiPlacePicker.js';
+      
+        createApp({
+          components: {
+            MultiPlacePicker
+          }
+        });
+      --></code></pre>
       <div class="result">
         <single-upper-org-picker></single-upper-org-picker>
       </div>
 
       <h2>컴포넌트: 체크인장소 단일 선택</h2>
+      <pre><code class="language-markup"><!--
+        <multi-place-picker></multi-place-picker>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        import { SingleUpperOrgPicker } from '/examples/vue/component/SingleUpperOrgPicker.js';
+
+        createApp({
+          components: {
+            SingleUpperOrgPicker
+          }
+        });
+      --></code></pre>
       <div class="result">
         <multi-place-picker></multi-place-picker>
       </div>

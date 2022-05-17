@@ -15,6 +15,7 @@ export const MultiPlacePicker = {
       plugins: ['checkbox_options'],
       maxItems: 99,
       hideSelected: false,
+      hidePlaceholder: true
     });
   }
 };
