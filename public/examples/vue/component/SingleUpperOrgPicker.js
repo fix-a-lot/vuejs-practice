@@ -10,14 +10,19 @@ export const SingleUpperOrgPicker = {
       <option data-depth="1" value="B6789">B-2 조직</option>
     </select>
   `,
+  data() {
+    return {
+      selected: null,
+    };
+  },
   mounted() {
+    let $this = this;
     new TomSelect('#singleUpperOrgPicker', {
       closeAfterSelect: true,
       maxItems: 1,
       hideSelected: false,
       render: {
         option: function(data, escape) {
-          console.log(data.depth);
           let blanks = '';
           for (let i = 0; i < data.depth; i++) {
             blanks += '&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -27,7 +32,10 @@ export const SingleUpperOrgPicker = {
               '<span class="url">' + escape(data.text) + '</span>' +
             '</div>';
         }
+      },
+      onChange(values) {
+        $this.selected = values;
       }
-    });
+    })
   }
 };

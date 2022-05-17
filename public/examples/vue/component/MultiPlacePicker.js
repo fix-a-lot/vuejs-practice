@@ -10,12 +10,21 @@ export const MultiPlacePicker = {
       <option value="B6789">너네집</option>
     </select>
   `,
+  data() {
+    return {
+      selected: [],
+    };
+  },
   mounted() {
+    let $this = this;
     new TomSelect('#multiPlacePicker', {
       plugins: ['checkbox_options'],
       maxItems: 99,
       hideSelected: false,
-      hidePlaceholder: true
+      hidePlaceholder: true,
+      onChange(values) {
+        $this.selected = values;
+      }
     });
   }
 };

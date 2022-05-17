@@ -189,7 +189,9 @@
 
       <h2>컴포넌트: 상위조직 다중 선택</h2>
       <pre><code class="language-markup"><!--
-        <single-upper-org-picker></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker"></single-upper-org-picker>
+        <button type="button" @click="getOrg">선택한 값 받아오기</button>
+        <p id="org-pick-result"></p>
       --></code></pre>
       <pre><code class="language-js"><!--
         import { MultiPlacePicker } from '/examples/vue/component/MultiPlacePicker.js';
@@ -197,16 +199,28 @@
         createApp({
           components: {
             MultiPlacePicker
+          },
+          methods: {
+            getOrg() {
+              document.querySelector('#org-pick-result').innerText = this.$refs.orgPicker.selected;
+            }
           }
         });
       --></code></pre>
       <div class="result">
-        <single-upper-org-picker></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker"></single-upper-org-picker>
+        <h4>org-pick-result</h4>
+        <div>
+          <button type="button" @click="getOrg">선택한 값 받아오기</button>
+        </div>
+        <p id="org-pick-result"></p>
       </div>
 
       <h2>컴포넌트: 체크인장소 단일 선택</h2>
       <pre><code class="language-markup"><!--
-        <multi-place-picker></multi-place-picker>
+        <multi-place-picker ref="placePicker"></multi-place-picker>
+        <button type="button" @click="getPlaces">선택한 값 받아오기</button>
+        <p id="place-pick-result"></p>
       --></code></pre>
       <pre><code class="language-js"><!--
         import { SingleUpperOrgPicker } from '/examples/vue/component/SingleUpperOrgPicker.js';
@@ -214,11 +228,21 @@
         createApp({
           components: {
             SingleUpperOrgPicker
+          },
+          methods: {
+            getPlaces() {
+              document.querySelector('#place-pick-result').innerText = this.$refs.placePicker.selected;
+            }
           }
         });
       --></code></pre>
       <div class="result">
-        <multi-place-picker></multi-place-picker>
+        <multi-place-picker ref="placePicker"></multi-place-picker>
+        <h4>place-pick-result</h4>
+        <div>
+          <button type="button" @click="getPlaces">선택한 값 받아오기</button>
+        </div>
+        <p id="place-pick-result"></p>
       </div>
 
       <p>&nbsp;</p>
@@ -379,6 +403,12 @@
           },
           openCustomTommy() {
             this.customTommy.open();
+          },
+          getOrg() {
+            document.querySelector('#org-pick-result').innerText = this.$refs.orgPicker.selected;
+          },
+          getPlaces() {
+            document.querySelector('#place-pick-result').innerText = this.$refs.placePicker.selected;
           }
         }
       }).mount("#app");
