@@ -168,26 +168,7 @@
         <p id="result1"></p>
       </div>
 
-      <h2>다중 선택 커스텀</h2>
-      <div class="result">
-        <input id="dummy" placeholder="날눌러도열림" @click="openCustomTommy" />
-        <select id="tom-select-multi-custom" placeholder="상위조직 없음">
-          <option value="">상위조직 없음</option>
-          <option value="A1234">A 조직</option>
-          <option value="A2345">　A-1 조직</option>
-          <option value="A3456">　　A-1-Z 조직</option>
-          <option value="B4567">B 조직</option>
-          <option value="B5678">　B-1 조직</option>
-          <option value="B6789">　B-2 조직</option>
-        </select>
-      </div>
-
-      <h2>연습장</h2>
-      <div class="result">
-        <input id="tom-select-scratchpad" />
-      </div>
-
-      <h2>컴포넌트: 상위조직 다중 선택</h2>
+      <h2>컴포넌트: 상위조직 단일 선택</h2>
       <pre><code class="language-markup"><!--
         <single-upper-org-picker ref="orgPicker"></single-upper-org-picker>
         <button type="button" @click="getOrg">선택한 값 받아오기</button>
@@ -216,7 +197,7 @@
         <p id="org-pick-result"></p>
       </div>
 
-      <h2>컴포넌트: 체크인장소 단일 선택</h2>
+      <h2>컴포넌트: 체크인장소 다중 선택</h2>
       <pre><code class="language-markup"><!--
         <multi-place-picker ref="placePicker"></multi-place-picker>
         <button type="button" @click="getPlaces">선택한 값 받아오기</button>
@@ -243,6 +224,25 @@
           <button type="button" @click="getPlaces">선택한 값 받아오기</button>
         </div>
         <p id="place-pick-result"></p>
+      </div>
+
+      <h2>연습장#1</h2>
+      <div class="result">
+        <input id="dummy" placeholder="날눌러도열림" @click="openCustomTommy" />
+        <select id="tom-select-multi-custom" placeholder="상위조직 없음">
+          <option value="">상위조직 없음</option>
+          <option value="A1234">A 조직</option>
+          <option value="A2345">　A-1 조직</option>
+          <option value="A3456">　　A-1-Z 조직</option>
+          <option value="B4567">B 조직</option>
+          <option value="B5678">　B-1 조직</option>
+          <option value="B6789">　B-2 조직</option>
+        </select>
+      </div>
+
+      <h2>연습장#2</h2>
+      <div class="result">
+        <input id="tom-select-scratchpad" />
       </div>
 
       <p>&nbsp;</p>
