@@ -3,9 +3,9 @@ export const MultiPlacePicker = {
     <select id="multiPlacePicker" placeholder="체크인장소 선택" multiple>
       <option value="">체크인장소 선택</option>
       <option value="A1234">전체</option>
-      <option :selected="savedData.includes('A2345')" value="A2345">전략기획본부실</option>
+      <option value="A2345">전략기획본부실</option>
       <option value="A3456">영업본부실</option>
-      <option :selected="savedData.includes('B4567')" value="B4567">국내영업팀</option>
+      <option value="B4567">국내영업팀</option>
       <option value="B5678">우리집</option>
       <option value="B6789">너네집</option>
     </select>
@@ -16,8 +16,8 @@ export const MultiPlacePicker = {
     };
   },
   props: {
-    savedData: {
-      type: Array(String),
+    pickThese: {
+      type: Array,
       default: [],
       required: false
     }
@@ -31,6 +31,10 @@ export const MultiPlacePicker = {
       hidePlaceholder: true,
       onChange(values) {
         $this.selected = values;
+      },
+      onInitialize() {
+        console.log('$this.pickThis:', $this.pickThis);
+        this.setValue($this.pickThis);
       }
     });
   }

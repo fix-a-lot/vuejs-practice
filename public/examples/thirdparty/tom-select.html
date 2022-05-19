@@ -170,7 +170,7 @@
 
       <h2>컴포넌트: 상위조직 단일 선택</h2>
       <pre><code class="language-markup"><!--
-        <single-upper-org-picker ref="orgPicker" saved-data="A2345"></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker" :pick-this="'A3456'"></single-upper-org-picker>
         <button type="button" @click="getOrg">선택한 값 받아오기</button>
         <p id="org-pick-result"></p>
       --></code></pre>
@@ -189,7 +189,7 @@
         });
       --></code></pre>
       <div class="result">
-        <single-upper-org-picker ref="orgPicker" saved-data="A2345"></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker" :pick-this="'A3456'"></single-upper-org-picker>
         <h4>org-pick-result</h4>
         <div>
           <button type="button" @click="getOrg">선택한 값 받아오기</button>
@@ -199,7 +199,7 @@
 
       <h2>컴포넌트: 체크인장소 다중 선택</h2>
       <pre><code class="language-markup"><!--
-        <multi-place-picker ref="placePicker" saved-data="[A2345, B4567]"></multi-place-picker>
+        <multi-place-picker ref="placePicker" :pick-these="['A1234', 'B5678', 'B6789']"></multi-place-picker>
         <button type="button" @click="getPlaces">선택한 값 받아오기</button>
         <p id="place-pick-result"></p>
       --></code></pre>
@@ -218,7 +218,7 @@
         });
       --></code></pre>
       <div class="result">
-        <multi-place-picker ref="placePicker" saved-data="[A2345, B4567]"></multi-place-picker>
+        <multi-place-picker ref="placePicker" :pick-these="['A1234', 'B5678', 'B6789']"></multi-place-picker>
         <h4>place-pick-result</h4>
         <div>
           <button type="button" @click="getPlaces">선택한 값 받아오기</button>
@@ -242,7 +242,7 @@
 
       <h2>연습장#2</h2>
       <div class="result">
-        <input id="tom-select-scratchpad" />
+        <input id="tom-select-scratchpad" value="A1,B4" />
       </div>
 
       <p>&nbsp;</p>
@@ -319,26 +319,25 @@
           window.ct2 = this.customTommy2 = new TomSelect('#tom-select-scratchpad', {
             plugins: ['checkbox_options'],
             // options: [
-            //   { value: "A1234", text: "A 조직" },
-            //   { value: "A2345", text: "　A-1 조직" },
-            //   { value: "A3456", text: "　　A-1-Z 조직" },
-            //   { value: "B4567", text: "B 조직" },
-            //   { value: "B5678", text: "　B-1 조직" },
-            //   { value: "B6789", text: "　B-2 조직" }
+            //   { value: "A1", text: "A 조직" },
+            //   { value: "A2", text: "　A-1 조직" },
+            //   { value: "A3", text: "　　A-1-Z 조직" },
+            //   { value: "B4", text: "B 조직" },
+            //   { value: "B5", text: "　B-1 조직" },
+            //   { value: "B6", text: "　B-2 조직" }
             // ],
             options: [
-              { value: "A1234", depth: 0, text: "A 조직" },
-              { value: "A2345", depth: 1, text: "A-1 조직" },
-              { value: "A3456", depth: 2, text: "A-1-Z 조직" },
-              { value: "B4567", depth: 0, text: "B 조직" },
-              { value: "B5678", depth: 1, text: "B-1 조직" },
-              { value: "B6789", depth: 1, text: "B-2 조직" }
+              { value: "A1", depth: 0, text: "A 조직" },
+              { value: "A2", depth: 1, text: "A-1 조직" },
+              { value: "A3", depth: 2, text: "A-1-Z 조직" },
+              { value: "B4", depth: 0, text: "B 조직" },
+              { value: "B5", depth: 1, text: "B-1 조직" },
+              { value: "B6", depth: 1, text: "B-2 조직" }
             ],
             maxItems: 99,
             hideSelected: false,
             render: {
               option: function(data, escape) {
-                console.log(data.depth);
                 let blanks = '';
                 for (let i = 0; i < data.depth; i++) {
                   blanks += '&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -352,7 +351,10 @@
               // item: function(data, escape) {
               //   return '<div title="' + escape(data.value) + '">' + escape(data.text) + '</div>';
               // }
-            }
+            },
+            onInitialize() {
+              this.setValue(['A3', 'B6']);
+            },
           });
 
           let config = {

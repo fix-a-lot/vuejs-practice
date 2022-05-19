@@ -42,12 +42,12 @@
 
       <p>이렇게 쓰는 것임</p>
       <pre><code class="language-markup"><!--
-        <single-upper-org-picker ref="orgPicker" saved-data="A2345"></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker" :pick-this="'A3456'"></single-upper-org-picker>
       --></code></pre>
       <pre><code class="language-js"><!--
         createApp({
           props: {
-            org: {
+            pickThis: {
               type: String,
               default: null,
               required: false
@@ -56,12 +56,12 @@
         }).mount('#app');
       --></code></pre>
       <pre><code class="language-markup"><!--
-        <multi-place-picker ref="placePicker" saved-data="[A2345, B4567]"></multi-place-picker>
+        <multi-place-picker ref="placePicker" :pick-these="['A1234', 'B5678', 'B6789']"></multi-place-picker>
       --></code></pre>
       <pre><code class="language-js"><!--
         createApp({
           props: {
-            places: {
+            pickthese: {
               type: Array(String),
               default: [],
               required: false
