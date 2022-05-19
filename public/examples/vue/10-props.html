@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/lib/prism/prism.css" />
     <title>Vue.js</title>
-    <script defer src="/lib/prism/prism.js"></script>
+    <script src="/lib/prism/prism.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -39,6 +39,36 @@
       <div class="result">
         <literal-template></literal-template>
       </div>
+
+      <p>이렇게 쓰는 것임</p>
+      <pre><code class="language-markup"><!--
+        <single-upper-org-picker ref="orgPicker" saved-data="A2345"></single-upper-org-picker>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        createApp({
+          props: {
+            org: {
+              type: String,
+              default: null,
+              required: false
+            }
+          },
+        }).mount('#app');
+      --></code></pre>
+      <pre><code class="language-markup"><!--
+        <multi-place-picker ref="placePicker" saved-data="[A2345, B4567]"></multi-place-picker>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        createApp({
+          props: {
+            places: {
+              type: Array(String),
+              default: [],
+              required: false
+            }
+          },
+        }).mount('#app');
+      --></code></pre>
 
       <h2>props vs data</h2>
       <p>data로 선언한 프로퍼티들은 (마치 리엑트의 state처럼) 자동으로 랜더링된다는 것은 이제 아시쥬?</p>

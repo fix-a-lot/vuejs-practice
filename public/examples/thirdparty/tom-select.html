@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="/lib/prism/prism.css" />
     <link rel="stylesheet" href="/lib/tom-select/tom-select.css" />
     <title>Vue.js</title>
-    <script defer src="/lib/prism/prism.js"></script>
-    <script defer src="/lib/tom-select/tom-select.complete.js"></script>
+    <script src="/lib/prism/prism.js"></script>
+    <script src="/lib/tom-select/tom-select.complete.js"></script>
   </head>
   <body>
     <div class="align-center" id="app">
@@ -170,7 +170,7 @@
 
       <h2>컴포넌트: 상위조직 단일 선택</h2>
       <pre><code class="language-markup"><!--
-        <single-upper-org-picker ref="orgPicker"></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker" saved-data="A2345"></single-upper-org-picker>
         <button type="button" @click="getOrg">선택한 값 받아오기</button>
         <p id="org-pick-result"></p>
       --></code></pre>
@@ -189,7 +189,7 @@
         });
       --></code></pre>
       <div class="result">
-        <single-upper-org-picker ref="orgPicker"></single-upper-org-picker>
+        <single-upper-org-picker ref="orgPicker" saved-data="A2345"></single-upper-org-picker>
         <h4>org-pick-result</h4>
         <div>
           <button type="button" @click="getOrg">선택한 값 받아오기</button>
@@ -199,7 +199,7 @@
 
       <h2>컴포넌트: 체크인장소 다중 선택</h2>
       <pre><code class="language-markup"><!--
-        <multi-place-picker ref="placePicker"></multi-place-picker>
+        <multi-place-picker ref="placePicker" saved-data="[A2345, B4567]"></multi-place-picker>
         <button type="button" @click="getPlaces">선택한 값 받아오기</button>
         <p id="place-pick-result"></p>
       --></code></pre>
@@ -218,7 +218,7 @@
         });
       --></code></pre>
       <div class="result">
-        <multi-place-picker ref="placePicker"></multi-place-picker>
+        <multi-place-picker ref="placePicker" saved-data="[A2345, B4567]"></multi-place-picker>
         <h4>place-pick-result</h4>
         <div>
           <button type="button" @click="getPlaces">선택한 값 받아오기</button>

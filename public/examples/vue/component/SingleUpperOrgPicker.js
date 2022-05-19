@@ -3,7 +3,7 @@ export const SingleUpperOrgPicker = {
     <select id="singleUpperOrgPicker" placeholder="상위조직 없음">
       <option value="">상위조직 없음</option>
       <option data-depth="0" value="A1234">A 조직</option>
-      <option data-depth="1" value="A2345">A-1 조직</option>
+      <option :selected="savedData === 'A2345'" data-depth="1" value="A2345">A-1 조직</option>
       <option data-depth="2" value="A3456">A-1-Z 조직</option>
       <option data-depth="0" value="B4567">B 조직</option>
       <option data-depth="1" value="B5678">B-1 조직</option>
@@ -14,6 +14,13 @@ export const SingleUpperOrgPicker = {
     return {
       selected: null,
     };
+  },
+  props: {
+    savedData: {
+      type: String,
+      default: null,
+      required: false
+    }
   },
   mounted() {
     let $this = this;
@@ -36,6 +43,6 @@ export const SingleUpperOrgPicker = {
       onChange(values) {
         $this.selected = values;
       }
-    })
+    });
   }
 };
