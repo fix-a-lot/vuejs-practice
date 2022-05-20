@@ -30,6 +30,7 @@ export const MultiPlacePicker = {
       hideSelected: false,
       hidePlaceholder: true,
       onChange(values) {
+        console.log('values:', values);
         $this.selected = values;
       },
       onInitialize() {

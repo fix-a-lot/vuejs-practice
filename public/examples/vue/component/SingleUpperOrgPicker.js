@@ -40,8 +40,9 @@ export const SingleUpperOrgPicker = {
             '</div>';
         }
       },
-      onChange(values) {
-        $this.selected = values;
+      onChange(value) {
+        console.log('value:', value);
+        $this.selected = value;
       },
       onInitialize() {
         console.log('$this.pickThis:', $this.pickThis);
