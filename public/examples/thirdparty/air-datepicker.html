@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
+    <title>Vue.js</title>
+    <script src="/lib/air-datepicker/air-datepicker.js"></script>
+    <script src="/lib/air-datepicker/locale-kr.js"></script>
+    <script src="/lib/prism/prism.js"></script>
+  </head>
+  <body>
+    <div class="align-center" id="app">
+      <h1>{{pageTitle}}</h1>
+      <table-of-contents></table-of-contents>
+
+      <template v-if="docs !== undefined">
+        <h4>도움말 페이지</h4>
+        <ul>
+          <li v-for="item in docs">
+            <a :href="item.url" :target="'_blank'">{{item.title}}</a>
+          </li>
+        </ul>
+      </template>
+
+      <h2>기본</h2>
+      <pre><code class="language-markup"><!--
+        <input type="text" id="dp1" placeholder="날 눌러봐유"/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        mounted() {
+          new AirDatepicker('#dp1', {
+            locale: localeKr
+          });
+        }
+      --></code></pre>
+      <div class="result">
+        <div>
+          <button type="button" @click="focusDp1">focus() 테스트</button>
+        </div>
+        <input type="text" id="dp1" ref="dp1" placeholder="날 눌러봐유"/>
+      </div>
+
+      <h2>모바일 기기 모드(모달 레이어 팝업)</h2>
+      <pre><code class="language-markup"><!--
+        <input type="text" id="dp2" placeholder="날 눌러봐유"/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        new AirDatepicker('#dp2', {
+          locale: localeKr,
+          isMobile: true,
+          autoClose: true
+        });
+      --></code></pre>
+      <div class="result">
+        <input type="text" id="dp2" placeholder="날 눌러봐유"/>
+      </div>
+      
+      <h2>공사중</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <input type="text" id="dp3" placeholder="날 눌러봐유"/>
+      </div>
+
+      <h2>공사중</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <input type="text" id="dp4" placeholder="날 눌러봐유"/>
+      </div>
+
+      <h2>공사중</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <input type="text" id="dp5" placeholder="날 눌러봐유"/>
+      </div>
+
+      <h2>공사중</h2>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <input type="text" id="dp6" placeholder="날 눌러봐유"/>
+      </div>
+
+      <back-to-home></back-to-home>
+    </div>
+    <script type="module">
+      import { createApp } from '/lib/vue/vue.esm-browser.js';
+      import { BackToHome } from '/examples/vue/component/BackToHome.js';
+      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+
+      const pageTitle = "Air Datepicker";
+      
+      createApp({
+        components: {
+          BackToHome,
+          TableOfContents,
+        },
+        created() {
+          document.title += `: ${pageTitle}`;
+        },
+        mounted() {
+          new AirDatepicker('#dp1', {
+            locale: localeKr
+          });
+
+          new AirDatepicker('#dp2', {
+            locale: localeKr,
+            isMobile: true,
+            autoClose: true
+          });
+        },
+        data() {
+          return {
+            docs: [
+              { title: "https://air-datepicker.com/examples", url: "https://air-datepicker.com/examples" },
+              { title: "https://air-datepicker.com/docs", url: "https://air-datepicker.com/docs" },
+              { title: "https://air-datepicker.com/methods", url: "https://air-datepicker.com/methods" },
+            ],
+            pageTitle: pageTitle,
+            message: "Hello Vue! ✌️",
+            datePicker: null
+          };
+        },
+        methods: {
+          focusDp1() {
+            this.$refs.dp1.focus();
+          }
+        }
+      }).mount("#app");
+    </script>
+  </body>
+</html>
