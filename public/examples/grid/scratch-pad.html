@@ -46,6 +46,21 @@
         { posNm: "오장" },
       ];
 
+      class CustomTextRenderer {
+        constructor(props) {
+          const el = document.createElement('div');
+          el.className = 'tui-grid-cell-content';
+          if (props.value === '사원') {
+            props.value = '4444원'
+          }
+          el.innerText = props.value;
+          this.el = el;
+        }
+        getElement() {
+          return this.el;
+        }
+      }
+
       const grid = new tui.Grid({
         el: document.getElementById("grid"),
         data: gridData,
@@ -54,12 +69,22 @@
         // width: '100%',
         bodyHeight: 400,
         rowHeaders: ["rowNum"],
+        formatter(str) {
+          console.log(str);
+        },
         // data: gridData,
         columns: [
           {
             header: "직무/직급명",
             name: "posNm",
-            align: "center"
+            align: "center",
+            renderer: {
+              type: CustomTextRenderer,
+              options: {
+                min: 1,
+                max: 5
+              }
+            }
           }
         ]
         // showDummyRows: true,

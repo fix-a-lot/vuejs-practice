@@ -1,11 +1,13 @@
 export const TableOfContents = {
   template: `
-    <h4>📌 목차</h4>
-    <ul>
-      <li v-for="item in headers">
-        <a :href="item.href">{{item.title}}</a>
-      </li>
-    </ul>
+    <template v-if="headers">
+      <h4>📌 목차</h4>
+      <ul>
+        <li v-for="item in headers">
+          <a :href="item.href">{{item.title}}</a>
+        </li>
+      </ul>
+    </template>
   `,
   props: ['text'],
   data() {

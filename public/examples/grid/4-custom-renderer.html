@@ -14,53 +14,183 @@
   <body>
     <div class="align-center" id="app">
       <h1>{{pageTitle}}</h1>
-      <!-- <div id="grid"></div> -->
-      <p>공사중</p>
+      <table-of-contents></table-of-contents>
+
+      <template v-if="docs !== undefined">
+        <h4>도움말 페이지</h4>
+        <ul>
+          <li v-for="item in docs">
+            <a :href="item.url" :target="'_blank'">{{item.title}}</a>
+          </li>
+        </ul>
+      </template>
+
+      <div id="grid"></div>
+      <p>셀에 할당할 태그를 생성하고 <code class="language-js">getElement()</code> 메서드에서 이를 반환하도록 하는 프로토타입을 별도로 정의하는 방식입니다:</p>
+      <pre><code class="language-js"><!--
+        class SimpleTextRenderer {
+          constructor(props) {
+            const el = document.createElement('div');
+            el.className = 'tui-grid-cell-content';
+            let options = props.columnInfo.renderer.options;
+            let value = props.value;
+            options.forEach(ele => {
+              value = value.replace(new RegExp(ele.from, 'gi'), ele.to);
+            });
+            el.innerText = value;
+            this.el = el;
+          }
+          getElement() {
+            return this.el;
+          }
+        }
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        columns: [
+          {
+            header: 'Name',
+            name: 'name',
+            renderer: {
+              type: SimpleTextRenderer,
+              options: [
+                { from: 'L', to: '엘' },
+                { from: 'C', to: '씨' },
+                { from: 'B', to: '비' },
+                { from: 'D', to: '디' },
+                { from: 'E', to: '이' },
+                { from: 'M', to: '엠' }
+              ]
+            }
+          },
+          ... 생략
+      --></code></pre>
+      <p>사실 꼭 클래스 문법으로 해야하는 건 아니고, 고전적인 방식도 삽가능. 아래 참고:</p>
+      <pre><code class="language-js"><!--
+        function SimpleTextRenderer(props) {
+          const el = document.createElement('div');
+          
+          ... 중략
+
+          this.el = el;
+        }
+        SimpleTextRenderer.prototype.getElement = function() {
+          return this.el;
+        }
+      --></code></pre>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      const pageTitle = "공사중";
+      import { BackToHome } from '/examples/vue/component/BackToHome.js';
+      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+
+      const pageTitle = "4. Custom Renderer";
+
       createApp({
+        components: {
+          BackToHome,
+          TableOfContents,
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },
         data() {
           return {
+            docs: [
+              { title: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/custom-renderer.md", url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/custom-renderer.md" },
+            ],
             pageTitle: pageTitle
           };
         },
       }).mount("#app");
 
-      const gridData = null;
+      class CustomSliderRenderer {
+        constructor(props) {
+          const el = document.createElement('input');
+          const { min, max } = props.columnInfo.renderer.options;
 
+          el.type = 'range';
+          el.min = String(min);
+          el.max = String(max);
+          el.disabled = true;
+
+          this.el = el;
+          this.render(props);
+        }
+        getElement() {
+          return this.el;
+        }
+        render(props) {
+          this.el.value = String(props.value);
+        }
+      }
+      class SimpleTextRenderer {
+        constructor(props) {
+          const el = document.createElement('div');
+          el.className = 'tui-grid-cell-content';
+          let options = props.columnInfo.renderer.options;
+          let value = props.value;
+          options.forEach(ele => {
+            value = value.replace(new RegExp(ele.from, 'gi'), ele.to);
+          });
+          el.innerText = value;
+          this.el = el;
+        }
+        getElement() {
+          return this.el;
+        }
+      }
       const grid = new tui.Grid({
-        el: document.getElementById("grid"),
-        data: gridData,
+        el: document.getElementById('grid'),
         scrollX: false,
         scrollY: false,
         columns: [
           {
-            header: "Name",
-            name: "name",
+            header: 'Name',
+            name: 'name',
+            renderer: {
+              type: SimpleTextRenderer,
+              options: [
+                { from: 'L', to: '엘' },
+                { from: 'C', to: '씨' },
+                { from: 'B', to: '비' },
+                { from: 'D', to: '디' },
+                { from: 'E', to: '이' },
+                { from: 'M', to: '엠' }
+              ]
+            }
           },
           {
-            header: "Artist",
-            name: "artist",
+            header: 'Artist',
+            name: 'artist'
           },
           {
-            header: "Type",
-            name: "type",
-          },
-          {
-            header: "Release",
-            name: "release",
-          },
-          {
-            header: "Genre",
-            name: "genre",
-          },
-        ],
+            header: 'Grade',
+            name: 'grade',
+            renderer: {
+              type: CustomSliderRenderer,
+              options: {
+                min: 1,
+                max: 5
+              }
+            }
+          }
+        ]
       });
+      let gridData = [
+        { name: "Beautiful Lies", artist: "Birdy", grade: "2" },
+        { name: "X", artist: "Ed Sheeran", grade: "3" },
+        { name: "Moves Like Jagger", artist: "Maroon5", grade: "2" },
+        { name: "A Head Full Of Dreams", artist: "Coldplay", grade: "3" },
+        { name: "21", artist: "Adele", grade: "3" },
+        { name: "Warm On A Cold Night", artist: "HONNE", grade: "2" },
+        { name: "Take Me To The Alley", artist: "Gregory Porter", grade: "3" },
+        { name: "Make Out", artist: "LANY", grade: "2" },
+        { name: "Get Lucky", artist: "Daft Punk", grade: "3" },
+        { name: "Valtari", artist: "Sigur Rós", grade: "3" },
+        { name: "Bush", artist: "Snoop Dogg", grade: "3" },
+        { name: "2", artist: "Beyoncé", grade: "3" }
+      ];
+      grid.resetData(gridData);
     </script>
   </body>
 </html>
