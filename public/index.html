@@ -13,45 +13,45 @@
       <h2>Vue</h2>
       <h4>공식 도움말</h4>
       <ul>
-        <li v-for="item in docs1">
+        <li v-for="item in vueDocs">
           <a v-bind:href="item.url" v-bind:target="'_blank'">{{item.title}}</a>
         </li>
       </ul>
       <h4>작성 예시</h4>
       <ul>
-        <li v-for="item in examples1">
+        <li v-for="item in vueExamples">
           <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h2>Toast UI Grid</h2>
       <h4>공식 도움말</h4>
       <ul>
-        <li v-for="item in docs2">
+        <li v-for="item in toastGridDocs">
           <a v-bind:href="item.url" v-bind:target="'_blank'">{{item.title}}</a>
         </li>
       </ul>
       <h4>작성 예시</h4>
       <ul>
-        <li v-for="item in examples2">
+        <li v-for="item in toastGridExamples">
           <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h2>기타등등</h2>
       <h4>Axois</h4>
       <ul>
-        <li v-for="item in examples5">
+        <li v-for="item in axiosExamples">
           <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h4>JavaScript</h4>
       <ul>
-        <li v-for="item in examples3">
+        <li v-for="item in ecmascripts">
           <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
       <h4>Web APIs</h4>
       <ul>
-        <li v-for="item in examples4">
+        <li v-for="item in webApis">
           <a v-bind:href="item.url">{{item.title}}</a>
         </li>
       </ul>
@@ -59,6 +59,12 @@
       <ul>
         <li v-for="item in thirdparties">
           <a v-bind:href="item.url">{{item.title}}</a>
+        </li>
+      </ul>
+      <h4>Misc.</h4>
+      <ul>
+        <li v-for="item in misc">
+          <a v-bind:href="item.url" v-bind:target="'_blank'">{{item.title}}</a>
         </li>
       </ul>
     </div>
@@ -72,13 +78,13 @@
         data() {
           return {
             pageTitle: pageTitle,
-            docs1: [
+            vueDocs: [
               { title: "Vue.js: Guide", url: "https://vuejs.org/guide/introduction.html" },
               { title: "Vue.js: Tutorial", url: "https://vuejs.org/tutorial/#step-1" },
               { title: "Vue.js: Examples", url: "https://vuejs.org/examples/#hello-world" },
               { title: "Vue.js: API Reference", url: "https://vuejs.org/api/" },
             ],
-            examples1: [
+            vueExamples: [
               { title: "Vue3 Treeselect(안댐🥲)", url: "/examples/vue/vue3-treeselect.html" },
               { title: "1. Vue 기본", url: "/examples/vue/1-vue-basic.html" },
               { title: "2. Template Syntax", url: "/examples/vue/2-template-syntax.html" },
@@ -93,12 +99,12 @@
               { title: "11. 리스트 랜더링", url: "/examples/vue/11-list-rendering.html"},
               { title: "99. 팁 모음", url: "/examples/vue/99-vue-tips.html"},
             ],
-            docs2: [
+            toastGridDocs: [
               { title: "Toast Grid: 튜토리얼", url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/README.md" },
               { title: "Toast Grid: API", url: "https://nhn.github.io/tui.grid/latest/Grid" },
               { title: "Toast Grid: Examples", url: "https://nhn.github.io/tui.grid/latest/tutorial-example01-basic" },
             ],
-            examples2: [
+            toastGridExamples: [
               { title: "특정 셀 클릭했는지 확인하기", url: "/examples/grid/probing-event-object.html" },
               { title: "Scratch Pad", url: "/examples/grid/scratch-pad.html" },
               { title: "Axios-Vue 테스트(에러남)", url: "/examples/grid/axios-with-vue.html" },
@@ -132,21 +138,24 @@
               // { title: "28. Drag and Drop", url: "/examples/grid/28-drag-and-drop.html" },
               // { title: "29. Dynamic rowSpan", url: "/examples/grid/29-dynamic-rowspan.html" },
             ],
-            examples5: [
+            axiosExamples: [
               { title: "기본 사용법", url: "/examples/axios/axios-basic.html" },
               { title: "헤더 추가하기", url: "/examples/axios/add-headers.html" },
               { title: "Config 기본값 설정하기", url: "/examples/axios/global-config.html" },
               { title: "인터셉터", url: "/examples/axios/interceptors.html" },
             ],
-            examples3: [
+            ecmascripts: [
               { title: "Modules", url: "/examples/javascript/module/module-test.html" }
             ],
-            examples4: [
+            webApis: [
               { title: "TODO", url: "" }
             ],
             thirdparties: [
               { title: "Tom Select", url: "/examples/thirdparty/tom-select.html" },
               { title: "Air Datepicker", url: "/examples/thirdparty/air-datepicker.html" }
+            ],
+            misc: [
+              { title: "가이드 페이지 작성 방법", url: "/examples/how-to-write-this-pages.html" }
             ]
           };
         },

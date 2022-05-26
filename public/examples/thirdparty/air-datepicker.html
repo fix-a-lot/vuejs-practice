@@ -28,18 +28,27 @@
 
       <h2>기본</h2>
       <pre><code class="language-markup"><!--
-        <input type="text" id="dp1" placeholder="날 눌러봐유"/>
+        <input type="text" id="dp0" placeholder="날 눌러봐유"/>
       --></code></pre>
       <pre><code class="language-js"><!--
         mounted() {
-          new AirDatepicker('#dp1', {
+          new AirDatepicker('#dp0', {
             locale: localeKr
           });
         }
       --></code></pre>
       <div class="result">
+        <input type="text" id="dp0" placeholder="날 눌러봐유"/>
+      </div>
+
+      <h2>다른 거 눌렀을 때 강제 포커싱</h2>
+      <pre><code class="language-markup"><!--
+        <button type="button" @click="$refs.dp1.focus()">focus() 테스트</button>
+        <input type="text" id="dp1" ref="dp1" placeholder="날 눌러봐유"/>
+      --></code></pre>
+      <div class="result">
         <div>
-          <button type="button" @click="focusDp1">focus() 테스트</button>
+          <button type="button" @click="$refs.dp1.focus()">focus() 테스트</button>
         </div>
         <input type="text" id="dp1" ref="dp1" placeholder="날 눌러봐유"/>
       </div>
@@ -59,15 +68,28 @@
         <input type="text" id="dp2" placeholder="날 눌러봐유"/>
       </div>
       
-      <h2>공사중</h2>
+      <h2>올해 내의 일자만 선택 가능</h2>
       <pre><code class="language-markup"><!--
-        <마크업/>
+        <input type="text" id="dp3" placeholder="날 눌러봐유"/>
       --></code></pre>
       <pre><code class="language-js"><!--
-        코드
+        let currentYear = new Date().getFullYear();
+        let dp3 = new AirDatepicker('#dp3', {
+          locale: localeKr,
+          minDate: `${currentYear}-01-01`,
+          maxDate: `${currentYear}-12-31`,
+          onShow() {
+            let $ipt = document.querySelector('#dp3');
+            if ($ipt.value && $ipt.value.length === 10) {
+              let dateStr = currentYear + $ipt.value.substring(4, 10);
+              $ipt.value = dateStr;
+              dp3.setViewDate(dateStr);
+            }
+          }
+        });
       --></code></pre>
       <div class="result">
-        <input type="text" id="dp3" placeholder="날 눌러봐유"/>
+        <input type="text" id="dp3" maxlength="10" @keyup="replcaeNotDateString($event)" placeholder="날 눌러봐유"/>
       </div>
 
       <h2>공사중</h2>
@@ -121,6 +143,10 @@
           document.title += `: ${pageTitle}`;
         },
         mounted() {
+          new AirDatepicker('#dp0', {
+            locale: localeKr
+          });
+
           new AirDatepicker('#dp1', {
             locale: localeKr
           });
@@ -129,6 +155,21 @@
             locale: localeKr,
             isMobile: true,
             autoClose: true
+          });
+
+          let currentYear = new Date().getFullYear();
+          let dp3 = new AirDatepicker('#dp3', {
+            locale: localeKr,
+            minDate: `${currentYear}-01-01`,
+            maxDate: `${currentYear}-12-31`,
+            onShow() {
+              let $ipt = document.querySelector('#dp3');
+              if ($ipt.value && $ipt.value.length === 10) {
+                let dateStr = currentYear + $ipt.value.substring(4, 10);
+                $ipt.value = dateStr;
+                dp3.setViewDate(dateStr);
+              }
+            }
           });
         },
         data() {
@@ -144,8 +185,10 @@
           };
         },
         methods: {
-          focusDp1() {
-            this.$refs.dp1.focus();
+          replcaeNotDateString(e) {
+            let val = e.target.value;
+            console.log('e.target.value:', val);
+            e.target.value = val.replace(/[^0-9-]/g, '');
           }
         }
       }).mount("#app");
