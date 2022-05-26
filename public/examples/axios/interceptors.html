@@ -9,12 +9,28 @@
     <title>Axios</title>
     <script src="/lib/prism/prism.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      #loadingBar { 
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background-color: #ffffff36; 
+        z-index: 9999; 
+        background-image: url("./loading-bar.gif"); 
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-position: center;
+      }
+    </style>
   </head>
   <body>
     <div class="align-center" id="app">
       <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
-      <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
+      <p><a href="https://axios-http.com/kr/docs/intro" target="_blank">공식 도움말 페이지</a></p>
       
       <h2>전역 인터셉터 추가</h2>
       <button type="button" @click="fn3">1번: 추가</button>
@@ -86,6 +102,65 @@
       </code></pre>
       <p><code class="language-js">axios.create()</code>로 생성되는 인스턴스마다 인터셉터를 각각 할당하는 방식.</p>
       
+      <h2>통신 중 로딩 바 노출</h2>
+      <pre><code class="language-markup"><!--
+        <style>
+          #loadingBar { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: #ffffff36; 
+            z-index: 9999; 
+            background-image: url("./loading-bar.gif"); 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            background-position: center;
+          }
+        </style>
+        <div id="loadingBar"></div>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        mounted() {
+          function onLoad() {
+            let $ele = document.querySelector('#loadingBar');
+            $ele.style = 'display: block';
+          }
+          function onLoaded() {
+            let $ele = document.querySelector('#loadingBar');
+            $ele.style = 'display: none';
+          }
+          axios.interceptors.request.use(function (config) {
+              onLoad();
+              return config;
+            }, function (error) {
+              
+              return Promise.reject(error);
+            });
+          axios.interceptors.response.use(function (response) {
+              onLoaded();
+              return response;
+            }, function (error) {
+              onLoaded();
+              return Promise.reject(error);
+            });
+        },
+        methods: {
+          async fn2() {
+            let response = await axios.get("/delayed-response.data");
+            console.log(response.data);
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <div>
+          <button type="button" @click="fn2">날 눌러줘요</button>
+        </div>
+        <div id="loadingBar"></div>
+      </div>
+
       <back-to-home></back-to-home>
     </div>
     <script type="module">
@@ -103,6 +178,31 @@
         },
         created() {
           document.title += `: ${pageTitle}`;
+        },
+        mounted() {
+          function onLoad() {
+            let $ele = document.querySelector('#loadingBar');
+            $ele.style = 'display: block';
+          }
+          function onLoaded() {
+            let $ele = document.querySelector('#loadingBar');
+            $ele.style = 'display: none';
+          }
+          axios.interceptors.request.use(function (config) {
+              onLoad();
+              return config;
+            }, function (error) {
+              
+              return Promise.reject(error);
+            });
+          axios.interceptors.response.use(function (response) {
+              onLoaded();
+              return response;
+            }, function (error) {
+              onLoaded();
+              return Promise.reject(error);
+            });
+
         },
         data() {
           return {
@@ -155,6 +255,10 @@
           async fn1() {
             let response = await axios.get("/success-json.data");
             document.querySelector("#result1").innerText = JSON.stringify(response.data);
+          },
+          async fn2() {
+            let response = await axios.get("/delayed-response.data");
+            console.log(response.data);
           }
         }
       }).mount("#app");

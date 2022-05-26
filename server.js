@@ -77,6 +77,12 @@ app.post('/get-my-request-body.data', (req, res) => {
   res.json(req.body);
 });
 
+app.get('/delayed-response.data', (req, res) => {
+  setTimeout(() => {
+    res.set('Content-Type', 'application/json').json({ message: 'Me is here.' }); 
+  }, 2000);
+});
+
 app.get('/read-grid.data', (req, res) => {
   let gridData = [
     { name: "Beautiful Lies", artist: "Birdy", type: "Deluxe", release: "2016.03.26", genre: "Pop" },
