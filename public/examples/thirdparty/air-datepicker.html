@@ -92,15 +92,29 @@
         <input type="text" id="dp3" maxlength="10" @keyup="replcaeNotDateString($event)" placeholder="날 눌러봐유"/>
       </div>
 
-      <h2>공사중</h2>
+      <h2>Air Datepicker는 부모 form 태그의 submit 이벤트를 차단함</h2>
       <pre><code class="language-markup"><!--
-        <마크업/>
+        <form onsubmit="alert('안니옹?');event.preventDefault()">
+          <input type="text" id="dp4" placeholder="날 눌러봐유"/><br>
+          <input type="text" style="width: 300px" placeholder="여기에 포커스 두고 엔터 눌러도 submit 안됨">
+        </form>
+        <form onsubmit="alert('안니옹?');event.preventDefault()">
+          <input type="text" style="width: 300px" placeholder="여긴 엔터 누르면 submit 발동">
+        </form>
       --></code></pre>
       <pre><code class="language-js"><!--
-        코드
+        new AirDatepicker('#dp4');
       --></code></pre>
       <div class="result">
-        <input type="text" id="dp4" placeholder="날 눌러봐유"/>
+        <form onsubmit="alert('안니옹?');event.preventDefault()">
+          <input type="text" id="dp4" placeholder="날 눌러봐유"/><br>
+          <input type="text" style="width: 300px" placeholder="여기에 포커스 두고 엔터 눌러도 submit 안됨">
+        </form>
+      </div>
+      <div class="result">
+        <form onsubmit="alert('안니옹?');event.preventDefault()">
+          <input type="text" style="width: 300px" placeholder="여긴 엔터 누르면 submit 발동">
+        </form>
       </div>
 
       <h2>공사중</h2>
@@ -171,6 +185,8 @@
               }
             }
           });
+
+          new AirDatepicker('#dp4');
         },
         data() {
           return {
