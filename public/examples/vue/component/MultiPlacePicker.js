@@ -1,5 +1,6 @@
 export const MultiPlacePicker = {
   template: `
+    <p>props.pickThese: {{pickThese}}</p>
     <select id="multiPlacePicker" placeholder="체크인장소 선택" multiple>
       <option value="">체크인장소 선택</option>
       <option value="A1234">전체</option>
@@ -34,8 +35,8 @@ export const MultiPlacePicker = {
         $this.selected = values;
       },
       onInitialize() {
-        console.log('$this.pickThis:', $this.pickThis);
-        this.setValue($this.pickThis);
+        console.log('$this.pickThese:', $this.pickThese);
+        this.setValue($this.pickThese);
       }
     });
   }
