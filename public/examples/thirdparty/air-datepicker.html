@@ -70,26 +70,41 @@
       
       <h2>올해 내의 일자만 선택 가능</h2>
       <pre><code class="language-markup"><!--
-        <input type="text" id="dp3" placeholder="날 눌러봐유"/>
+        <input type="text" id="dp3" v-model="dp3" maxlength="10" 
+            @keyup="replcaeNotDateString($event)" placeholder="날 눌러봐유"/>
       --></code></pre>
       <pre><code class="language-js"><!--
-        let currentYear = new Date().getFullYear();
-        let dp3 = new AirDatepicker('#dp3', {
-          locale: localeKr,
-          minDate: `${currentYear}-01-01`,
-          maxDate: `${currentYear}-12-31`,
-          onShow() {
-            let $ipt = document.querySelector('#dp3');
-            if ($ipt.value && $ipt.value.length === 10) {
-              let dateStr = currentYear + $ipt.value.substring(4, 10);
-              $ipt.value = dateStr;
-              dp3.setViewDate(dateStr);
+        data() {
+          return {
+            dp3: null
+          };
+        },
+        mounted() {
+          let currentYear = new Date().getFullYear();
+          let $this = this;
+          let dp3 = new AirDatepicker('#dp3', {
+            locale: localeKr,
+            minDate: `${currentYear}-01-01`,
+            maxDate: `${currentYear}-12-31`,
+            onShow() {
+              if ($this.dp3 && $this.dp3.length === 10) {
+                let dateStr = currentYear + $this.dp3.substring(4, 10);
+                $this.dp3 = dateStr;
+                dp3.setViewDate(dateStr);
+              }
             }
+          });
+        },
+        methods: {
+          replcaeNotDateString(e) {
+            let val = e.target.value;
+            console.log('e.target.value:', val);
+            e.target.value = val.replace(/[^0-9-]/g, '');
           }
-        });
+        }
       --></code></pre>
       <div class="result">
-        <input type="text" id="dp3" maxlength="10" @keyup="replcaeNotDateString($event)" placeholder="날 눌러봐유"/>
+        <input type="text" id="dp3" v-model="dp3" maxlength="10" @keyup="replcaeNotDateString($event)" placeholder="날 눌러봐유"/>
       </div>
 
       <h2>Air Datepicker는 부모 form 태그의 submit 이벤트를 차단함</h2>
@@ -153,6 +168,18 @@
           BackToHome,
           TableOfContents,
         },
+        data() {
+          return {
+            docs: [
+              { title: "https://air-datepicker.com/examples", url: "https://air-datepicker.com/examples" },
+              { title: "https://air-datepicker.com/docs", url: "https://air-datepicker.com/docs" },
+              { title: "https://air-datepicker.com/methods", url: "https://air-datepicker.com/methods" },
+            ],
+            pageTitle: pageTitle,
+            message: "Hello Vue! ✌️",
+            dp3: null
+          };
+        },
         created() {
           document.title += `: ${pageTitle}`;
         },
@@ -172,33 +199,22 @@
           });
 
           let currentYear = new Date().getFullYear();
+
+          let $this = this;
           let dp3 = new AirDatepicker('#dp3', {
             locale: localeKr,
             minDate: `${currentYear}-01-01`,
             maxDate: `${currentYear}-12-31`,
             onShow() {
-              let $ipt = document.querySelector('#dp3');
-              if ($ipt.value && $ipt.value.length === 10) {
-                let dateStr = currentYear + $ipt.value.substring(4, 10);
-                $ipt.value = dateStr;
+              if ($this.dp3 && $this.dp3.length === 10) {
+                let dateStr = currentYear + $this.dp3.substring(4, 10);
+                $this.dp3 = dateStr;
                 dp3.setViewDate(dateStr);
               }
             }
           });
 
           new AirDatepicker('#dp4');
-        },
-        data() {
-          return {
-            docs: [
-              { title: "https://air-datepicker.com/examples", url: "https://air-datepicker.com/examples" },
-              { title: "https://air-datepicker.com/docs", url: "https://air-datepicker.com/docs" },
-              { title: "https://air-datepicker.com/methods", url: "https://air-datepicker.com/methods" },
-            ],
-            pageTitle: pageTitle,
-            message: "Hello Vue! ✌️",
-            datePicker: null
-          };
         },
         methods: {
           replcaeNotDateString(e) {
