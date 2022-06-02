@@ -10,7 +10,7 @@
     <script src="/lib/prism/prism.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
-      #loadingBar { 
+      #loading { 
         display: none; 
         position: fixed; 
         top: 0; 
@@ -19,7 +19,7 @@
         height: 100%; 
         background-color: #ffffff36; 
         z-index: 9999; 
-        background-image: url("./loading-bar.gif"); 
+        background-image: url("./loading.gif"); 
         background-repeat: no-repeat; 
         background-attachment: fixed; 
         background-position: center;
@@ -105,7 +105,7 @@
       <h2>통신 중 로딩 바 노출</h2>
       <pre><code class="language-markup"><!--
         <style>
-          #loadingBar { 
+          #loading { 
             display: none; 
             position: fixed; 
             top: 0; 
@@ -120,16 +120,16 @@
             background-position: center;
           }
         </style>
-        <div id="loadingBar"></div>
+        <div id="loading"></div>
       --></code></pre>
       <pre><code class="language-js"><!--
         mounted() {
           function onLoad() {
-            let $ele = document.querySelector('#loadingBar');
+            let $ele = document.querySelector('#loading');
             $ele.style = 'display: block';
           }
           function onLoaded() {
-            let $ele = document.querySelector('#loadingBar');
+            let $ele = document.querySelector('#loading');
             $ele.style = 'display: none';
           }
           axios.interceptors.request.use(function (config) {
@@ -158,7 +158,7 @@
         <div>
           <button type="button" @click="fn2">날 눌러줘요</button>
         </div>
-        <div id="loadingBar"></div>
+        <div id="loading"></div>
       </div>
 
       <back-to-home></back-to-home>
@@ -181,11 +181,11 @@
         },
         mounted() {
           function onLoad() {
-            let $ele = document.querySelector('#loadingBar');
+            let $ele = document.querySelector('#loading');
             $ele.style = 'display: block';
           }
           function onLoaded() {
-            let $ele = document.querySelector('#loadingBar');
+            let $ele = document.querySelector('#loading');
             $ele.style = 'display: none';
           }
           axios.interceptors.request.use(function (config) {

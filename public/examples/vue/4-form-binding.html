@@ -257,9 +257,33 @@
         <p>obj.a: {{obj.a}}</p>
       </div>
 
+      <h2>Modifiers</h2>
+      <p><a href="https://vuejs.org/guide/essentials/forms.html#lazy">https://vuejs.org/guide/essentials/forms.html#lazy</a></p>
+      <h3>.trim</h3>
+      <p><code class="language-js">.trim</code>은 모델의 값 앞뒤의 공백 문자를 자동으로 삭제합니다.</p>
+      <pre><code class="language-markup"><!--
+        <input type="text" v-model.trim="trimMe"/> trimMe.length: {{trimMe.length}}
+        <input type="text" v-model="doNotTrimMe"/> doNotTrimMe.length: {{doNotTrimMe.length}}
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            trimMe: '',
+            doNotTrimMe: ''
+          };
+        }
+      --></code></pre>
+      <div class="result">
+        <div>
+          <input type="text" v-model.trim="trimMe" style="width: 50%" placeholder="앞 뒤로 공백을 넣고 입력해보세요."/>&nbsp;trimMe.length: {{trimMe.length}}
+        </div>
+        <div>
+          <input type="text" v-model="doNotTrimMe" style="width: 50%" placeholder="앞 뒤로 공백을 넣고 입력해보세요."/>&nbsp;doNotTrimMe.length: {{doNotTrimMe.length}}
+        </div>
+      </div>
+
       <h2>TODO Modifiers: .lazy</h2>
       <h2>TODO Modifiers: .number</h2>
-      <h2>TODO Modifiers: .trim</h2>
       <pre><code class="language-markup"><!--
         <마크업/>
       --></code></pre>
@@ -289,6 +313,8 @@
         },
         data() {
           return {
+            trimMe: '',
+            doNotTrimMe: '',
             pageTitle: pageTitle,
             text: 'edit me!',
             obj: {

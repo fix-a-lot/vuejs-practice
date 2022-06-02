@@ -14,13 +14,6 @@
       <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
 
-      <h2>Modifiers</h2>
-      <p><a href="https://vuejs.org/guide/essentials/template-syntax.html#directives">참고</a></p>
-      <p>몇몇 디렉티브는 정해진 특수 접미사가 존재합니다. 가령 아래의 코드는 <code class="language-js">onSubmit()</code> 후 <code class="language-js">event.preventDefault()</code>를 실행하게 합니다:</p>
-      <pre><code class="language-markup"><!--
-        <form @submit.prevent="onSubmit">...</form>
-      --></code></pre>
-
       <h2>소제목1</h2>
       <pre><code class="language-markup"><!--
         <마크업/>
@@ -41,6 +34,25 @@
       --></code></pre>
       <div class="result">
         <p>{{message}}</p>
+      </div>
+
+      <h2>Modifiers</h2>
+      <p><a href="https://vuejs.org/guide/essentials/template-syntax.html#modifiers">https://vuejs.org/guide/essentials/template-syntax.html#modifiers</a></p>
+      <p>몇몇 디렉티브는 정해진 특수 접미사가 존재합니다.</p>
+      <pre><code class="language-markup"><!--
+        <form @submit.prevent="onSubmit">...</form>
+      --></code></pre>
+
+      <h3>TODO Modifiers: .prevent</h3>
+      <p><code class="language-js">.prevent</code>는 <code class="language-js">onSubmit()</code> 후 <code class="language-js">event.preventDefault()</code>를 실행하게 합니다:</p>
+      <pre><code class="language-markup"><!--
+        <마크업/>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        코드
+      --></code></pre>
+      <div class="result">
+        <!-- <p>{{message}}</p> -->
       </div>
 
       <back-to-home></back-to-home>
