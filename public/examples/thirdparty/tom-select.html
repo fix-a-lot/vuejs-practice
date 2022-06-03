@@ -25,7 +25,7 @@
         </ul>
       </template>
 
-      <h2>기본 사용법: <code class="language-js"><!--<input>--></code></h2>
+      <h2>기본 사용법: &lt;input&gt;</code></h2>
       <pre><code class="language-markup"><!--
         <input id="input-tags" value="awesome,neat" 
             autocomplete="off" placeholder="How cool is this?">
@@ -38,7 +38,7 @@
             autocomplete="off" placeholder="How cool is this?">
       </div>
 
-      <h2>기본 사용법: <code class="language-js"><!--<select>--></code></h2>
+      <h2>기본 사용법: &lt;select&gt;</h2>
       <pre><code class="language-markup"><!--
         <select id="select-beast" placeholder="Select a person..." autocomplete="off">
           <option value="">Select a person...</option>
@@ -259,7 +259,7 @@
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
-      <p>여백의미</p>
+      <p>여백의 미</p>
 
       <back-to-home></back-to-home>
     </div>
@@ -318,15 +318,8 @@
 
           window.ct2 = this.customTommy2 = new TomSelect('#tom-select-scratchpad', {
             plugins: ['checkbox_options'],
-            // options: [
-            //   { value: "A1", text: "A 조직" },
-            //   { value: "A2", text: "　A-1 조직" },
-            //   { value: "A3", text: "　　A-1-Z 조직" },
-            //   { value: "B4", text: "B 조직" },
-            //   { value: "B5", text: "　B-1 조직" },
-            //   { value: "B6", text: "　B-2 조직" }
-            // ],
             options: [
+              { value: 'checkAllToggle', depth: 0, text: '전체선택' },
               { value: "A1", depth: 0, text: "A 조직" },
               { value: "A2", depth: 1, text: "A-1 조직" },
               { value: "A3", depth: 2, text: "A-1-Z 조직" },
