@@ -45,7 +45,7 @@
       </div>
       
       <h2>라디오 버튼</h2>
-      <p><code class="language-js"><!--<input type="radio">--></code>에 적용할 땐 <code class="language-js">value</code>는 따로 명시해야 하며, <code class="language-js">name</code>은 생략해도 됩니다.</p>
+      <p><code class="language-js"><!--<input type="radio">--></code>에 적용할 땐 value는 따로 명시해야 하며, <code class="language-js">name</code>은 생략해도 됩니다.</p>
       <pre><code class="language-markup"><!--
         <p>Picked: {{picked}}</p>
         <input type="radio" id="one" value="One" v-model="picked" /> <label for="one">One</label>
@@ -77,7 +77,7 @@
 
       <h2>체크 박스</h2>
       <p>체크 박스는 사용법이 두 가지입니다. 체크 박스별 각각의 모델을 할당하는 방법과, 여러 체크 박스를 하나의 모델로 묶는 방법이 있습니다.</p>
-      <p><code class="language-js">value</code>는 따로 명시하지 않으면 <code class="language-js">true</code> 혹은 <code class="language-js">false</code> 입니다.</p>
+      <p>value는 따로 명시하지 않으면 <code class="language-js">true</code> 혹은 <code class="language-js">false</code> 입니다.</p>
 
       <h3>개별 모델 할당</h3>
       <pre><code class="language-markup"><!--
@@ -135,11 +135,65 @@
         </div>
       </div>
 
+      <h3>체크 박스와 value</h3>
+      <p>일단 <code class="language-markup">value</code> 속성의 모델의 값에 어떤 영향을 주는지 봅시다.</p>
+      <pre id="focus-here"><code class="language-markup"><!--
+        <input type="checkbox" v-model="checked2"> {{ checked2 }}
+        <input type="checkbox" value="Y" v-model="checked3"> {{ checked3 }}
+        <input type="checkbox" :value="'YES'" v-model="checked4"> {{ checked4 }}
+      --></code></pre>
+      <div class="result">
+        <div style="margin-bottom: 5px;">
+          <label for="checked2">checked2:&nbsp;</label>
+          <input type="checkbox" id="checked2" v-model="checked2" />&nbsp;{{ checked2 }}
+        </div>
+        <div style="margin-bottom: 5px;">
+          <label for="checked3">checked3:&nbsp;</label>
+          <input type="checkbox" id="checked3" value="Y" v-model="checked3" />&nbsp;{{ checked3 }}
+        </div>
+        <div>
+          <label for="checked4">checked4:&nbsp;</label>
+          <input type="checkbox" id="checked4" :value="'YES'" v-model="checked4" />&nbsp;{{ checked4 }}
+        </div>
+      </div>
+      <p>🤔 아무 의미도 없군요. value가 있건 없건 모델의 값은 <code class="language-js">true</code> 혹은 <code class="language-js">false</code>입니다.</p>
+      <p>그럼 submit도 마찬가지일까요?</p>
+      <pre><code class="language-markup"><!--
+        <form method="get" action="#focus-here">
+          <input type="checkbox" name="checked5" v-model="checked5"> {{ checked5 }}
+          <input type="checkbox" name="checked6" value="Y" v-model="checked6"> {{ checked6 }}
+          <input type="checkbox" name="checked7" :value="'YES'" v-model="checked7"> {{ checked7 }}
+          <button type="submit">Submit</button>
+        </form>
+      --></code></pre>
+      <div class="result">
+        <form method="get" action="#focus-here">
+          <div style="margin-bottom: 5px;">
+            <label for="checked5">checked5:&nbsp;</label>
+            <input type="checkbox" name="checked5" id="checked5" v-model="checked5" />&nbsp;{{ checked5 }}
+          </div>
+          <div style="margin-bottom: 5px;">
+            <label for="checked6">checked6:&nbsp;</label>
+            <input type="checkbox" name="checked6" id="checked6" value="Y" v-model="checked6" />&nbsp;{{ checked6 }}
+          </div>
+          <div style="margin-bottom: 5px;">
+            <label for="checked7">checked7:&nbsp;</label>
+            <input type="checkbox" name="checked7" id="checked7" :value="'YES'" v-model="checked7" />&nbsp;{{ checked7 }}
+          </div>
+          <button type="submit" style="margin-top: 5px;">Submit</button>
+        </form>
+      </div>
+      <p>아무거나 체크를 하고 submit 버튼을 눌러보세요.</p>
+      <p>브라우저 네이티브 기능으로 submit을 수행하면 체크박스의 value 값이 그대로 사용되는 것을 볼 수 있습니다.</p>
+      <div class="description">
+        <p>⚠️ 체크박스 타입의 value 속성을 생략했을 때 전송되는 값은 'on' 입니다.</p>
+      </div>
+
       <h2>셀렉트 박스</h2>
       <p>셀렉트 박스는 <code class="language-js">multiple</code> 속성을 명시해 다중 선택이 가능하므로 체크 박스처럼 사용방법이 둘로 나뉩니다.</p>
       
       <h3>단일 선택</h3>
-      <p><code class="language-js">value</code>는 레이블과 동일하면 생략, 다르면 명시합니다.</p>
+      <p>value는 레이블과 동일하면 생략, 다르면 명시합니다.</p>
       <pre><code class="language-markup"><!--
         <p>selected: {{ selected }}</p>
         <select v-model="selected">
@@ -324,6 +378,12 @@
             picked: null,
             alreadyPicked: 'Four',
             checked: false,
+            checked2: null,
+            checked3: null,
+            checked4: null,
+            checked5: null,
+            checked6: null,
+            checked7: null,
             checkedNames: [],
             selected: null,
             multipleSelected: [],
