@@ -193,10 +193,42 @@
         --></code></pre>
         </p>
       </div>
-      <div class="description">
-        <p>⚠️ 자바스크립트 표현식에서 접근 가능한 전역 참조는 정해져있습니다. (샌드박스 처리되기 때문이라 함) <a href="https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3" target="_blank">이 링크</a>를 보세요.</p>
-        <p>예를 들어 window와 사용자 정의 전역 변수는 참조할 수 없습니다. <a href="https://vuejs.org/api/application.html#app-config-globalproperties" target="_blank">app.config.globalProperties</a> 항목에 추가하면 된다는데... 굳이? 🤔</p>
-      </div>
+
+      <h2>전역 변수의 접근 제한 해제</h2>
+      <p>자바스크립트 표현식에서 접근 가능한 전역 참조는 정해져있습니다. 샌드박스 처리되기 때문이라 하며, 자세한 내용은 <a href="https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3" target="_blank">이 링크</a>를 보세요.</p>
+      <p>가령 window와 사용자 정의 전역 변수는 참조할 수 없습니다. 필요한 경우 <a href="https://vuejs.org/api/application.html#app-config-globalproperties" target="_blank">app.config.globalProperties</a> 항목에 추가해야 합니다:</p>
+      <p>Biz 프로젝트에 적용한 사례를 봅시다:</p>
+      <pre><code class="language-java"><!--
+        @GetMapping(value = "/place/list")
+        public ModelAndView viewPlaceList(ModelAndView mav) throws SQLException {
+
+            ... 생략
+
+            mav.addObject("visitServiceAvailable", list.isEmpty() ? false : true);
+            return mav;
+        }
+      --></code></pre>
+      <pre><code class="language-markup"><!--
+        <script>
+        const visitServiceAvailable = '${visitServiceAvailable}' === 'true' ? true : false;
+        </script>
+        <script src="/resources/scripts/misc/place/list.js"></script>
+      --></code></pre>
+      <p>JSP에서 전역 변수를 설정해두고</p>
+      <pre><code class="language-js"><!--
+        const app = createApp({
+          ... 생략
+        });
+        app.config.globalProperties.visitServiceAvailable = visitServiceAvailable;
+        const vm = app.mount("[data-id='app']");
+      --></code></pre>
+      <p>이렇게 <code class="language-js">app.config.globalProperties</code>의 프로퍼티로 추가하면</p>
+      <pre><code class="language-markup"><!--
+        <div v-if="visitServiceAvailable">
+          ... 생략
+        </div>
+      --></code></pre>
+      <p>짜잔- 표현식에서 쓸 수 있습니다.</p>
 
       <back-to-home></back-to-home>
     </div>
