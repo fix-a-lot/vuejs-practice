@@ -247,10 +247,12 @@
 
       <h2>연습장#3</h2>
       <div class="result">
-        <input id="tom-select-scratchpad3" value="A1,B4" placeholder="계속 보이는 플레이스홀더"/>
+        <input id="tom-select-scratchpad3" placeholder="계속 보이는 플레이스홀더"/>
         <div>
           <button type="button" @click="refreshAndSet('E2')">옵션 날리고 다시 추가하면서 'E2' set</button> 
           <button type="button" @click="refreshAndSet('H4')">옵션 날리고 다시 추가하면서 'H4' set</button> 
+          <button type="button" @click="disableSomeOptions">A1, A3 비활성화</button> 
+          <button type="button" @click="reset">원래대로되돌리기</button> 
         </div>
       </div>
 
@@ -376,6 +378,7 @@
             },
           });
 
+          this.sp3OriginalOptions = { ...options2 };
           window.sp3 = this.sp3 = new TomSelect('#tom-select-scratchpad3', {
             plugins: ['checkbox_options'],
             options: options2,
@@ -393,7 +396,10 @@
                     '<span class="url">' + escape(data.text) + '</span>' +
                   '</div>';
               },
-            }
+            },
+            onInitialize() {
+              this.setValue(['A1', 'A3', 'B6']);
+            },
           });
 
           let config = {
@@ -457,6 +463,16 @@
           getPlaces() {
             document.querySelector('#place-pick-result').innerText = this.$refs.placePicker.selected;
           },
+          disableSomeOptions() {
+            sp3.setValue(sp3.getValue().split(',').filter(ele => ele != 'A1' && ele != 'A3').join(','));
+            this.sp3.updateOption('A1', { disabled: true, value: "A1", depth: 0, text: "A 조직" });
+            this.sp3.updateOption('A3', { disabled: true, value: "A3", depth: 2, text: "A-1-Z 조직" });
+          },
+          reset() {
+            sp3.clearOptions();
+            sp3.addOptions(this.sp3OriginalOptions);
+            sp3.setValue([ 'A1', 'A3', 'B6' ]);
+          }
         }
       }).mount("#app");
     </script>
