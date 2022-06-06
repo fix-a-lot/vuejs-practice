@@ -229,7 +229,7 @@
       <h2>연습장#1</h2>
       <div class="result">
         <input id="dummy" placeholder="날눌러도열림" @click="openCustomTommy" />
-        <select id="tom-select-multi-custom" placeholder="상위조직 없음">
+        <select id="tom-select-scratchpad1" placeholder="상위조직 없음">
           <option value="">상위조직 없음</option>
           <option value="A1234">A 조직</option>
           <option value="A2345">　A-1 조직</option>
@@ -242,7 +242,16 @@
 
       <h2>연습장#2</h2>
       <div class="result">
-        <input id="tom-select-scratchpad" value="A1,B4" />
+        <input id="tom-select-scratchpad2" value="A1,B4" placeholder="뭐라도 하나 고르면 안보임"/>
+      </div>
+
+      <h2>연습장#3</h2>
+      <div class="result">
+        <input id="tom-select-scratchpad3" value="A1,B4" placeholder="계속 보이는 플레이스홀더"/>
+        <div>
+          <button type="button" @click="refreshAndSet('E2')">옵션 날리고 다시 추가하면서 'E2' set</button> 
+          <button type="button" @click="refreshAndSet('H4')">옵션 날리고 다시 추가하면서 'H4' set</button> 
+        </div>
       </div>
 
       <p>&nbsp;</p>
@@ -310,25 +319,46 @@
             hideSelected: false
           });
 
-          window.ct = this.customTommy = new TomSelect('#tom-select-multi-custom', {
+          window.sp1 = this.sp1 = new TomSelect('#tom-select-scratchpad1', {
             plugins: ['checkbox_options'],
             maxItems: 99,
             hideSelected: false,
           });
 
-          window.ct2 = this.customTommy2 = new TomSelect('#tom-select-scratchpad', {
+          let options2 = [
+            { value: 'checkAllToggle', depth: 0, text: '전체선택' },
+            { value: "A1", depth: 0, text: "A 조직" },
+            { value: "A2", depth: 1, text: "A-1 조직" },
+            { value: "A3", depth: 2, text: "A-1-Z 조직" },
+            { value: "B4", depth: 0, text: "B 조직" },
+            { value: "B5", depth: 1, text: "B-1 조직" },
+            { value: "B6", depth: 1, text: "B-2 조직" },
+            { value: "C1", depth: 0, text: "A 조직" },
+            { value: "C2", depth: 1, text: "A-1 조직" },
+            { value: "C3", depth: 2, text: "A-1-Z 조직" },
+            { value: "D4", depth: 0, text: "B 조직" },
+            { value: "D5", depth: 1, text: "B-1 조직" },
+            { value: "D6", depth: 1, text: "B-2 조직" },
+            { value: "E1", depth: 0, text: "A 조직" },
+            { value: "E2", depth: 1, text: "A-1 조직" },
+            { value: "E3", depth: 2, text: "A-1-Z 조직" },
+            { value: "F4", depth: 0, text: "B 조직" },
+            { value: "F5", depth: 1, text: "B-1 조직" },
+            { value: "F6", depth: 1, text: "B-2 조직" },
+            { value: "G1", depth: 0, text: "A 조직" },
+            { value: "G2", depth: 1, text: "A-1 조직" },
+            { value: "G3", depth: 2, text: "A-1-Z 조직" },
+            { value: "H4", depth: 0, text: "B 조직" },
+            { value: "H5", depth: 1, text: "B-1 조직" },
+            { value: "H6", depth: 1, text: "B-2 조직" },
+          ];
+          this.options2 = options2;
+          window.sp2 = this.sp2 = new TomSelect('#tom-select-scratchpad2', {
             plugins: ['checkbox_options'],
-            options: [
-              { value: 'checkAllToggle', depth: 0, text: '전체선택' },
-              { value: "A1", depth: 0, text: "A 조직" },
-              { value: "A2", depth: 1, text: "A-1 조직" },
-              { value: "A3", depth: 2, text: "A-1-Z 조직" },
-              { value: "B4", depth: 0, text: "B 조직" },
-              { value: "B5", depth: 1, text: "B-1 조직" },
-              { value: "B6", depth: 1, text: "B-2 조직" }
-            ],
-            maxItems: 99,
+            options: options2,
+            maxItems: 999,
             hideSelected: false,
+            hidePlaceholder: true,
             render: {
               option: function(data, escape) {
                 let blanks = '';
@@ -337,17 +367,33 @@
                 }
                 return '<div>' +
                     '<span>' + blanks + '</span>' +
-                    // '<span class="title">' + escape(data.value) + '</span>' +
                     '<span class="url">' + escape(data.text) + '</span>' +
                   '</div>';
               },
-              // item: function(data, escape) {
-              //   return '<div title="' + escape(data.value) + '">' + escape(data.text) + '</div>';
-              // }
             },
             onInitialize() {
               this.setValue(['A3', 'B6']);
             },
+          });
+
+          window.sp3 = this.sp3 = new TomSelect('#tom-select-scratchpad3', {
+            plugins: ['checkbox_options'],
+            options: options2,
+            maxItems: 999,
+            hideSelected: false,
+            hidePlaceholder: false,
+            render: {
+              option: function(data, escape) {
+                let blanks = '';
+                for (let i = 0; i < data.depth; i++) {
+                  blanks += '&nbsp;&nbsp;&nbsp;&nbsp;';
+                }
+                return '<div>' +
+                    '<span>' + blanks + '</span>' +
+                    '<span class="url">' + escape(data.text) + '</span>' +
+                  '</div>';
+              },
+            }
           });
 
           let config = {
@@ -396,6 +442,12 @@
           clearOptions() {
             this.apiTommy.clearOptions();
           },
+          refreshAndSet(value) {
+            this.sp3.clearOptions();
+            this.sp3.clear();
+            this.sp3.addOptions(this.options2);
+            this.sp3.setValue(value);
+          },
           openCustomTommy() {
             this.customTommy.open();
           },
@@ -404,7 +456,7 @@
           },
           getPlaces() {
             document.querySelector('#place-pick-result').innerText = this.$refs.placePicker.selected;
-          }
+          },
         }
       }).mount("#app");
     </script>
