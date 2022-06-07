@@ -10,7 +10,7 @@
     <script src="/lib/prism/prism.js"></script>
   </head>
   <body>
-    <div class="align-center" id="app">
+    <div class="align-center" id="app" v-cloak>
       <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
 
@@ -67,7 +67,7 @@
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
 
-      const pageTitle = "기본: Vue 시작하기";
+      const pageTitle = "Vue 시작하기";
       
       createApp({
         components: {

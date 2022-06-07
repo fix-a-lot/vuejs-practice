@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="align-center" id="app">
+    <div class="align-center" id="app" v-cloak>
       <h1>{{pageTitle}}</h1>
       <h2>Vue</h2>
       <h4>공식 도움말</h4>
@@ -86,8 +86,8 @@
             ],
             vueExamples: [
               { title: "Vue3 Treeselect(안댐🥲)", url: "/examples/vue/vue3-treeselect.html" },
-              { title: "1. Vue 기본", url: "/examples/vue/1-vue-basic.html" },
-              { title: "2. Template Syntax", url: "/examples/vue/2-template-syntax.html" },
+              { title: "1. Vue 시작하기", url: "/examples/vue/1-vue-basic.html" },
+              { title: "2. Template Syntax Vue 표현식", url: "/examples/vue/2-template-syntax.html" },
               { title: "3. 조건부 랜더링(공사중)", url: "/examples/vue/3-conditional-rendering.html" },
               { title: "4. 폼 바인딩", url: "/examples/vue/4-form-binding.html" },
               { title: "5. 이벤트 핸들링(공사중)", url: "/examples/vue/5-event-handling.html" },
@@ -97,6 +97,12 @@
               { title: "9. <template>이란 무엇인가", url: "/examples/vue/9-about-template-tag.html" },
               { title: "10. Props(공사중)", url: "/examples/vue/10-props.html"},
               { title: "11. 리스트 랜더링", url: "/examples/vue/11-list-rendering.html"},
+              // { title: "12. Watchers", url: "/examples/vue/12-watchers.html"},
+              // { title: "13. Lifecycle Hooks", url: "/examples/vue/13-lifecycle-hooks.html"},
+              // { title: "20. Built-in Directives", url: "/examples/vue/20-built-in-directives.html"},
+              // { title: "21. Built-in Components", url: "/examples/vue/21-built-in-components.html"},
+              // { title: "22. Built-in Special Elements", url: "/examples/vue/22-built-in-special-elements.html"},
+              // { title: "23. Built-in Special Attributes", url: "/examples/vue/23-built-in-special-attributes.html"},
               { title: "99. 팁 모음", url: "/examples/vue/99-vue-tips.html"},
             ],
             toastGridDocs: [

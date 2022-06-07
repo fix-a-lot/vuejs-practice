@@ -10,7 +10,7 @@
     <script src="/lib/prism/prism.js"></script>
   </head>
   <body>
-    <div class="align-center" id="app">
+    <div class="align-center" id="app" v-cloak>
       <h1>{{pageTitle}}</h1>
 
       <template v-if="docs !== undefined">
@@ -104,7 +104,7 @@
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
       
-      const pageTitle = "10. Props";
+      const pageTitle = "Props";
       
       let vm = createApp({
         components: {

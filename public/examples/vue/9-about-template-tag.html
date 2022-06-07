@@ -11,7 +11,7 @@
     <script src="/lib/prism/prism.js"></script>
   </head>
   <body>
-    <div class="align-center" id="app">
+    <div class="align-center" id="app" v-cloak>
       <h1>{{pageTitle}}</h1>
 
       <pre><code class="language-markup"><!--
@@ -59,7 +59,7 @@
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
 
-      const pageTitle = "컴포넌트: <template>이란 무엇인가";
+      const pageTitle = "<template>이란 무엇인가";
       
       createApp({
         components: {
