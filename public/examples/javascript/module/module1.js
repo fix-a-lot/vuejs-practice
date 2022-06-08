@@ -43,4 +43,13 @@
 // }
 // export { fn as default };
 
-export const message = 'wassssssssssssup';
+// module1.js
+
+export let a = 1;
+
+const b = 2;
+export { b };
+
+export function fn() {
+  return 'Hello world!';
+}

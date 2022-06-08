@@ -47,10 +47,16 @@
 // import './module2.js';
 // // yourName(); // I'm waldo.
 
+import { a, b, fn } from './module1.js';
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(fn()); // Hello world!
+
 let btn = document.querySelector('button#btn');
 
 btn.addEventListener('click', () => {
-  import('./module1.js').then((module) => {
+  import('./dynamic-module.js').then((module) => {
     alert(module.message); // 경고창 "wassssssssssssup" 표시
   });
 });
