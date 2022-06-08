@@ -35,7 +35,7 @@ button {
   margin: 1px 1px 1px 1px;
 }
 /* hr { background-color: rgba(9,45,66,.13); border: 0; height: 1px; margin: 16px 0; padding: 0; width: 100%; box-sizing: content-box; } */
-.result {
+div.result {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: rgba(0, 0, 0, 0.02);
@@ -46,7 +46,7 @@ button {
   padding: 8px 12px;
   text-decoration: none;
 }
-.description {
+div.description {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: rgba(9,45,66,.08);
@@ -55,6 +55,10 @@ button {
   min-height: 20px;
   padding: 8px 12px;
   text-decoration: none;
+}
+p.error,
+span.error {
+  color: #e33838;
 }
 .button-wrapper {
   text-align: left;

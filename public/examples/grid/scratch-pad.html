@@ -64,7 +64,7 @@
       const grid = new tui.Grid({
         el: document.getElementById("grid"),
         data: gridData,
-        scrollX: false,
+        scrollX: true,
         scrollY: true,
         // width: '100%',
         bodyHeight: 400,
@@ -78,6 +78,7 @@
             header: "직무/직급명",
             name: "posNm",
             align: "center",
+            minWidth: 1000,
             renderer: {
               type: CustomTextRenderer,
               options: {

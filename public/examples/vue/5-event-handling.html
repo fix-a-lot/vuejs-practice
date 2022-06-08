@@ -14,15 +14,33 @@
       <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
 
-      <h2>소제목1</h2>
+      <h2>??</h2>
       <pre><code class="language-markup"><!--
-        <마크업/>
+        <button type="button" @click="doSomthing()">눌러유</button> {{something}}
       --></code></pre>
       <pre><code class="language-js"><!--
-        코드
+        methods: {
+          doSomthing(e) {
+            this.something = e ? e.toString() : 'undefined';
+          }
+        }
       --></code></pre>
       <div class="result">
-        <p>{{message}}</p>
+        <button type="button" @click="doSomthing()">눌러유</button> {{something}}
+      </div>
+      <p>만약 괄호를 생략하면 첫 번째 인자는 event 객체가 전달됩니다.</p>
+      <pre><code class="language-markup"><!--
+        <button type="button" @click="doSomthing">눌러유</button> {{something}}
+      --></code></pre>
+      <div class="result">
+        <button type="button" @click="doSomthing">눌러유</button> {{something}}
+      </div>
+      <p>event 객체를 명시적으로 참조하려면 <code class="language-js">$event</code>라고 적습니다:</p>
+      <pre><code class="language-markup"><!--
+        <button type="button" @click="doSomthing($event)">눌러유</button> {{something}}
+      --></code></pre>
+      <div class="result">
+        <button type="button" @click="doSomthing($event)">눌러유</button> {{something}}
       </div>
 
       <h2>소제목2</h2>
@@ -75,9 +93,15 @@
         data() {
           return {
             pageTitle: pageTitle,
-            message: "Hello Vue! ✌️"
+            message: "Hello Vue! ✌️",
+            something: ''
           };
         },
+        methods: {
+          doSomthing(e) {
+            this.something = e ? e.toString() : 'undefined';
+          }
+        }
       }).mount("#app");
     </script>
   </body>
