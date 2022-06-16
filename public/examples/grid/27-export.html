@@ -14,7 +14,7 @@
   <body>
     <div class="align-center" id="app" v-cloak>
       <h1>{{pageTitle}}</h1>
-      <!-- <div id="grid"></div> -->
+      <div id="grid"></div>
       <p>공사중</p>
 
       <h2>beforeExport 커스텀 이벤트</h2>
@@ -70,35 +70,108 @@
         },
       }).mount("#app");
 
-      const gridData = null;
+      let gridData = [
+        { name: "Beautiful Lies", artist: "Birdy", release: "2016.03.26", type: "Deluxe", genre: "Pop" },
+        {
+          name: "X",
+          artist: "Ed Sheeran",
+          release: "2014.06.24",
+          type: "Deluxe",
+          genre: "Pop",
+          _attributes: {
+            disabled: true, // A current row is disabled
+          },
+        },
+        {
+          name: "Moves Like Jagger",
+          release: "2011.08.08",
+          artist: "Maroon5",
+          type: "Single",
+          genre: "Pop,Rock",
+          _attributes: {
+            checkDisabled: true, // A checkbox is disabled only
+          },
+        },
+        {
+          name: "A Head Full Of Dreams",
+          artist: "Coldplay",
+          release: "2015.12.04",
+          type: "Deluxe",
+          genre: "Rock",
+          _attributes: {
+            checked: true, // A checkbox is already checked while rendering
+            className: {
+              // Add class name on a row
+              row: ["red"], // red 클래스의 배경색은 11라인에 정의돼 있음
+            },
+          },
+        },
+        {
+          name: "19",
+          artist: "Adele",
+          release: "2008.01.27",
+          type: "EP",
+          genre: "Pop,R&B",
+          _attributes: {
+            rowSpan: {
+              // Merge rows
+              artist: 3,
+              genre: 2,
+            },
+          },
+        },
+        {
+          name: "21",
+          artist: "Adele",
+          release: "2011.01.21",
+          type: "Deluxe",
+          genre: "Pop,R&B",
+        },
+        {
+          name: "25",
+          artist: "Adele",
+          release: "2015.11.20",
+          type: "EP",
+          genre: "Pop",
+          _attributes: {
+            className: {
+              // Add class name on each columns
+              column: {
+                type: ["blue"], // blue 클래스의 배경색은 14라인에 정의돼 있음
+                genre: ["blue"],
+              },
+            },
+          },
+        },
+      ];
 
       const grid = new tui.Grid({
         el: document.getElementById("grid"),
         data: gridData,
         scrollX: false,
         scrollY: false,
+        rowHeaders: ["checkbox"],
         columns: [
-          {
-            header: "Name",
-            name: "name",
-          },
-          {
-            header: "Artist",
-            name: "artist",
-          },
-          {
-            header: "Type",
-            name: "type",
-          },
-          {
-            header: "Release",
-            name: "release",
-          },
-          {
-            header: "Genre",
-            name: "genre",
-          },
+          { header: "Name", name: "name" },
+          { header: "Artist", name: "artist" },
+          { header: "Type", name: "type" },
+          { header: "Release", name: "release" },
+          { header: "Genre", name: "genre" },
         ],
+        contextMenu: ({ rowKey, columnName }) => (
+          [
+            [
+              {
+                name: 'export',
+                label: '내보내기',
+                action: () => {
+                  // 옵션을 전달하지 않으면 초기 설정 옵션으로 내보내기가 수행된다.
+                  grid.export('csv');
+                }
+              }
+            ]
+          ]
+        )
       });
     </script>
   </body>
