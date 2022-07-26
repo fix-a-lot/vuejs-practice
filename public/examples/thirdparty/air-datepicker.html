@@ -35,7 +35,8 @@
         createApp({
           mounted() {
             new AirDatepicker('#dp0', {
-              locale: LOCALE_KR
+              locale: LOCALE_KR,
+              selectedDates: ['2048-12-12']
             });
           }
         }).mount("#app");
@@ -135,12 +136,19 @@
         </form>
       </div>
 
-      <h2>공사중</h2>
+      <h2>onSelect</h2>
+      <p>onSelect 핸들러는 유일한 인자로 선택한 날짜의 date 객체, 설정된 날짜 포맷, datepicker 객체가 있는 <code class="language-js">obj</code>를 넘겨줍니다:</p>
       <pre><code class="language-markup"><!--
-        <마크업/>
+        <input type="text" id="dp5" placeholder="날 눌러봐유"/>
       --></code></pre>
       <pre><code class="language-js"><!--
-        코드
+        new AirDatepicker('#dp5', {
+          locale: LOCALE_KR,
+          selectedDates: ['2021-05-05'],
+          onSelect(obj) {
+            console.log(obj);
+          }
+        });
       --></code></pre>
       <div class="result">
         <input type="text" id="dp5" placeholder="날 눌러봐유"/>
@@ -189,7 +197,8 @@
         },
         mounted() {
           new AirDatepicker('#dp0', {
-            locale: LOCALE_KR
+            locale: LOCALE_KR,
+            selectedDates: ['2048-12-12']
           });
 
           new AirDatepicker('#dp1', {
@@ -219,6 +228,14 @@
           });
 
           new AirDatepicker('#dp4');
+
+          new AirDatepicker('#dp5', {
+            locale: LOCALE_KR,
+            selectedDates: ['2021-05-05'],
+            onSelect(obj) {
+              console.log(obj);
+            }
+          });
         },
         methods: {
           replcaeNotDateString(e) {
