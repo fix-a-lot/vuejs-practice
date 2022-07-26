@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/lib/prism/prism.css" />
     <title>Vue.js</title>
     <script src="/lib/air-datepicker/air-datepicker.js"></script>
-    <script src="/lib/air-datepicker/locale-kr.js"></script>
     <script src="/lib/prism/prism.js"></script>
   </head>
   <body>
@@ -31,11 +30,15 @@
         <input type="text" id="dp0" placeholder="날 눌러봐유"/>
       --></code></pre>
       <pre><code class="language-js"><!--
-        mounted() {
-          new AirDatepicker('#dp0', {
-            locale: localeKr
-          });
-        }
+        import { LOCALE_KR } from '/lib/air-datepicker/locale-kr.js';
+        
+        createApp({
+          mounted() {
+            new AirDatepicker('#dp0', {
+              locale: LOCALE_KR
+            });
+          }
+        }).mount("#app");
       --></code></pre>
       <div class="result">
         <input type="text" id="dp0" placeholder="날 눌러봐유"/>
@@ -59,7 +62,7 @@
       --></code></pre>
       <pre><code class="language-js"><!--
         new AirDatepicker('#dp2', {
-          locale: localeKr,
+          locale: LOCALE_KR,
           isMobile: true,
           autoClose: true
         });
@@ -83,7 +86,7 @@
           let currentYear = new Date().getFullYear();
           let $this = this;
           let dp3 = new AirDatepicker('#dp3', {
-            locale: localeKr,
+            locale: LOCALE_KR,
             minDate: `${currentYear}-01-01`,
             maxDate: `${currentYear}-12-31`,
             onShow() {
@@ -160,6 +163,7 @@
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { BackToHome } from '/examples/vue/component/BackToHome.js';
       import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+      import { LOCALE_KR } from '/lib/air-datepicker/locale-kr.js';
 
       const pageTitle = "Air Datepicker";
       
@@ -185,15 +189,15 @@
         },
         mounted() {
           new AirDatepicker('#dp0', {
-            locale: localeKr
+            locale: LOCALE_KR
           });
 
           new AirDatepicker('#dp1', {
-            locale: localeKr
+            locale: LOCALE_KR
           });
 
           new AirDatepicker('#dp2', {
-            locale: localeKr,
+            locale: LOCALE_KR,
             isMobile: true,
             autoClose: true
           });
@@ -202,7 +206,7 @@
 
           let $this = this;
           let dp3 = new AirDatepicker('#dp3', {
-            locale: localeKr,
+            locale: LOCALE_KR,
             minDate: `${currentYear}-01-01`,
             maxDate: `${currentYear}-12-31`,
             onShow() {
