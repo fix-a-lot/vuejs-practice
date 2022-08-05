@@ -15,7 +15,7 @@
       <table-of-contents></table-of-contents>
 
       <h2>Text Interpolation</h2>
-      <p>텍스트를 단순 렌더링하는 표현식. 공식 도움말에선 이 표현식을 '수염'(Mustaches)이라고 부릅니다. 😏</p>
+      <p>텍스트를 단순 렌더링하는 표현식. 공식 도움말에선 이 표현식을 '수염(Mustaches)'이라고 부릅니다. 😏</p>
       <pre><code class="language-markup"><!--
         <div id="app">
           <p>{{message}}</p>
@@ -90,7 +90,7 @@
       </div>
 
       <h3>불리언 속성</h3>
-      <p><code class="language-js">checked</code>, <code class="language-js">disabled</code>같은 불리언 속성들은 단순 바인딩이 아니라 데이터가 false인 경우 선언하지 않은 것처럼 됩니다.</p>
+      <p><code class="language-js">checked</code>, <code class="language-js">disabled</code>같은 불리언 속성들은 단순 바인딩이 아니라 할당된 값이 'false로 평가'되는 경우 선언하지 않은 것처럼 만들어 집니다.</p> 
       <p><code class="language-js">false</code>인지 아닌지는 <code class="language-js">Boolean()</code> 함수에 인자로 넣어보세요.</p>
       <pre><code class="language-markup"><!--
         <button :disabled="true">true -> disabled</button>
