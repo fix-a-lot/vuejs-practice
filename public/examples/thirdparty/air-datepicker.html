@@ -111,31 +111,6 @@
         <input type="text" id="dp3" v-model="dp3" maxlength="10" @keyup="replcaeNotDateString($event)" placeholder="날 눌러봐유"/>
       </div>
 
-      <h2>Air Datepicker는 부모 form 태그의 submit 이벤트를 차단함</h2>
-      <pre><code class="language-markup"><!--
-        <form onsubmit="alert('안니옹?');event.preventDefault()">
-          <input type="text" id="dp4" placeholder="날 눌러봐유"/><br>
-          <input type="text" style="width: 300px" placeholder="여기에 포커스 두고 엔터 눌러도 submit 안됨">
-        </form>
-        <form onsubmit="alert('안니옹?');event.preventDefault()">
-          <input type="text" style="width: 300px" placeholder="여긴 엔터 누르면 submit 발동">
-        </form>
-      --></code></pre>
-      <pre><code class="language-js"><!--
-        new AirDatepicker('#dp4');
-      --></code></pre>
-      <div class="result">
-        <form onsubmit="alert('안니옹?');event.preventDefault()">
-          <input type="text" id="dp4" placeholder="날 눌러봐유"/><br>
-          <input type="text" style="width: 300px" placeholder="여기에 포커스 두고 엔터 눌러도 submit 안됨">
-        </form>
-      </div>
-      <div class="result">
-        <form onsubmit="alert('안니옹?');event.preventDefault()">
-          <input type="text" style="width: 300px" placeholder="여긴 엔터 누르면 submit 발동">
-        </form>
-      </div>
-
       <h2>onSelect</h2>
       <p>onSelect 핸들러는 유일한 인자로 선택한 날짜의 date 객체, 설정된 날짜 포맷, datepicker 객체가 있는 <code class="language-js">obj</code>를 넘겨줍니다:</p>
       <pre><code class="language-markup"><!--
