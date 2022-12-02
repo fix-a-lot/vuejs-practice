@@ -44,6 +44,15 @@ app.all('/return-headers.data', (req, res) => {
   res.json(req.headers);
 });
 
+app.all('/return-headers-and-params.data', (req, res) => {
+  let resp = {
+    headers: req.headers,
+    query: req.query,
+    params: req.params
+  };
+  res.json(resp);
+});
+
 app.get('/error500.data', (req, res) => {
   res.status(500).send('Something broke!');
 });

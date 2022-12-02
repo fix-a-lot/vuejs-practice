@@ -15,13 +15,17 @@
       <h1>{{pageTitle}}</h1>
       <table-of-contents></table-of-contents>
       <p><a href="https://axios-http.com/kr/docs/intro">공식 도움말 페이지</a></p>
+      <p><a href="https://axios-http.com/docs/api_intro">Axios API 목록</a></p>
 
       <h2>인스턴스를 생성하며 기본값으로 헤더 설정</h2>
       <pre><code class="language-js"><!--
         const instance = axios.create({
           baseURL: '/return-headers.data',
           timeout: 1000,
-          headers: {'X-Custom-Header': 'foobar'}
+          headers: {'X-Custom-Header': 'foobar'},
+          params: {
+            qwer: 1234
+          }
         });
         let response = await instance.get();
       --></code></pre>
@@ -97,9 +101,12 @@
         methods: {
           async fn1() {
             const instance = axios.create({
-              baseURL: '/return-headers.data',
+              baseURL: '/return-headers-and-params.data',
               timeout: 1000,
-              headers: {'X-Custom-Header': 'foobar'}
+              headers: {'X-Custom-Header': 'foobar'},
+              params: {
+                qwer: 1234
+              }
             });
             let response = await instance.get();
             document.querySelector('#result1').innerText = JSON.stringify(response.data);
