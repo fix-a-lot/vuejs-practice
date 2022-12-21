@@ -66,6 +66,14 @@
         --></code>
       </pre>
       <p>어느 쪽이던 기능 차이는 없지만 text/html 쪽이 VSCODE에서 코드 하이라이트가 잘 됨.</p>
+      <p>ℹ️ 2022-12-21 수정: <code class="language-markup">&lt;script&gt;</code> 태그 대신 <code class="language-markup">&lt;template&gt;</code> 태그로도 가능함. 처음 테스트 땐 템플릿 엔진이 포함된 Node.js 빌드 방식에서만 가능한 것으로 확인했지만...</p>
+      <pre>
+        <code class="language-markup"><!--
+          <template id="ref-me">
+            <div>parent: {{message}}</div>
+          </template>
+        --></code>
+      </pre>
       <div class="description">
         <h4>⚠️주의: 템플릿 정의는 뷰 앱 태그 바깥에 위치시킬 것</h4>
         <p>요래요래 해버리면:</p>
