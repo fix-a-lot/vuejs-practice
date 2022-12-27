@@ -35,11 +35,11 @@
         <h3>h3과 h4는 추가 예정</h3>
       --></code></pre>
       <pre><code class="language-js"><!--
-        import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+        import { tableOfContents } from '/examples/vue/component/tableOfContents.js';
 
         createApp({
           components: {
-            TableOfContents,
+            tableOfContents,
           },
           ...
       --></code></pre>
@@ -50,11 +50,11 @@
         <back-to-home></back-to-home>
       --></code></pre>
       <pre><code class="language-js"><!--
-        import { BackToHome } from '/examples/vue/component/BackToHome.js';
+        import { backToHome } from '/examples/vue/component/backToHome.js';
         
         createApp({
           components: {
-            BackToHome,
+            backToHome,
           },
           ...
       --></code></pre>
@@ -157,15 +157,15 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { tableOfContents } from '/examples/vue/component/tableOfContents.js';
 
       const pageTitle = "가이드 페이지 작성 방법";
       
       createApp({
         components: {
-          BackToHome,
-          TableOfContents,
+          backToHome,
+          tableOfContents,
         },
         created() {
           document.title += `: ${pageTitle}`;

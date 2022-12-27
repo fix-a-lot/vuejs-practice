@@ -1,4 +1,4 @@
-export const TableOfContents = {
+export const tableOfContents = {
   template: `
     <template v-if="headers">
       <h4>📌 목차</h4>

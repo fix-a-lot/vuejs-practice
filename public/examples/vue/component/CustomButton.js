@@ -1,4 +1,4 @@
-export const CustomButton = {
+export const customButton = {
   template: '#ref-me',
   props: ['text'],
   data() {

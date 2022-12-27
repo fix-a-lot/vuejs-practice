@@ -101,15 +101,15 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { literalTemplate } from '/examples/vue/component/literalTemplate.js'
       
       const pageTitle = "Props";
       
       let vm = createApp({
         components: {
-          BackToHome,
-          LiteralTemplate
+          backToHome,
+          literalTemplate
         },
         created() {
           document.title += `: ${pageTitle}`;

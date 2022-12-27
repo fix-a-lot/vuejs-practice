@@ -1,4 +1,4 @@
-export const InlineTemplate = {
+export const inlineTemplate = {
   template: '#ref-me',
   data() {
     return {

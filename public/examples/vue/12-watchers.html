@@ -34,8 +34,8 @@
         <div>
           <input type="text" v-model="question">
         </div>
-        <p><span>old value: </span><span ref="questionsOldValue"></span></p>
-        <p><span>new value: </span><span ref="questionsNewValue"></span></p>
+        <p><span>question old value: </span><span ref="questionsOldValue"></span></p>
+        <p><span>question new value: </span><span ref="questionsNewValue"></span></p>
       </div>
 
       <h2>중첩 객체의 감시</h2>
@@ -51,8 +51,8 @@
         <div>
           <input type="text" v-model="obj.qwer">
         </div>
-        <p><span>old value: </span><span ref="qwersOldValue"></span></p>
-        <p><span>new value: </span><span ref="qwersNewValue"></span></p>
+        <p><span>obj.qwer old value: </span><span ref="qwersOldValue"></span></p>
+        <p><span>obj.qwer new value: </span><span ref="qwersNewValue"></span></p>
       </div>
 
       <h2>소제목2</h2>
@@ -74,15 +74,15 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { tableOfContents } from '/examples/vue/component/tableOfContents.js';
 
       const pageTitle = "Watchers";
       
       createApp({
         components: {
-          BackToHome,
-          TableOfContents,
+          backToHome,
+          tableOfContents,
         },
         created() {
           document.title += `: ${pageTitle}`;

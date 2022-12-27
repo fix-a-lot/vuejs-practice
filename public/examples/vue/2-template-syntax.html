@@ -234,8 +234,8 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { tableOfContents } from '/examples/vue/component/tableOfContents.js';
       
       const pageTitle = "Template Syntax: Vue 표현식";
 
@@ -249,8 +249,8 @@
       
       createApp({
         components: {
-          TableOfContents,
-          BackToHome
+          tableOfContents,
+          backToHome
         },
         created() {
           document.title += `: ${pageTitle}`;

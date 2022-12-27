@@ -57,13 +57,13 @@
     </script>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
 
       const pageTitle = "<template>이란 무엇인가";
       
       createApp({
         components: {
-          BackToHome
+          backToHome
         },
         created() {
           document.title += `: ${pageTitle}`;

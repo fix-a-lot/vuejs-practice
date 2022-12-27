@@ -15,8 +15,8 @@
 
       <p>스크립트 파일에 템플릿 내용을 직접 작성하는 방식</p>
       <pre><code class="language-js"><!--
-        // LiteralTemplate.js
-        export const LiteralTemplate = {
+        // literalTemplate.js
+        export const literalTemplate = {
           template: `
             <p>응애 나 아기 컴포넌트</p>
             <p>{{message}}</p>
@@ -31,11 +31,11 @@
       <pre class="language-markup"><code><!--
         <literal-template></literal-template>
         <script>
-        import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
+        import { literalTemplate } from '/examples/vue/component/literalTemplate.js'
 
         createApp({
           components: {
-            LiteralTemplate
+            literalTemplate
           }
         }).mount("#app");
         </script>
@@ -56,8 +56,8 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { LiteralTemplate } from '/examples/vue/component/LiteralTemplate.js'
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { literalTemplate } from '/examples/vue/component/literalTemplate.js'
 
       const pageTitle = "컴포넌트: 리터럴(임베드) 템플릿";
       
@@ -66,8 +66,8 @@
           document.title += `: ${pageTitle}`;
         },
         components: {
-          BackToHome,
-          LiteralTemplate
+          backToHome,
+          literalTemplate
         },
         data() {
           return {

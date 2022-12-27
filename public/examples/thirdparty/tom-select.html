@@ -175,11 +175,11 @@
         <p id="org-pick-result"></p>
       --></code></pre>
       <pre><code class="language-js"><!--
-        import { MultiPlacePicker } from '/examples/vue/component/MultiPlacePicker.js';
+        import { multiPlacePicker } from '/examples/vue/component/multiPlacePicker.js';
       
         createApp({
           components: {
-            MultiPlacePicker
+            multiPlacePicker
           },
           methods: {
             getOrg() {
@@ -204,11 +204,11 @@
         <p id="place-pick-result"></p>
       --></code></pre>
       <pre><code class="language-js"><!--
-        import { SingleUpperOrgPicker } from '/examples/vue/component/SingleUpperOrgPicker.js';
+        import { singleUpperOrgPicker } from '/examples/vue/component/singleUpperOrgPicker.js';
 
         createApp({
           components: {
-            SingleUpperOrgPicker
+            singleUpperOrgPicker
           },
           methods: {
             getPlaces() {
@@ -276,19 +276,19 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
-      import { MultiPlacePicker } from '/examples/vue/component/MultiPlacePicker.js';
-      import { SingleUpperOrgPicker } from '/examples/vue/component/SingleUpperOrgPicker.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { tableOfContents } from '/examples/vue/component/tableOfContents.js';
+      import { multiPlacePicker } from '/examples/vue/component/multiPlacePicker.js';
+      import { singleUpperOrgPicker } from '/examples/vue/component/singleUpperOrgPicker.js';
 
       const pageTitle = "Tom Select";
       
       window.vm = createApp({
         components: {
-          BackToHome,
-          TableOfContents,
-          MultiPlacePicker,
-          SingleUpperOrgPicker
+          backToHome,
+          tableOfContents,
+          multiPlacePicker,
+          singleUpperOrgPicker
         },
         created() {
           document.title += `: ${pageTitle}`;

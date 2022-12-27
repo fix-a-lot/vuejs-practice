@@ -1,4 +1,4 @@
-export const MultiPlacePicker = {
+export const multiPlacePicker = {
   template: `
     <p>props.pickThese: {{pickThese}}</p>
     <select id="multiPlacePicker" placeholder="체크인장소 선택" multiple>

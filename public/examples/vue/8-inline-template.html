@@ -26,8 +26,8 @@
         </script>
       --></code></pre>
       <pre><code class="language-js"><!--
-        // InlineTemplate.js
-        export const InlineTemplate = {
+        // inlineTemplate.js
+        export const inlineTemplate = {
           template: '#ref-me',
           data() {
             return {
@@ -41,11 +41,11 @@
           <inline-template></inline-template>
         </div>
         <script>
-        import { InlineTemplate } from '/examples/vue/component/InlineTemplate.js'
+        import { inlineTemplate } from '/examples/vue/component/inlineTemplate.js'
 
         createApp({
           components: {
-            InlineTemplate
+            inlineTemplate
           }
         }).mount("#vueApp");
         </script>
@@ -100,8 +100,8 @@
 
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { InlineTemplate } from '/examples/vue/component/InlineTemplate.js'
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { inlineTemplate } from '/examples/vue/component/inlineTemplate.js'
 
       const pageTitle = "컴포넌트: 인라인 템플릿";
       
@@ -110,8 +110,8 @@
           document.title += `: ${pageTitle}`;
         },
         components: {
-          BackToHome,
-          InlineTemplate
+          backToHome,
+          inlineTemplate
         },
         data() {
           return {

@@ -57,13 +57,13 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
 
       const pageTitle = "10. DataSource";
       
       createApp({
         components: {
-          BackToHome
+          backToHome
         },
         created() {
           document.title += `: ${pageTitle}`;

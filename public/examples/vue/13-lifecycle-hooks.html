@@ -57,15 +57,15 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { BackToHome } from '/examples/vue/component/BackToHome.js';
-      import { TableOfContents } from '/examples/vue/component/TableOfContents.js';
+      import { backToHome } from '/examples/vue/component/backToHome.js';
+      import { tableOfContents } from '/examples/vue/component/tableOfContents.js';
 
       const pageTitle = "Lifecycle Hooks";
       
       createApp({
         components: {
-          BackToHome,
-          TableOfContents,
+          backToHome,
+          tableOfContents,
         },
         created() {
           document.title += `: ${pageTitle}`;
@@ -73,7 +73,7 @@
         data() {
           return {
             docs: [
-              { title: "어디어디", url: "어디어디" },
+              { title: "Lifecycle Diagram", url: "https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram" },
               { title: "어디어디", url: "어디어디" },
               { title: "어디어디", url: "어디어디" },
             ],

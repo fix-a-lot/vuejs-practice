@@ -1,4 +1,4 @@
-export const SingleUpperOrgPicker = {
+export const singleUpperOrgPicker = {
   template: `
     <p>props.pickThis: {{pickThis}}</p>
     <select id="singleUpperOrgPicker" placeholder="상위조직 없음">
