@@ -42,7 +42,7 @@
         };
       --></code></pre>
       <pre><code class="language-markup"><!--
-        <emitting-test ref="emt" @custom-event:press="handle"></emitting-test>
+        <emitting-test  @custom-event:press="handle"></emitting-test>
         <p>{{messageFromChild}}</p>
       --></code></pre>
       <pre><code class="language-js"><!--
@@ -64,7 +64,7 @@
         }).mount("#app");
       --></code></pre>
       <div class="result">
-        <emitting-test ref="emt" @custom-event:press="handle"></emitting-test>
+        <emitting-test @custom-event:press="handle"></emitting-test>
         <p>{{messageFromChild}}</p>
       </div>
       다른 인풋 태그도 크게 다르지 않습니다. 예를 들어 <code class="language-markup">&lt;select&gt;</code> 태그는 이런식으로 작성합니다:
@@ -79,39 +79,39 @@
         };
       --></code></pre>
       <div class="result">
-        <emitting-test2 ref="emt2" @custom:event-change="handle2"></emitting-test2>
+        <emitting-test2 @custom:event-change="handle2"></emitting-test2>
         <p>{{messageFromChild2}}</p>
       </div>
 
       <h2>부모의 반응형 모델과 동기화하기</h2>
       <pre><code class="language-markup"><!--
-        <emitting-test3 ref="emt3" v-model="messageFromChild3"></emitting-test3>
+        <emitting-test3 v-model="messageFromChild3"></emitting-test3>
         <p>{{messageFromChild3}}</p>
       --></code></pre>
       <pre><code class="language-js"><!--
         export const emittingTest3 = {
           template: `
-            <input type="text" :value="modelValue" ref="pickMe3" @input="$emit('update:modelValue', $event.target.value)">
+            <input type="text" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
           `,
           props: ['modelValue'],
           emits: ['update:modelValue'],
         };
       --></code></pre>
       <div class="result">
-        <emitting-test3 ref="emt3" v-model="messageFromChild3"></emitting-test3>
+        <emitting-test3 v-model="messageFromChild3"></emitting-test3>
         <p>{{messageFromChild3}}</p>
       </div>
       
       <code class="language-js">modelValue</code> 프로퍼티는 이름을 생략할 때 사용되는 기본값인데, 이름을 지정한다면 아래처럼 사용할 수 있습니다.
       
       <pre><code class="language-markup"><!--
-        <emitting-test4 ref="emt4" v-model:selected="messageFromChild4"></emitting-test4>
+        <emitting-test4 v-model:selected="messageFromChild4"></emitting-test4>
         <p>{{messageFromChild4}}</p>
       --></code></pre>
       <pre><code class="language-js"><!--
         export const emittingTest4 = {
           template: `
-            <select :value="selected" ref="pickMe4" @input="$emit('update:selected', $event.target.value)">
+            <select :value="selected" @input="$emit('update:selected', $event.target.value)">
               <option value="1">1</option>
               <option value="2">2</option>
             </select>
@@ -121,7 +121,7 @@
         };
       --></code></pre>
       <div class="result">
-        <emitting-test4 ref="emt4" v-model:selected="messageFromChild4"></emitting-test4>
+        <emitting-test4 v-model:selected="messageFromChild4"></emitting-test4>
         <p>{{messageFromChild4}}</p>
       </div>
       

@@ -23,7 +23,7 @@ export const emittingTest2 = {
 
 export const emittingTest3 = {
   template: `
-    <input type="text" :value="modelValue" ref="pickMe3" @input="$emit('update:modelValue', $event.target.value)">
+    <input type="text" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
   `,
   props: ['modelValue'],
   emits: ['update:modelValue'],
@@ -31,7 +31,7 @@ export const emittingTest3 = {
 
 export const emittingTest4 = {
   template: `
-    <select :value="selected" ref="pickMe4" @input="$emit('update:selected', $event.target.value)">
+    <select :value="selected" @input="$emit('update:selected', $event.target.value)">
       <option value="1">1</option>
       <option value="2">2</option>
     </select>
