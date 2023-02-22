@@ -1,8 +1,8 @@
 const Grid = toastui.Grid;
 
-export const GridComponent = {
+export const gridComponent = {
   template: `
-  <grid :data="gridProps.data" :columns="gridProps.columns" />
+    <grid :data="gridProps.data" :columns="gridProps.columns" />
   `,
   components: {
     grid: Grid

@@ -17,12 +17,12 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      import { GridComponent } from './GridComponent.js'
+      import { gridComponent } from '/examples/grid/grid-component.js'
 
       const pageTitle = "Axios-Vue 테스트";
       createApp({
         components: {
-          GridComponent: GridComponent
+          gridComponent: gridComponent
         },
         created() {
           document.title += `: ${pageTitle}`
