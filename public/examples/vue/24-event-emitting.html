@@ -106,14 +106,19 @@
       
       <pre><code class="language-markup"><!--
         <emitting-test4 v-model:selected="messageFromChild4"></emitting-test4>
-        <p>{{messageFromChild4}}</p>
+        <p>messageFromChild4: {{messageFromChild4}}</p>
+        <p>Is messageFromChild4 null? {{messageFromChild4 === null}}</p>
+        <p>Is messageFromChild4 null string? {{messageFromChild4 === ''}}</p>
+        <button type="button" @click="messageFromChild4 = null">let messageFromChild4 is null</button>
       --></code></pre>
       <pre><code class="language-js"><!--
         export const emittingTest4 = {
           template: `
             <select :value="selected" @input="$emit('update:selected', $event.target.value)">
-              <option value="1">1</option>
-              <option value="2">2</option>
+              <option :value="null">널값</option>
+              <option :value="">빈 문자열</option>
+              <option :value="1">1</option>
+              <option :value="2">2</option>
             </select>
           `,
           props: ['selected'],
@@ -122,22 +127,51 @@
       --></code></pre>
       <div class="result">
         <emitting-test4 v-model:selected="messageFromChild4"></emitting-test4>
-        <p>{{messageFromChild4}}</p>
+        <p>messageFromChild4: {{messageFromChild4}}</p>
+        <p>Is messageFromChild4 null? {{messageFromChild4 === null}}</p>
+        <p>Is messageFromChild4 null string? {{messageFromChild4 === ''}}</p>
+        <button type="button" @click="messageFromChild4 = null">let messageFromChild4 is null</button>
       </div>
+
+      <p>근데 잘 보면 모델 값이 null일 때 동기화 처리가 잘 안되는 것을 확인할 수 있습니다.</p>
       
-      <h2>소제목2</h2>
       <pre><code class="language-markup"><!--
-        <마크업/>
+        <emitting-test5 v-model:selected="messageFromChild5"></emitting-test5>
+        <p>messageFromChild5: {{messageFromChild5}}</p>
+        <p>Is messageFromChild5 null? {{messageFromChild5 === null}}</p>
+        <p>Is messageFromChild5 null string? {{messageFromChild5 === ''}}</p>
+        <button type="button" @click="messageFromChild5 = null">let messageFromChild5 is null</button>
       --></code></pre>
       <pre><code class="language-js"><!--
-        코드
+        export const emittingTest5 = {
+          template: `
+            <select v-model="walter">
+              <option :value="null">널값</option>
+              <option :value="">빈 문자열</option>
+              <option :value="1">1</option>
+              <option :value="2">2</option>
+            </select>
+          `,
+          props: ['selected'],
+          emits: ['update:selected'],
+          computed: {
+            walter: {
+              get() {
+                return this.selected;
+              },
+              set(value) {
+                this.$emit('update:selected', value);
+              }
+            }
+          }
+        };
       --></code></pre>
       <div class="result">
-        <div>
-          <button type="button" @click="null">날 눌러줘요</button>
-          <button type="button" @click="null">나도</button>
-        </div>
-        <p>{{message}}</p>
+        <emitting-test5 v-model:selected="messageFromChild5"></emitting-test5>
+        <p>messageFromChild5: {{messageFromChild5}}</p>
+        <p>Is messageFromChild5 null? {{messageFromChild5 === null}}</p>
+        <p>Is messageFromChild5 null string? {{messageFromChild5 === ''}}</p>
+        <button type="button" @click="messageFromChild5 = null">let messageFromChild5 is null</button>
       </div>
 
       <back-to-home></back-to-home>
@@ -147,15 +181,15 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
       
-      import { emittingTest, emittingTest2, emittingTest3, emittingTest4 } from '/examples/vue/component/emitting-test.js';
+      import { emittingTest, emittingTest2, emittingTest3, emittingTest4, emittingTest5 } from '/examples/vue/component/emitting-test.js';
 
-      const pageTitle = "Emit";
+      const pageTitle = "Event emitting";
       
       window.vm = createApp({
         components: {
           backToHome,
           tableOfContents,
-          emittingTest, emittingTest2, emittingTest3, emittingTest4
+          emittingTest, emittingTest2, emittingTest3, emittingTest4, emittingTest5
         },
         created() {
           document.title += `: ${pageTitle}`;
@@ -163,16 +197,16 @@
         data() {
           return {
             docs: [
-              { title: "어디어디", url: "어디어디" },
-              { title: "어디어디", url: "어디어디" },
-              { title: "어디어디", url: "어디어디" },
+              { title: "https://v3-docs.vuejs-korea.org/guide/essentials/component-basics.html#listening-to-events", url: "https://v3-docs.vuejs-korea.org/guide/essentials/component-basics.html#listening-to-events" },
+              { title: "https://v3-docs.vuejs-korea.org/api/options-state.html#emits", url: "https://v3-docs.vuejs-korea.org/api/options-state.html#emits" },
             ],
             pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
             messageFromChild: '',
             messageFromChild2: '선택 전',
             messageFromChild3: '',
-            messageFromChild4: ''
+            messageFromChild4: null,
+            messageFromChild5: null
           };
         },
         methods: {

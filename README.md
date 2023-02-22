@@ -5,7 +5,7 @@ Vuejs 샘플 코드 저장소 겸 실험실
 #### environments
 
 - Vue 3
-- Node.js
+- Node.js (버전은 웬만하면 다 됨)
 
 ## 서버 실행
 

@@ -318,6 +318,27 @@
         </select>
       </div>
 
+      <h3><code class="language-js">null</code>을 기본값으로 설정하기</h3>
+      <p></p>
+      <pre><code class="language-markup"><!--
+        <p>Is selected2 null? {{ selected2 === null }}</p>
+        <select v-model="selected2" style="width: 100px;">
+          <option :value="null">널 값</option>
+          <option :value="">빈 문자열</option>
+          <option :value="'this is not null'">this is not null</option>
+        </select>
+        <button type="button" @click="selected2 = null">let selected2 is null</button>
+      --></code></pre>
+      <div class="result">
+        <p>Is selected2 null? {{ selected2 === null }}</p>
+        <select v-model="selected2" style="width: 100px;">
+          <option :value="null">널 값</option>
+          <option :value="">빈 문자열</option>
+          <option :value="'this is not null'">this is not null</option>
+        </select>
+        <button type="button" @click="selected2 = null">let selected2 is null</button>
+      </div>
+
       <h2>프록시는 뭘까</h2>
       <pre><code class="language-markup"><!--
         <div id="app">
@@ -394,7 +415,7 @@
       
       const pageTitle = "폼 바인딩";
       
-      createApp({
+      window.vm = createApp({
         components: {
           backToHome,
           tableOfContents
@@ -432,6 +453,7 @@
                 { text: 'Three', value: 'C' }
               ]
             },
+            selected2: '',
             yn: 'N'
           }
         },
