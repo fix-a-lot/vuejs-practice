@@ -32,7 +32,7 @@ export const emittingTest3 = {
 export const emittingTest4 = {
   template: `
     <select :value="selected" @input="$emit('update:selected', $event.target.value)">
-      <option :value="null">널값</option>
+      <option :value="null">널 값</option>
       <option :value="">빈 문자열</option>
       <option :value="1">1</option>
       <option :value="2">2</option>
@@ -44,8 +44,8 @@ export const emittingTest4 = {
 
 export const emittingTest5 = {
   template: `
-    <select v-model="walter">
-      <option :value="null">널값</option>
+    <select v-model="computedModel">
+      <option :value="null">널 값</option>
       <option :value="">빈 문자열</option>
       <option :value="1">1</option>
       <option :value="2">2</option>
@@ -54,7 +54,7 @@ export const emittingTest5 = {
   props: ['selected'],
   emits: ['update:selected'],
   computed: {
-    walter: {
+    computedModel: {
       get() {
         return this.selected;
       },
