@@ -33,7 +33,7 @@ export const emittingTest4 = {
   template: `
     <select :value="selected" @input="$emit('update:selected', $event.target.value)">
       <option :value="null">널 값</option>
-      <option :value="">빈 문자열</option>
+      <option :value="''">빈 문자열</option>
       <option :value="1">1</option>
       <option :value="2">2</option>
     </select>
@@ -46,7 +46,7 @@ export const emittingTest5 = {
   template: `
     <select v-model="computedModel">
       <option :value="null">널 값</option>
-      <option :value="">빈 문자열</option>
+      <option :value="''">빈 문자열</option>
       <option :value="1">1</option>
       <option :value="2">2</option>
     </select>

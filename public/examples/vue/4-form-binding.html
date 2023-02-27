@@ -324,7 +324,7 @@
         <p>Is selected2 null? {{ selected2 === null }}</p>
         <select v-model="selected2" style="width: 100px;">
           <option :value="null">널 값</option>
-          <option :value="">빈 문자열</option>
+          <option :value="''">빈 문자열</option>
           <option :value="'this is not null'">this is not null</option>
         </select>
         <button type="button" @click="selected2 = null">let selected2 is null</button>
@@ -333,7 +333,7 @@
         <p>Is selected2 null? {{ selected2 === null }}</p>
         <select v-model="selected2" style="width: 100px;">
           <option :value="null">널 값</option>
-          <option :value="">빈 문자열</option>
+          <option :value="''">빈 문자열</option>
           <option :value="'this is not null'">this is not null</option>
         </select>
         <button type="button" @click="selected2 = null">let selected2 is null</button>
