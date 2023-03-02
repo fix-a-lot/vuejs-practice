@@ -35,7 +35,7 @@
       </div>
 
       <h2>Raw HTML</h2>
-      <p>HTML을 escape하지 않고 그대로 출력</p>
+      <p>HTML을 escape하지 않고 그대로 출력합니다.</p>
       <pre><code class="language-markup"><!--
         <p>Using text interpolation: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
@@ -52,7 +52,27 @@
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
       </div>
       <div class="description">
-        <p>⚠️ 신뢰할 수 있는 데이터에만 <code class="language-js">v-html</code>을 적용하세요. 예를 들어 사용자가 입력하는 데이터를 Raw HTML로 출력하게 하면? XSS 취약점을 스스로 만드는 꼴이 됩니다. 🥲</p>
+        <p>⚠️ 신뢰할 수 있는 데이터에만 <code class="language-js">v-html</code>을 적용하세요. 예를 들어 사용자가 입력하는 데이터를 Raw HTML로 출력하게 하면? XSS 취약점을 스스로 만드는 꼴이 됩니다.</p>
+      </div>
+
+      <p>HTML Entities는 어떻게 처리될까요?</p>
+      <pre><code class="language-markup"><!--
+        <p>Using text interpolation: {{ entities }}</p>
+        <p>Using v-html directive: <span v-html="entities"></span></p>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            entities: '&lt;span style=&quot;color: red&quot;&gt;This should be red.&lt;/span&gt;'
+          };
+        }
+      --></code></pre>
+      <div class="result">
+        <p>Using text interpolation: {{ entities }}</p>
+        <p>Using v-html directive: <span v-html="entities"></span></p>
+      </div>
+      <div class="description">
+        <p>mustache는 escaping를 하고, v-html은 그렇지 않는다는 것을 알 수 있습니다.</p>
       </div>
 
       <h2>속성 바인딩</h2>
@@ -260,6 +280,7 @@
             pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
             rawHtml: '<span style="color: red">This should be red.</span>',
+            entities: '&lt;span style=&quot;color: red&quot;&gt;This should be red.&lt;/span&gt;',
             dynamicId: '우쭈쭈쭈',
             objectOfAttrs: {
               id: 'container',
