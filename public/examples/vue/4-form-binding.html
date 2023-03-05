@@ -172,9 +172,9 @@
         </div>
       </div>
 
-      <h3>체크박스에 value만 있으면?</h3>
+      <h3>체크 박스에 value만 있으면?</h3>
       <p>일단 value 속성이 모델의 값에 어떤 영향을 주는지 다시 한 번 봅시다.</p>
-      <pre id="focus-here"><code class="language-markup"><!--
+      <pre><code class="language-markup"><!--
         <input type="checkbox" v-model="checked2"> {{ checked2 }}
         <input type="checkbox" value="Y" v-model="checked3"> {{ checked3 }}
         <input type="checkbox" :value="'YES'" v-model="checked4"> {{ checked4 }}
@@ -194,7 +194,7 @@
         </div>
       </div>
       <p>🤔 아무 의미도 없군요. 저~ 위의 예시 중 하나의 모델로 묶은 것과 대조적으로 value가 있건 없건 모델의 값은 true 혹은 false입니다.</p>
-      <p>그럼 submit도 마찬가지일까요?</p>
+      <p id="focus-here">그럼 submit도 마찬가지일까요?</p>
       <pre><code class="language-markup"><!--
         <form method="get" action="#focus-here">
           <input type="checkbox" name="checked5" v-model="checked5"> {{ checked5 }}
@@ -221,9 +221,9 @@
         </form>
       </div>
       <p>아무거나 체크를 하고 submit 버튼을 눌러보세요.</p>
-      <p>브라우저 네이티브 기능으로 submit을 수행하면 체크박스의 value 값이 그대로 사용되는 것을 볼 수 있습니다.</p>
+      <p>브라우저 네이티브 기능으로 submit을 수행하면 체크 박스의 value 값이 그대로 사용되는 것을 볼 수 있습니다.</p>
       <div class="description">
-        <p>⚠️ 체크박스 타입의 value 속성을 생략했을 때 전송되는 값은 'on' 입니다.</p>
+        <p>⚠️ 체크 박스 타입의 value 속성을 생략했을 때 전송되는 값은 'on' 입니다.</p>
       </div>
 
       <h2>셀렉트 박스</h2>
