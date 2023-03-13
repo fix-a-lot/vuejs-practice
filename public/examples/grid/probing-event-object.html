@@ -55,15 +55,14 @@
     </div>
     <script type="module">
       import { createApp } from "/lib/vue/vue.esm-browser.js";
-      const pageTitle = "글제목";
 
       createApp({
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "글제목",
             message: "Hello Vue! ✌️",
           };
         },

@@ -371,8 +371,11 @@
 
       <h2>Modifiers</h2>
       <p><a target="_blank" href="https://vuejs.org/guide/essentials/forms.html#modifiers">https://vuejs.org/guide/essentials/forms.html#modifiers</a></p>
-      <h3>.trim</h3>
-      <p><code class="language-js">.trim</code>은 모델의 값 앞뒤의 공백 문자를 자동으로 삭제합니다.</p>
+      <ul>
+        <li><code class="language-js">.lazy</code>: 데이터 동기화 시점을 input 이벤트 후가 아니라 change 이벤트 후로 변경합니다.</li>
+        <li><code class="language-js">.number</code>: 사용자 입력을 자동으로 Number 타입으로 변환합니다.</li>
+        <li><code class="language-js">.trim</code>: 모델의 값 앞뒤의 공백 문자를 자동으로 삭제합니다.</li>
+      </ul>
       <pre><code class="language-markup"><!--
         <input type="text" v-model.trim="trimMe"/> trimMe.length: {{trimMe.length}}
         <input type="text" v-model="doNotTrimMe"/> doNotTrimMe.length: {{doNotTrimMe.length}}
@@ -394,18 +397,6 @@
         </div>
       </div>
 
-      <h3>TODO Modifiers: .lazy</h3>
-      <h3>TODO Modifiers: .number</h3>
-      <pre><code class="language-markup"><!--
-        <마크업/>
-      --></code></pre>
-      <pre><code class="language-js"><!--
-        코드
-      --></code></pre>
-      <div class="result">
-        <!-- <p>{{message}}</p> -->
-      </div>
-
       <back-to-home></back-to-home>
     </div>
     <script type="module">
@@ -413,21 +404,16 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
       
-      const pageTitle = "폼 바인딩";
-      
       window.vm = createApp({
         components: {
           backToHome,
           tableOfContents
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "폼 바인딩",
             trimMe: '',
             doNotTrimMe: '',
-            pageTitle: pageTitle,
             text: 'edit me!',
             obj: {
               a: 1,
@@ -456,6 +442,9 @@
             selected2: '',
             yn: 'N'
           }
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         methods: {
           fn1() {

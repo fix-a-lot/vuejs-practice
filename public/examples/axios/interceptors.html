@@ -168,8 +168,6 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "인터셉터";
-      
       // Vue는 안봐도 됨
       createApp({
         components: {
@@ -177,7 +175,7 @@
           tableOfContents
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         mounted() {
           function onLoad() {
@@ -206,7 +204,7 @@
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "인터셉터",
             reqItcpts: [],
             resItcpts: []
           };

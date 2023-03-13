@@ -21,18 +21,16 @@
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { backToHome } from '/examples/vue/component/back-to-home.js';
 
-      const pageTitle = "1. Basic";
-      
       createApp({
         components: {
           backToHome
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "1. Basic",
           };
         },
       }).mount("#app");

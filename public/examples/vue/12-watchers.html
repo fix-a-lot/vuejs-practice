@@ -77,29 +77,27 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "Watchers";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "Watchers",
             docs: [
               { title: "Essentials: Watchers", url: "https://vuejs.org/guide/essentials/watchers.html" },
               { title: "Options API > Options: State > watch", url: "https://vuejs.org/api/options-state.html#watch" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
             question: '',
             obj: {
               qwer: ''
             }
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         watch: {
           question(n, o) {

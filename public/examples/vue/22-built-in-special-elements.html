@@ -60,27 +60,25 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "Built-in Special Elements";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "Built-in Special Elements",
             docs: [
               { title: "어디어디", url: "어디어디" },
               { title: "어디어디", url: "어디어디" },
               { title: "어디어디", url: "어디어디" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️"
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

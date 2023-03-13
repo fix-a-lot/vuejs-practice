@@ -16,14 +16,16 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      const pageTitle = "Scratch Pad";
+      
       createApp({
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
-          return { pageTitle: pageTitle };
+          return { 
+            pageTitle: "Scratch Pad" 
+          };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
 
       let gridData = [

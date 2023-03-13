@@ -104,26 +104,24 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { literalTemplate } from '/examples/vue/component/literal-template.js'
       
-      const pageTitle = "Props";
-      
       let vm = createApp({
         components: {
           backToHome,
           literalTemplate
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "Props",
             docs: [
               { title: "https://vuejs.org/api/options-state.html#props", url: "https://vuejs.org/api/options-state.html#props" },
               { title: "https://vuejs.org/guide/components/props.html#props-declaration", url: "https://vuejs.org/guide/components/props.html#props-declaration" },
               { title: "https://vuejs.org/guide/typescript/options-api.html#typing-component-props", url: "https://vuejs.org/guide/typescript/options-api.html#typing-component-props" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️"
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         props: {
           name: String,

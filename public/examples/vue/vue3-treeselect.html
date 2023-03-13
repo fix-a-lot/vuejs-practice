@@ -70,24 +70,19 @@
       // import Treeselect from '/lib/vue3-treeselect.common.js';
       const { createApp } = Vue;
 
-      const pageTitle = "Vue3 Treeselect";
-
       console.log(typeof Treeselect);
       console.log(typeof VueTreeselect);
 
       // createApp({
-      //   created() {
-      //     document.title += `: ${pageTitle}`;
-      //   },
       //   data() {
       //     return {
+      //       pageTitle: "Vue3 Treeselect",
       //       docs: [
       //         { title: "https://vue-treeselect.js.org/", url: "https://vue-treeselect.js.org/" },
       //         { title: "https://github.com/megafetis/vue3-treeselect", url: "https://github.com/megafetis/vue3-treeselect" },
       //       ],
-      //       pageTitle: pageTitle,
       //       components: {
-      //         Treeseelect: VueTreeselect.Treeselect
+      //         Treeseelect: VueTreeselect.Treeselect,
       //       },
       //       // define the default value
       //       value: null,
@@ -118,6 +113,9 @@
       //       ],
       //     };
       //   },
+      //   created() {
+      //     document.title += `: ${this.pageTitle}`;
+      //   }
       // }).mount("#app");
     </script>
   </body>

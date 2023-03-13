@@ -67,22 +67,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "Vue 시작하기";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "Vue 시작하기",
             message: "Hello Vue! ✌️"
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

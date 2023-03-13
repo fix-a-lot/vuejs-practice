@@ -66,22 +66,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "columnOptions";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
+            pageTitle: "columnOptions",
             docs: [
               { title: "어디어디", url: "어디어디" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️"
           };
         },

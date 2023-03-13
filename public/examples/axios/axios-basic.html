@@ -81,8 +81,6 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "기본 사용법";
-      
       // Vue는 안봐도 됨
       createApp({
         components: {
@@ -90,11 +88,11 @@
           tableOfContents
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "기본 사용법",
           };
         },
         methods: {

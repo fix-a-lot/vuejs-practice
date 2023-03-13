@@ -19,15 +19,14 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      const pageTitle = "공사중";
       createApp({
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle
+            pageTitle: "공사중"
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
       }).mount("#app");
 

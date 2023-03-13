@@ -59,21 +59,19 @@
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { backToHome } from '/examples/vue/component/back-to-home.js';
 
-      const pageTitle = "<template>이란 무엇인가";
-      
       createApp({
         components: {
           backToHome
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "<template>이란 무엇인가",
             message: "This is parent message ✌️"
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

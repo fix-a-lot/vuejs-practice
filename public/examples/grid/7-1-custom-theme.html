@@ -27,18 +27,16 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import customTheme from '/examples/grid/custom-theme.js';
 
-      const pageTitle = '7-1. 커스텀 테마 만들어보기';
-      
       createApp({
         components: {
           backToHome
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: '7-1. 커스텀 테마 만들어보기',
           };
         },
         methods: {

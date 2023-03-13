@@ -281,8 +281,6 @@
       import { multiPlacePicker } from '/examples/vue/component/multi-place-picker.js';
       import { singleUpperOrgPicker } from '/examples/vue/component/single-upper-org-picker.js';
 
-      const pageTitle = "Tom Select";
-      
       window.vm = createApp({
         components: {
           backToHome,
@@ -290,8 +288,20 @@
           multiPlacePicker,
           singleUpperOrgPicker
         },
+        data() {
+          return {
+            pageTitle: "Tom Select",
+            docs: [
+              { title: "https://tom-select.js.org/", url: "https://tom-select.js.org/" },
+              { title: "https://github.com/orchidjs/tom-select", url: "https://github.com/orchidjs/tom-select" },
+            ],
+            message: "Hello Vue! ✌️",
+            sequence: 0,
+            tommy: {}
+          };
+        },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         mounted() {
           new TomSelect('#input-tags');
@@ -408,18 +418,6 @@
             }
           };
           this.apiTommy = new TomSelect('#tom-select-apis', config);
-        },
-        data() {
-          return {
-            docs: [
-              { title: "https://tom-select.js.org/", url: "https://tom-select.js.org/" },
-              { title: "https://github.com/orchidjs/tom-select", url: "https://github.com/orchidjs/tom-select" },
-            ],
-            pageTitle: pageTitle,
-            message: "Hello Vue! ✌️",
-            sequence: 0,
-            tommy: {}
-          };
         },
         methods: {
           createItem() {

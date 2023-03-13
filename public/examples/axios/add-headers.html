@@ -81,8 +81,6 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "헤더 추가하기";
-      
       // Vue는 안봐도 됨
       createApp({
         components: {
@@ -90,11 +88,11 @@
           tableOfContents
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "헤더 추가하기",
             something: '썸띵'
           };
         },

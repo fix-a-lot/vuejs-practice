@@ -59,22 +59,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { literalTemplate } from '/examples/vue/component/literal-template.js'
 
-      const pageTitle = "컴포넌트: 리터럴(임베드) 템플릿";
-      
       createApp({
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         components: {
           backToHome,
           literalTemplate
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "컴포넌트: 리터럴(임베드) 템플릿",
             message: "This is parent message ✌️"
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

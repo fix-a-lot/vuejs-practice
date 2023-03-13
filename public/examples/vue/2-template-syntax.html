@@ -257,8 +257,6 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
       
-      const pageTitle = "Template Syntax: Vue 표현식";
-
       const asdf = 'hi';
       const oobbjj = {
         a: 'hi'
@@ -272,12 +270,9 @@
           tableOfContents,
           backToHome
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "Template Syntax: Vue 표현식",
             message: "Hello Vue! ✌️",
             rawHtml: '<span style="color: red">This should be red.</span>',
             entities: '&lt;span style=&quot;color: red&quot;&gt;This should be red.&lt;/span&gt;',
@@ -292,6 +287,9 @@
             attributename: 'clazz',
             attributeValue: 'im-a-clazz'
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         methods: {
           reverseMessage() {

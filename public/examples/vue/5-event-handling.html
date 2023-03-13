@@ -83,22 +83,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
       
-      const pageTitle = "이벤트 핸들링";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "이벤트 핸들링",
             message: "Hello Vue! ✌️",
             something: ''
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         methods: {
           doSomthing(e) {

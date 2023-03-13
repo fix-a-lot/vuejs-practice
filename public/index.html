@@ -70,14 +70,10 @@
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      const pageTitle = "Index";
       createApp({
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: 'Index',
             vueDocs: [
               { title: "Vue.js: Guide", url: "https://vuejs.org/guide/introduction.html" },
               { title: "Vue.js: Tutorial", url: "https://vuejs.org/tutorial/#step-1" },
@@ -172,6 +168,9 @@
             ]
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

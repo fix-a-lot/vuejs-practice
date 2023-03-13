@@ -301,22 +301,17 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "리스트 랜더링";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "리스트 랜더링",
             docs: [
               { title: "https://vuejs.org/guide/essentials/list.html", url: "https://vuejs.org/guide/essentials/list.html" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
             simpleArray: ['가', '나', '다'],
             objectArray: [
@@ -340,6 +335,9 @@
               publishedAt: '2016-04-10'
             }
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         methods: {
           updateObjectArray() {

@@ -70,22 +70,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "조건부 랜더링";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "조건부 랜더링",
             message: "Hello Vue! ✌️",
             ok: true
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
       }).mount("#app");
     </script>

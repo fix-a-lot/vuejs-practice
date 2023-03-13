@@ -148,8 +148,6 @@
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
       import { LOCALE_KR } from '/lib/air-datepicker/locale-kr.js';
 
-      const pageTitle = "Air Datepicker";
-      
       createApp({
         components: {
           backToHome,
@@ -157,18 +155,18 @@
         },
         data() {
           return {
+            pageTitle: "Air Datepicker",
             docs: [
               { title: "https://air-datepicker.com/examples", url: "https://air-datepicker.com/examples" },
               { title: "https://air-datepicker.com/docs", url: "https://air-datepicker.com/docs" },
               { title: "https://air-datepicker.com/methods", url: "https://air-datepicker.com/methods" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
             dp3: null
           };
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         mounted() {
           new AirDatepicker('#dp0', {

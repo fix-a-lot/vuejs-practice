@@ -103,22 +103,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { inlineTemplate } from '/examples/vue/component/inline-template.js'
 
-      const pageTitle = "컴포넌트: 인라인 템플릿";
-      
       createApp({
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         components: {
           backToHome,
           inlineTemplate
         },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "컴포넌트: 인라인 템플릿",
             message: "This is parent message ✌️"
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

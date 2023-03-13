@@ -19,7 +19,6 @@
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { gridComponent } from '/examples/grid/grid-component.js'
 
-      const pageTitle = "Axios-Vue 테스트";
       createApp({
         components: {
           gridComponent: gridComponent
@@ -29,7 +28,7 @@
         },
         data() {
           return { 
-            pageTitle: pageTitle
+            pageTitle: "Axios-Vue 테스트"
           };
         },
       }).mount("#app");

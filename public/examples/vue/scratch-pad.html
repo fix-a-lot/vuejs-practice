@@ -39,24 +39,25 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "연습장 #1";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
-            // docs: [
-            //   { title: "어디어디", url: "어디어디" },
-            // ],
-            pageTitle: pageTitle,
+            pageTitle: "연습장 #1",
+            docs: [
+              { title: "어디어디", url: "어디어디" },
+            ],
             message: "Hello Vue! ✌️"
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        },
+        mounted() {
+          this.docs.push({ title: "어디어디", url: "어디어디" })
         },
       }).mount("#app");
     </script>

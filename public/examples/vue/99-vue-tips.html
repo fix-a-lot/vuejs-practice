@@ -98,7 +98,6 @@
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
-      const pageTitle = "99. 팁 모음";
       
       function initialState() {
         return {
@@ -107,7 +106,7 @@
             // { title: "어디어디", url: "어디어디" },
             // { title: "어디어디", url: "어디어디" },
           // ],
-          pageTitle: pageTitle,
+          pageTitle: "99. 팁 모음",
           message: "Hello Vue! ✌️",
           prop1: '원래값으로돌아갔지롱',
           prop2: '붑밥붑밥붑밥바'
@@ -119,11 +118,11 @@
           backToHome,
           tableOfContents
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return initialState();
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         methods: {
           changeState() {

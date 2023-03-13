@@ -60,15 +60,10 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "Computed Properties";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
-        },
-        created() {
-          document.title += `: ${pageTitle}`;
         },
         data() {
           return {
@@ -77,9 +72,12 @@
               { title: "Options API > Options: State > computed", url: "https://vuejs.org/api/options-state.html#computed" },
               { title: "어디어디", url: "어디어디" },
             ],
-            pageTitle: pageTitle,
+            pageTitle: "Computed Properties",
             message: "Hello Vue! ✌️"
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
       }).mount("#app");
     </script>

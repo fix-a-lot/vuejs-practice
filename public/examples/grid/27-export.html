@@ -55,17 +55,25 @@
           ["사원", "어제"]
         ];
       --></code></pre>
+      <h2>context menu(마우스 우클릭 메뉴)</h2>
+      <p>TODO</p>
+      <h3>context menu를 비활성화 하는 방법</h3>
+      <p>그냥 null을 할당하면 됨</p>
+      <pre><code class="language-js"><!--
+        new tui.Grid({
+          contextMenu: null
+        })
+      --></code></pre>
     </div>
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
-      const pageTitle = "공사중";
       createApp({
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle
+            pageTitle: "공사중"
           };
         },
       }).mount("#app");

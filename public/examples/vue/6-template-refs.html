@@ -51,27 +51,25 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "Template Refs";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
-        mounted() {
-          this.$refs.focusMe.focus();
-        },
         data() {
           return {
-            pageTitle: pageTitle,
+            pageTitle: "Template Refs",
             message: "Hello Vue! ✌️",
             vv: '여기에 포커스가 있쥬?',
             vvv: '옆에 버튼 누르면 포커스 생김'
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        },
+        mounted() {
+          this.$refs.focusMe.focus();
+        }
       }).mount("#app");
     </script>
   </body>

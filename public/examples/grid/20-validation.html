@@ -18,14 +18,13 @@
       <p>공사중</p>
     </div>
     <script>
-      const pageTitle = "공사중";
       createApp({
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
-            pageTitle: pageTitle
+            pageTitle: "공사중"
           };
         },
       }).mount("#app");

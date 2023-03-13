@@ -184,24 +184,19 @@
       
       import { emittingTest, emittingTest2, emittingTest3, emittingTest4, emittingTest5 } from '/examples/vue/component/emitting-test.js';
 
-      const pageTitle = "Event emitting";
-      
       window.vm = createApp({
         components: {
           backToHome,
           tableOfContents,
           emittingTest, emittingTest2, emittingTest3, emittingTest4, emittingTest5
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "Event emitting",
             docs: [
               { title: "https://v3-docs.vuejs-korea.org/guide/essentials/component-basics.html#listening-to-events", url: "https://v3-docs.vuejs-korea.org/guide/essentials/component-basics.html#listening-to-events" },
               { title: "https://v3-docs.vuejs-korea.org/api/options-state.html#emits", url: "https://v3-docs.vuejs-korea.org/api/options-state.html#emits" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️",
             messageFromChild: '',
             messageFromChild2: '선택 전',
@@ -209,6 +204,9 @@
             messageFromChild4: null,
             messageFromChild5: null
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
         },
         methods: {
           handle(message) {

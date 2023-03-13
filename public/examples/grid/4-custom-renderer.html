@@ -108,22 +108,20 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "4. Custom Renderer";
-
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
         created() {
-          document.title += `: ${pageTitle}`;
+          document.title += `: ${this.pageTitle}`;
         },
         data() {
           return {
+            pageTitle: "4. Custom Renderer",
             docs: [
               { title: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/custom-renderer.md", url: "https://github.com/nhn/tui.grid/blob/master/packages/toast-ui.grid/docs/ko/custom-renderer.md" },
             ],
-            pageTitle: pageTitle
           };
         },
       }).mount("#app");

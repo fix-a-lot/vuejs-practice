@@ -60,26 +60,24 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "Class and Style Bindings";
-      
       createApp({
         components: {
           backToHome,
           tableOfContents,
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
         data() {
           return {
+            pageTitle: "Class and Style Bindings",
             docs: [
               { title: "Essentials > Class and Style Bindings", url: "https://vuejs.org/guide/essentials/class-and-style.html" },
               { title: "어디어디", url: "어디어디" },
             ],
-            pageTitle: pageTitle,
             message: "Hello Vue! ✌️"
           };
         },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        }
       }).mount("#app");
     </script>
   </body>

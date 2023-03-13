@@ -45,25 +45,17 @@
       import { backToHome } from '/examples/vue/component/back-to-home.js';
       import { tableOfContents } from '/examples/vue/component/table-of-contents.js';
 
-      const pageTitle = "연습장 #2";
-      
       window.vm = createApp({
         components: {
           backToHome,
           tableOfContents,
         },
-        created() {
-          document.title += `: ${pageTitle}`;
-        },
-        mounted() {
-          this.setChildren();
-        },
         data() {
           return {
-            // docs: [
-            //   { title: "어디어디", url: "어디어디" },
-            // ],
-            pageTitle: pageTitle,
+            pageTitle: "연습장 #2",
+            docs: [
+              { title: "어디어디", url: "어디어디" },
+            ],
             message: "Hello Vue! ✌️",
             children: [
               {
@@ -76,6 +68,12 @@
               }
             ]
           };
+        },
+        created() {
+          document.title += `: ${this.pageTitle}`;
+        },
+        mounted() {
+          this.setChildren();
         },
         methods: {
           setChildren() {
