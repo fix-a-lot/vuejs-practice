@@ -31,15 +31,15 @@ export const emittingTest3 = {
 
 export const emittingTest4 = {
   template: `
-    <select :value="selected" @input="$emit('update:selected', $event.target.value)">
+    <select :value="selectedValue" @input="$emit('update:selected-value', $event.target.value)">
       <option :value="null">널 값</option>
       <option :value="''">빈 문자열</option>
       <option :value="1">1</option>
       <option :value="2">2</option>
     </select>
   `,
-  props: ['selected'],
-  emits: ['update:selected']
+  props: ['selectedValue'],
+  emits: ['update:selected-value']
 };
 
 export const emittingTest5 = {
@@ -51,15 +51,15 @@ export const emittingTest5 = {
       <option :value="2">2</option>
     </select>
   `,
-  props: ['selected'],
-  emits: ['update:selected'],
+  props: ['selectedValue'],
+  emits: ['update:selected-value'],
   computed: {
     computedModel: {
       get() {
-        return this.selected;
+        return this.selectedValue;
       },
       set(value) {
-        this.$emit('update:selected', value);
+        this.$emit('update:selected-value', value);
       }
     }
   }
