@@ -49,6 +49,16 @@
         <p>⚠️ 데이터소스 API를 설정한 후에는 <code class="language-js">grid.resetData()</code>를 사용할 수 없습니다. 대신 <code class="language-js">grid.readData(1)</code>를 호출하세요</p>
       </div>
       <div><button type="button" @click="readData">조회버튼</button></div>
+      <select v-model="perPage" @change="handlePerPageChange" :class="classList">
+        <option :value="5">5개</option>
+        <option :value="10">10개</option>
+        <option :value="20">20개</option>
+        <option :value="50">50개</option>
+        <option :value="100">100개</option>
+        <option :value="200">200개</option>
+        <option :value="300">300개</option>
+        <option :value="500">500개</option>
+      </select>
       <div id="grid"></div>
       <div class="description">
         <p>🤔 totalCount를 분명 100으로 했는데 왜 1페이지만 나오는지는 몲.</p>
@@ -69,18 +79,22 @@
         data() {
           return {
             pageTitle: "10. DataSource",
+            perPage: 10
           };
         },
         methods: {
           readData() {
-            grid.readData(1);
+            gridInstance.readData(1);
+          },
+          handlePerPageChange(perPage) {
+            gridInstance.setPerPage(perPage);
           }
         }
       }).mount("#app");
 
       const gridData = null;
 
-      let grid = new tui.Grid({
+      let gridInstance = window.gridInstance = new tui.Grid({
         el: document.getElementById("grid"),
         scrollX: false,
         scrollY: false,
@@ -92,7 +106,7 @@
           },
         },
         pageOptions: {
-          perPage: 20,
+          perPage: 10
         },
         columns: [
           {

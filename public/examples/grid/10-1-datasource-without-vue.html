@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Toast UI Grid</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui/tui-pagination.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/tui/tui-grid.css" />
+    <link rel="stylesheet" href="/lib/prism/prism.css" />
+    <script src="/lib/prism/prism.js"></script>
+    <script src="/lib/tui/tui-pagination.js"></script>
+    <script src="/lib/tui/tui-grid.js"></script>
+  </head>
+  <body>
+    <div class="align-center">
+      <h1>Toast Grid Pagination Test</h1>
+      <div><button type="button" onclick="readData()">조회버튼</button></div>
+      <select onchange="gridInstance.setPerPage(event.target.value)">
+        <option value="5">5개</option>
+        <option value="10">10개</option>
+        <option value="20">20개</option>
+        <option value="50">50개</option>
+        <option value="100">100개</option>
+        <option value="200">200개</option>
+        <option value="300">300개</option>
+        <option value="500">500개</option>
+      </select>
+      <div id="grid"></div>
+    </div>
+    <script>
+      const gridData = null;
+
+      let gridInstance = window.gridInstance = new tui.Grid({
+        el: document.getElementById("grid"),
+        scrollX: false,
+        scrollY: false,
+        minBodyHeight: 30,
+        rowHeaders: ["rowNum"],
+        data: {
+          api: {
+            readData: { url: "/read-grid.data", method: "GET" },
+          },
+        },
+        pageOptions: {
+          perPage: 10
+        },
+        columns: [
+          {
+            header: "Name",
+            name: "name",
+          },
+          {
+            header: "Artist",
+            name: "artist",
+          },
+          {
+            header: "Type",
+            name: "type",
+          },
+          {
+            header: "Release",
+            name: "release",
+          },
+          {
+            header: "Genre",
+            name: "genre",
+          },
+        ],
+      });
+
+      function readData() {
+        gridInstance.readData(1);
+      }
+      function handlePerPageChange(event) {
+        gridInstance.setPerPage(event.target.value);
+      }
+    </script>
+  </body>
+</html>
