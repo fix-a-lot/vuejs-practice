@@ -38,7 +38,6 @@ node server.js
 
 # nodemon으로 서버 시작: 변경된 파일 재시작 없이 갱신
 npm exec nodemon server.js
-npx nodemon server.js
 ```
 
 ## 파일 레이아웃
