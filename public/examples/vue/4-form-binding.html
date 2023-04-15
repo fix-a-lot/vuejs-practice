@@ -135,15 +135,10 @@
       </div>
 
       <h3>value 지정하기</h3>
-      <p>체크상태에 따른 value의 값을 true/false가 아닌 다른 값으로 설정하고 싶으면 <code class="language-markup">true-value</code>와 <code class="language-markup">false-value</code>를 사용합니다.</p>
+      <p>체크상태에 따른 value의 값을 true/false가 아닌 다른 값으로 설정하고 싶으면 <code class="language-markup">true-value</code>와 <code class="language-markup">false-value</code>를 사용합니다. (값이 문자열이면 콜론과 홑따옴표는 생략해도 됩니다.)</p>
       <pre><code class="language-markup"><!--
-        <input type="checkbox" id="checkbox" 
-              refs="yn" v-model="yn" 
-              true-value="Y"
-              :false-value="'N'"
-              />&nbsp;
-        <label for="checkbox">{{ yn }}</label>
-
+        <input type="checkbox" v-model="yn" true-value="Y" :false-value="'N'" />
+        <p>yn: {{yn}}</p>
         <button type="button" @click="toggleYn">toggleYn()</button>
       --></code></pre>
       <pre><code class="language-js"><!--
@@ -160,19 +155,44 @@
       --></code></pre>
       <div class="result">
         <div style="margin-bottom: 5px;">
-          <input type="checkbox" id="yn" 
-              refs="yn" v-model="yn" 
-              true-value="Y"
-              :false-value="'N'"
-              />&nbsp;
-          <label for="yn">{{ yn }}</label>
+          <input type="checkbox" v-model="yn" true-value="Y" :false-value="'N'" />
+          <p>yn: {{yn}}</p>
         </div>
         <div style="margin-bottom: 5px;">
           <button type="button" @click="toggleYn">toggleYn()</button>
         </div>
       </div>
+      <p>단, 이 속성은 v-model이 배열일 경우엔 제대로 작동하지 않습니다.</p>
+      <pre><code class="language-html"><!--
+        <input type="checkbox" v-model="yns" true-value="Y" :false-value="'N'"/>&nbsp;
+        <input type="checkbox" v-model="yns" true-value="Y2" :false-value="'N2'"/>&nbsp;
+        <p>yns: {{yns}}</p>
+        <button type="button" @click="toggleYns">toggleYns()</button>
+      --></code></pre>
+      <pre><code class="language-js"><!--
+        data() {
+          return {
+            yns: []
+          }
+        },
+        methods: {
+          resetYns() {
+            this.yns = [];
+          }
+        }
+      --></code></pre>
+      <div class="result">
+        <div style="margin-bottom: 5px;">
+          <input type="checkbox" v-model="yns" true-value="Y" :false-value="'N'"/>&nbsp;
+          <input type="checkbox" v-model="yns" true-value="Y2" :false-value="'N2'"/>&nbsp;
+          <p>yns: {{yns}}</p>
+        </div>
+        <div style="margin-bottom: 5px;">
+          <button type="button" @click="resetYns">resetYns()</button>
+        </div>
+      </div>
 
-      <h3>체크 박스에 value만 있으면?</h3>
+      <h3>(v-model이 배열이 아닌) 체크 박스에 value만 있으면?</h3>
       <p>일단 value 속성이 모델의 값에 어떤 영향을 주는지 다시 한 번 봅시다.</p>
       <pre><code class="language-markup"><!--
         <input type="checkbox" v-model="checked2"> {{ checked2 }}
@@ -193,7 +213,7 @@
           <input type="checkbox" id="checked4" :value="'YES'" v-model="checked4" />&nbsp;{{ checked4 }}
         </div>
       </div>
-      <p>🤔 아무 의미도 없군요. 저~ 위의 예시 중 하나의 모델로 묶은 것과 대조적으로 value가 있건 없건 모델의 값은 true 혹은 false입니다.</p>
+      <p>🤔 아무 의미도 없군요. 위의 예시 중 v-model이 배열인 것과 대조적으로 value가 있건 없건 모델의 값은 true 혹은 false입니다.</p>
       <p id="focus-here">그럼 submit도 마찬가지일까요?</p>
       <pre><code class="language-markup"><!--
         <form method="get" action="#focus-here">
@@ -440,7 +460,8 @@
               ]
             },
             selected2: '',
-            yn: 'N'
+            yn: 'N',
+            yns: []
           }
         },
         created() {
@@ -456,6 +477,9 @@
           },
           toggleYn() {
             this.yn = this.yn === 'N' ? 'Y' : 'N';
+          },
+          resetYns() {
+            this.yns = [];
           }
         }
       }).mount("#app");
