@@ -93,15 +93,27 @@ app.get('/delayed-response.data', (req, res) => {
   }, 2000);
 });
 
-app.get('/read-grid.data', (req, res) => {
-  let gridData = gridDummies.tenItemsData;
+app.get('/read-paged-grid-data.data', (req, res) => {
+  let gridData = gridDummies.largeData;
+
+  let perPage = req.query.perPage;
+  let page = req.query.page;
+  let startIndex = (page == 1) ? 1 : (page - 1) * perPage + 1;
+  let endIndex = page * perPage;
+  console.log('perPage', perPage);
+  console.log('page', page);
+  console.log('startIndex', startIndex);
+  console.log('endIndex', endIndex);
+
+  let list = gridData.slice(startIndex - 1, endIndex);
+
   let gridResponse = {
     result: true,
     data: {
-      contents: gridData,
+      contents: list,
       pagination: {
         page: Number(req.query.page),
-        totalCount: 100
+        totalCount: 300
       }
     }
   };

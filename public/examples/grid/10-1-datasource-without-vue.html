@@ -39,13 +39,18 @@
         rowHeaders: ["rowNum"],
         data: {
           api: {
-            readData: { url: "/read-grid.data", method: "GET" },
+            readData: { url: "/read-paged-grid-data.data", method: "GET" },
           },
         },
         pageOptions: {
           perPage: 10
         },
         columns: [
+          {
+            header: "RowIndex",
+            name: "rowIndex",
+            align: 'center'
+          },
           {
             header: "Name",
             name: "name",
@@ -57,14 +62,17 @@
           {
             header: "Type",
             name: "type",
+            align: 'center'
           },
           {
             header: "Release",
             name: "release",
+            align: 'center'
           },
           {
             header: "Genre",
             name: "genre",
+            align: 'center'
           },
         ],
       });
