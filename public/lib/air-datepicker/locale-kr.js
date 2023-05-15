@@ -10,7 +10,7 @@ const LOCALE_KR = {
   clear: 'Clear',
   dateFormat: 'yyyy-MM-dd',
   timeFormat: 'hh:mm aa',
-  firstDay: 0
+  firstDay: 1
 };
 
 export { LOCALE_KR };

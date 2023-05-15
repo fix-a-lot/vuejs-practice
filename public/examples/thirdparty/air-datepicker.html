@@ -36,7 +36,7 @@
           mounted() {
             new AirDatepicker('#dp0', {
               locale: LOCALE_KR,
-              selectedDates: ['2048-12-12']
+              selectedDates: ['2023-05-12']
             });
           }
         }).mount("#app");
@@ -45,7 +45,7 @@
         <input type="text" id="dp0" placeholder="날 눌러봐유"/>
       </div>
 
-      <h2>다른 거 눌렀을 때 강제 포커싱</h2>
+      <h2>다른 요소를 클릭했을 때 강제 포커싱</h2>
       <pre><code class="language-markup"><!--
         <button type="button" @click="$refs.dp1.focus()">focus() 테스트</button>
         <input type="text" id="dp1" ref="dp1" placeholder="날 눌러봐유"/>
@@ -171,7 +171,8 @@
         mounted() {
           new AirDatepicker('#dp0', {
             locale: LOCALE_KR,
-            selectedDates: ['2048-12-12']
+            selectedDates: ['2023-05-12'],
+
           });
 
           new AirDatepicker('#dp1', {
