@@ -49,6 +49,6 @@ npm exec nodemon server.js
 
 ## URL 작동 방식
 
-웹 루트는 `public`으로 지정되어 있으며 그 아래의 파일을 URL에 그대로 입력합니다.
+웹 루트는 `public`으로 지정되어 있으며, `public` 바로 다음의 경로를 URL에서 그대로 사용합니다.
 
-예를 들어 `public/module-test/module-test.html` 파일을 보고 싶으면 `public/`을 생략하고 `http://localhost:9999/module-test/module-test.html`로 접속합니다.
+예를 들어 `/public/module-test/module-test.html` 파일의 URL은 `/public`을 제거한 `http://localhost:9999/module-test/module-test.html` 입니다.
