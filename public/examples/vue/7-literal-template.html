@@ -15,7 +15,7 @@
 
       <p>스크립트 파일에 템플릿 내용을 직접 작성하는 방식</p>
       <pre><code class="language-js"><!--
-        // literal-template.js
+        // literal-template-example.js
         export const literalTemplate = {
           template: `
             <p>응애 나 아기 컴포넌트</p>
@@ -29,9 +29,9 @@
         };
       --></code></pre>
       <pre class="language-markup"><code><!--
-        <literal-template></literal-template>
+        <literal-template-example></literal-template-example>
         <script>
-        import { literalTemplate } from '/examples/vue/component/literal-template.js'
+        import { literalTemplate } from '/examples/vue/component/literal-template-example.js'
 
         createApp({
           components: {
@@ -41,14 +41,14 @@
         </script>
       --></code></pre>
       <div class="result">
-        <literal-template></literal-template>
+        <literal-template-example></literal-template-example>
       </div>
       <div class="description">
         <h4>⚠️주의: 컴포넌트로 교체되어야 할 커스텀 태그는 뷰 앱 안에 정의되어야 함</h4>
         <p>요래요래:</p>
         <pre><code class="language-markup"><!--
           <div id="vueApp">
-            <literal-template></literal-template>
+            <literal-template-example></literal-template-example>
           </div>
         --></code></pre>
       </div>
@@ -57,12 +57,12 @@
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { backToHome } from '/examples/vue/component/back-to-home.js';
-      import { literalTemplate } from '/examples/vue/component/literal-template.js'
+      import { literalTemplateExample } from '/examples/vue/component/literal-template-example.js'
 
       createApp({
         components: {
           backToHome,
-          literalTemplate
+          literalTemplateExample
         },
         data() {
           return {

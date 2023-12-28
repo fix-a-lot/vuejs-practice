@@ -1,4 +1,4 @@
-export const literalTemplate = {
+export const literalTemplateExample = {
   template: `
     <p>응애 나 아기 컴포넌트</p>
     <div><button type="button" @click="probe">probe</button></div>

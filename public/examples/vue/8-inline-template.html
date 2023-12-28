@@ -26,7 +26,7 @@
         </script>
       --></code></pre>
       <pre><code class="language-js"><!--
-        // inline-template.js
+        // inline-template-example.js
         export const inlineTemplate = {
           template: '#ref-me',
           data() {
@@ -38,10 +38,10 @@
       --></code></pre>
       <pre><code class="language-markup"><!--
         <div id="vueApp">
-          <inline-template></inline-template>
+          <inline-template-example></inline-template-example>
         </div>
         <script>
-        import { inlineTemplate } from '/examples/vue/component/inline-template.js'
+        import { inlineTemplate } from '/examples/vue/component/inline-template-example.js'
 
         createApp({
           components: {
@@ -51,7 +51,7 @@
         </script>
       --></code></pre>
       <div class="result">
-        <inline-template></inline-template>
+        <inline-template-example></inline-template-example>
       </div>
       <p>마크업은 아래 둘 중에 하나로 감싸면 되는데:</p>
       <pre>
@@ -101,12 +101,12 @@
     <script type="module">
       import { createApp } from '/lib/vue/vue.esm-browser.js';
       import { backToHome } from '/examples/vue/component/back-to-home.js';
-      import { inlineTemplate } from '/examples/vue/component/inline-template.js'
+      import { inlineTemplateExample } from '/examples/vue/component/inline-template-example.js'
 
       createApp({
         components: {
           backToHome,
-          inlineTemplate
+          inlineTemplateExample
         },
         data() {
           return {
